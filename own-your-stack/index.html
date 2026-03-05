@@ -40,22 +40,10 @@
 
         body {
             font-family: 'DM Sans', sans-serif;
-            background: #FFB4A2;
+            background: linear-gradient(135deg, var(--coral-dark) 0%, var(--coral-light) 100%);
             color: var(--gray-dark);
             overflow-x: hidden;
             position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 60vh;
-            background: var(--gray-dark);
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-            z-index: -1;
         }
 
         .container {
