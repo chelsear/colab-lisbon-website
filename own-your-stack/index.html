@@ -115,17 +115,22 @@
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(1rem, 2.5vw, 1.5rem);
             color: var(--white);
-            margin-bottom: 5px;
+            margin-bottom: -20px;
             text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
             letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-tagline {
             font-family: 'Gagalin', 'Permanent Marker', cursive;
             font-size: clamp(0.9rem, 2vw, 1.2rem);
             color: var(--white);
+            margin-top: -15px;
             margin-bottom: 10px;
             text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
         }
 
         /* Event Details Box */
@@ -472,7 +477,6 @@
     <!-- What You Build -->
     <section class="section laptop-background" style="background: rgba(255, 255, 255, 0.15); margin: 0 -20px; padding: 80px 20px;">
         <div class="container">
-            <h2 class="section-title">What You Build This Weekend</h2>
 
             <div class="feature-grid">
                 <div class="feature-card">
