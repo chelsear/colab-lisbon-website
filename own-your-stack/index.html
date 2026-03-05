@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Own Your Stack Weekend - CoLab Lisbon | 2-Day AI Intensive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Sceageus';
+            src: url('../Sceageus.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gagalin';
+            src: url('../Gagalin-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            --coral-light: #FFB4A2;
+            --coral-dark: #e7583b;
+            --yellow: #e9f174;
+            --yellow-bright: #f0f594;
+            --gray-dark: #545454;
+            --gray-mid: #666;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #FFB4A2;
+            color: var(--gray-dark);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60vh;
+            background: var(--gray-dark);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            padding: 30px 0;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .logo {
+            height: 72px;
+            width: auto;
+            margin-top: 30px;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            color: var(--yellow);
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 40px 0 60px;
+            text-align: center;
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            margin: 0 auto 40px;
+            border: 5px solid var(--yellow);
+            box-shadow: 12px 12px 0px rgba(0,0,0,0.4);
+            display: block;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--gray-dark);
+            padding: 8px 24px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            transform: rotate(-2deg);
+            margin-bottom: 30px;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+        }
+
+        .hero-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            line-height: 0.9;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: var(--yellow);
+            text-shadow:
+                -3px -3px 0 var(--white),
+                3px -3px 0 var(--white),
+                -3px 3px 0 var(--white),
+                3px 3px 0 var(--white),
+                -6px 6px 0 var(--coral-dark);
+        }
+
+        .hero-subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            color: var(--white);
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+
+        .hero-tagline {
+            font-family: 'Gagalin', 'Permanent Marker', cursive;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--white);
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+        }
+
+        /* Event Details Box */
+        .event-details {
+            background: var(--white);
+            padding: 30px;
+            border: 4px solid var(--gray-dark);
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.2);
+            max-width: 600px;
+            margin: 40px auto;
+        }
+
+        .event-details h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--coral-dark);
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .detail-item {
+            font-size: 1.1rem;
+            color: var(--gray-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: var(--coral-dark);
+            color: var(--white);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            padding: 20px 50px;
+            text-decoration: none;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 6px 6px 0px var(--yellow);
+            border: 3px solid var(--gray-dark);
+            margin-top: 30px;
+        }
+
+        .cta-button:hover {
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0px var(--yellow);
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            text-align: center;
+            color: var(--gray-dark);
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        .intro-text {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--gray-dark);
+        }
+
+        .intro-text strong {
+            color: var(--coral-dark);
+            font-weight: 700;
+        }
+
+        /* Feature Cards */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px;
+            border: 4px solid var(--gray-dark);
+            border-left: 8px solid var(--yellow);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--coral-dark);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .feature-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--gray-mid);
+        }
+
+        /* Schedule Section */
+        .schedule-day {
+            background: var(--white);
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 4px solid var(--gray-dark);
+            border-top: 8px solid var(--yellow);
+        }
+
+        .schedule-day h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2rem;
+            color: var(--coral-dark);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .schedule-item {
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--coral-light);
+            background: rgba(255, 180, 162, 0.1);
+        }
+
+        .schedule-time {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            color: var(--coral-dark);
+            margin-bottom: 5px;
+        }
+
+        .schedule-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--gray-dark);
+            margin-bottom: 5px;
+        }
+
+        .schedule-desc {
+            color: var(--gray-mid);
+            line-height: 1.6;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--yellow);
+            padding: 40px;
+            border: 4px solid var(--gray-dark);
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.2);
+            margin: 60px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2rem;
+            color: var(--gray-dark);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .highlight-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .highlight-box li {
+            font-size: 1.2rem;
+            color: var(--gray-dark);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .highlight-box li::before {
+            content: '✓';
+            color: var(--coral-dark);
+            font-weight: 700;
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+
+        /* Pricing Section */
+        .pricing-box {
+            background: var(--coral-dark);
+            padding: 50px;
+            border: 5px solid var(--gray-dark);
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.3);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .price {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .price-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            color: var(--yellow);
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .pricing-includes {
+            text-align: left;
+            margin-top: 30px;
+            color: var(--white);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Decorative Elements */
+        .crab-decoration {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 120px;
+            height: auto;
+            opacity: 0.3;
+            z-index: 0;
+            pointer-events: none;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .laptop-background {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .laptop-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('../laptop-code.png') center/cover;
+            opacity: 0.08;
+            z-index: 0;
+            filter: grayscale(100%);
+        }
+
+        .laptop-background > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-box {
+                padding: 30px 20px;
+            }
+
+            .schedule-day {
+                padding: 30px 20px;
+            }
+
+            .crab-decoration {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Crab Decoration -->
+    <img src="../crab-clean.png" alt="" class="crab-decoration">
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="../index.html" class="back-button">← Back to All Events</a>
+            <img src="../colab-logo.png" alt="COLAB LISBON" class="logo">
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <img src="../crab-burst.png" alt="Own Your Stack Weekend" class="hero-image" style="max-width: 700px;">
+
+            <div class="hero-badge">2-DAY INTENSIVE WORKSHOP</div>
+            <h1 class="hero-title">Own Your Stack Weekend</h1>
+            <p class="hero-subtitle">An Exclusive AI Intensive by CoLab Lisbon</p>
+            <p class="hero-tagline">From AI User to AI Operator in One Weekend</p>
+
+            <div class="event-details">
+                <h3>Event Details</h3>
+                <div class="detail-item">📅 April 11-12, 2026</div>
+                <div class="detail-item">⏰ 12:00 PM - 5:00 PM (Both Days)</div>
+                <div class="detail-item">📍 Sandhi House, Central Ericeira • Ocean Views</div>
+                <div class="detail-item">👥 Limited to 12 Participants</div>
+            </div>
+
+            <a href="#register" class="cta-button">RESERVE YOUR SPOT</a>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="section">
+        <div class="container">
+            <div class="intro-text">
+                <p><strong>You've been using AI in a browser tab. This weekend, we build you a private infrastructure.</strong></p>
+                <p style="margin-top: 20px;">Own Your Stack is an exclusive two-day intensive for ambitious entrepreneurs and operators who are ready to move beyond rented AI tools. In an intimate oceanfront setting in Ericeira, you'll deploy Claude to your terminal, set up OpenClaw on your own VPS, and launch a live messaging bot connected to your business.</p>
+                <p style="margin-top: 20px;"><strong>No theory. No crowded workshops. Just hands-on implementation in a premium environment with a maximum of 12 participants.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Build -->
+    <section class="section laptop-background" style="background: rgba(255, 255, 255, 0.15); margin: 0 -20px; padding: 80px 20px;">
+        <div class="container">
+            <h2 class="section-title">What You Build This Weekend</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Claude CLI Running</h3>
+                    <p>Claude desktop and CLI installed and configured on your own machine, with custom prompting frameworks designed for operators.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Personal VPS Deployed</h3>
+                    <p>Your own Virtual Private Server with OpenClaw deployed and running—infrastructure you control, not rented access.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Live Messaging Bot</h3>
+                    <p>A working Telegram or WhatsApp bot connected to your business context, ready to automate customer interactions and workflows.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Your Exclusive Cohort</h3>
+                    <p>An intimate group of maximum 12 ambitious operators who built it alongside you—your high-caliber network for ongoing collaboration and growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">The Format</h2>
+
+            <div class="schedule-day">
+                <h3>Saturday: Foundation</h3>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">12:00 PM - 2:30 PM</div>
+                    <div class="schedule-title">Claude Desktop & Terminal Basics</div>
+                    <div class="schedule-desc">Install and configure Claude CLI, learn terminal fundamentals, and master prompting frameworks designed for business operators.</div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">2:30 PM - 3:00 PM</div>
+                    <div class="schedule-title">Coffee Break</div>
+                    <div class="schedule-desc">Coffee, tea & snacks included</div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">3:00 PM - 5:00 PM</div>
+                    <div class="schedule-title">First Commands & Automation</div>
+                    <div class="schedule-desc">Execute your first terminal commands, build simple automations, and connect AI to your actual business workflows.</div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">Evening (Optional)</div>
+                    <div class="schedule-title">Cohort Dinner</div>
+                    <div class="schedule-desc">Optional dinner at a curated local restaurant. Connect with your fellow operators over exceptional food and wine.</div>
+                </div>
+            </div>
+
+            <div class="schedule-day">
+                <h3>Sunday: Deployment</h3>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">12:00 PM - 2:30 PM</div>
+                    <div class="schedule-title">Deploy OpenClaw to Your VPS</div>
+                    <div class="schedule-desc">Set up your Virtual Private Server, deploy OpenClaw, and configure your production environment.</div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">2:30 PM - 3:00 PM</div>
+                    <div class="schedule-title">Coffee Break</div>
+                    <div class="schedule-desc">Coffee, tea & snacks included</div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">3:00 PM - 4:45 PM</div>
+                    <div class="schedule-title">Build Your Messaging Bot</div>
+                    <div class="schedule-desc">Create and deploy a live Telegram or WhatsApp bot connected to your business. Test it. Ship it. Own it.</div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">4:45 PM - 5:00 PM</div>
+                    <div class="schedule-title">Demo & Celebration</div>
+                    <div class="schedule-desc">Show what you built, share your setup, and celebrate shipping real infrastructure.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venue Showcase -->
+    <section class="section" style="background: rgba(255, 255, 255, 0.15); margin: 0 -20px; padding: 80px 20px;">
+        <div class="container">
+            <h2 class="section-title">The Setting</h2>
+
+            <div style="max-width: 900px; margin: 0 auto;">
+                <p style="text-align: center; font-size: 1.3rem; line-height: 1.8; color: var(--gray-dark); margin-bottom: 50px;">
+                    <strong>Sandhi House, Ericeira</strong> — A boutique oceanfront space where the Atlantic meets focused work. Build your infrastructure while overlooking one of Portugal's most stunning coastlines.
+                </p>
+
+                <div style="display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px;">
+                    <img src="../ericeira-ocean.jpg" alt="Ericeira Ocean Views" style="width: 100%; height: 400px; object-fit: cover; border: 5px solid var(--gray-dark); box-shadow: 10px 10px 0px rgba(0,0,0,0.3);">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr; gap: 30px;">
+                    <img src="../sandhi-house-interior.jpg" alt="Sandhi House Interior" style="width: 100%; height: 400px; object-fit: cover; border: 5px solid var(--gray-dark); box-shadow: 10px 10px 0px rgba(0,0,0,0.3);">
+                </div>
+
+                <div style="background: var(--white); padding: 30px; margin-top: 40px; border: 3px solid var(--gray-dark); text-align: center;">
+                    <p style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--coral-dark); letter-spacing: 1px;">
+                        Premium workspace • Ocean views • Intimate setting • World-class surf town
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="section">
+        <div class="container">
+            <div class="highlight-box">
+                <h3>What's Included</h3>
+                <ul>
+                    <li>2 days of intensive, personalized instruction</li>
+                    <li>Boutique oceanfront setting at Sandhi House, Ericeira</li>
+                    <li>Premium coffee, tea & refreshments throughout</li>
+                    <li>VPS hosting credits to deploy your infrastructure</li>
+                    <li>Proprietary prompting frameworks & templates</li>
+                    <li>Lifetime access to all course materials</li>
+                    <li>Ongoing support via exclusive private community</li>
+                    <li>Maximum 12 participants for individual attention</li>
+                    <li>Optional curated dinner experience Saturday evening</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Should Come -->
+    <section class="section" style="background: rgba(255, 255, 255, 0.15); margin: 0 -20px; padding: 80px 20px;">
+        <div class="container">
+            <h2 class="section-title">Who Should Come</h2>
+
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--gray-dark); margin-bottom: 30px;">
+                    This intensive is for <strong>ambitious entrepreneurs and operators</strong> who are ready to stop renting AI tools and start owning their infrastructure. You're building something meaningful and want infrastructure that scales with you—not SaaS subscriptions that own your data.
+                </p>
+
+                <div style="background: var(--white); padding: 40px; border: 4px solid var(--gray-dark); margin-top: 40px;">
+                    <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--coral-dark); margin-bottom: 20px; letter-spacing: 1px;">WHAT YOU NEED</h3>
+                    <ul style="list-style: none; padding: 0; text-align: left; max-width: 500px; margin: 0 auto;">
+                        <li style="margin-bottom: 12px; font-size: 1.1rem;">✓ A MacBook with latest OS</li>
+                        <li style="margin-bottom: 12px; font-size: 1.1rem;">✓ Claude Pro account (€18/month)</li>
+                        <li style="margin-bottom: 12px; font-size: 1.1rem;">✓ Basic comfort with technology</li>
+                        <li style="margin-bottom: 12px; font-size: 1.1rem;">✓ A business problem to automate</li>
+                        <li style="margin-bottom: 12px; font-size: 1.1rem;">✓ Willingness to get hands dirty</li>
+                    </ul>
+                    <p style="margin-top: 25px; color: var(--gray-mid); font-size: 1rem;"><em>No coding experience required—just curiosity and commitment.</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="register">
+        <div class="container">
+            <h2 class="section-title">Investment</h2>
+
+            <div class="pricing-box">
+                <div class="price">€897</div>
+                <div class="price-label">Exclusive 2-Day Intensive at Sandhi House</div>
+
+                <a href="https://luma.com/calendar/cal-HLSHIiwiF05MvRk" class="cta-button" style="background: var(--yellow); color: var(--gray-dark); box-shadow: 6px 6px 0px rgba(0,0,0,0.3);">SECURE YOUR SPOT</a>
+
+                <div class="pricing-includes">
+                    <p style="margin-top: 30px; text-align: center;"><strong>Strictly limited to 12 participants.</strong></p>
+                    <p style="margin-top: 15px; text-align: center; font-size: 0.95rem;">Intimate cohort ensures personalized guidance and meaningful connections.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <div class="container">
+            <h2 style="font-family: 'Gagalin', 'Permanent Marker', cursive; font-size: clamp(2rem, 5vw, 3rem); color: var(--white); margin-bottom: 20px; text-shadow: 3px 3px 0px var(--gray-dark);">Ready to Own Your Stack?</h2>
+            <p style="font-size: 1.2rem; color: var(--white); margin-bottom: 30px; text-shadow: 1px 1px 0px rgba(0,0,0,0.3);">Join us April 11-12 in Ericeira</p>
+            <a href="https://luma.com/calendar/cal-HLSHIiwiF05MvRk" class="cta-button">REGISTER NOW</a>
+
+            <div style="margin-top: 40px;">
+                <a href="../index.html" style="font-family: 'DM Sans', sans-serif; font-size: 1rem; color: var(--gray-mid); text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='var(--white)';" onmouseout="this.style.color='var(--gray-mid)';">← Back to All Events</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
