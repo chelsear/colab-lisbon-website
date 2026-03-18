@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Your First AI Agent - OpenClaw Masterclass | CoLab Lisbon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Sceageus';
+            src: url('../Sceageus.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gagalin';
+            src: url('../Gagalin-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            --coral-light: #FFB4A2;
+            --coral-dark: #e7583b;
+            --yellow: #e9f174;
+            --yellow-bright: #f0f594;
+            --gray-dark: #545454;
+            --gray-mid: #666;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, #FFD4C4 0%, #FFF5E6 50%, #FFFBEA 100%);
+            background-attachment: fixed;
+            color: var(--gray-dark);
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50vh;
+            background: var(--coral-dark);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 55px 0 10px;
+            text-align: center;
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 180px;
+            height: auto;
+            margin: 0 auto 5px;
+            border: 5px solid var(--yellow);
+            box-shadow: 12px 12px 0px rgba(0,0,0,0.4);
+            display: block;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--gray-dark);
+            padding: 8px 32px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            transform: rotate(-2deg);
+            margin-bottom: 16px;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.2);
+        }
+
+        .hero-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            line-height: 0.9;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            color: var(--yellow);
+            text-shadow:
+                -3px -3px 0 var(--white),
+                3px -3px 0 var(--white),
+                -3px 3px 0 var(--white),
+                3px 3px 0 var(--white),
+                -6px 6px 0 var(--coral-dark);
+        }
+
+        .hero-subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--white);
+            margin-bottom: -20px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-tagline {
+            font-family: 'Gagalin', 'Permanent Marker', cursive;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            color: var(--white);
+            margin-top: -15px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Event Details Box */
+        .event-details {
+            background: var(--white);
+            padding: 12px 20px;
+            border: 3px solid var(--gray-dark);
+            box-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+            max-width: 500px;
+            margin: 10px auto;
+        }
+
+        .event-details h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            color: var(--coral-dark);
+            margin-bottom: 8px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .detail-item {
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: var(--coral-dark);
+            color: var(--white);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            padding: 12px 35px;
+            text-decoration: none;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 5px 5px 0px var(--yellow);
+            border: 3px solid var(--gray-dark);
+            margin-top: 8px;
+            margin-bottom: 10px;
+        }
+
+        .cta-button:hover {
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0px var(--yellow);
+        }
+
+        /* Content Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            text-align: center;
+            color: var(--gray-dark);
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        .intro-text {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            text-align: center;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .intro-text strong {
+            color: var(--yellow);
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+
+        /* Feature Cards */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px;
+            border: 4px solid var(--gray-dark);
+            border-left: 8px solid var(--yellow);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--coral-dark);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .feature-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--gray-mid);
+        }
+
+        /* Schedule Section */
+        .schedule-day {
+            background: var(--white);
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 4px solid var(--gray-dark);
+            border-top: 8px solid var(--yellow);
+        }
+
+        .schedule-day h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2rem;
+            color: var(--coral-dark);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .schedule-item {
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--coral-light);
+            background: rgba(255, 180, 162, 0.1);
+        }
+
+        .schedule-time {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            color: var(--coral-dark);
+            margin-bottom: 5px;
+        }
+
+        .schedule-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--gray-dark);
+            margin-bottom: 5px;
+        }
+
+        .schedule-desc {
+            color: var(--gray-mid);
+            line-height: 1.6;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: var(--yellow);
+            padding: 40px;
+            border: 4px solid var(--gray-dark);
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.2);
+            margin: 60px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2rem;
+            color: var(--gray-dark);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .highlight-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .highlight-box li {
+            font-size: 1.2rem;
+            color: var(--gray-dark);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .highlight-box li::before {
+            content: '✓';
+            color: var(--coral-dark);
+            font-weight: 700;
+            margin-right: 10px;
+            font-size: 1.4rem;
+        }
+
+        /* Pricing Section */
+        .pricing-box {
+            background: linear-gradient(135deg, #FFD4C4 0%, #FFF5E6 50%, #FFFBEA 100%);
+            padding: 50px;
+            border: 5px solid var(--gray-dark);
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.3);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .price {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 4rem;
+            color: var(--gray-dark);
+            margin-bottom: 10px;
+        }
+
+        .price-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            color: var(--coral-dark);
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .pricing-includes {
+            text-align: left;
+            margin-top: 30px;
+            color: var(--gray-dark);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Decorative Elements */
+        .crab-decoration {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 120px;
+            height: auto;
+            opacity: 0.3;
+            z-index: 0;
+            pointer-events: none;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .laptop-background {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .laptop-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('../laptop-code.png') center/cover;
+            opacity: 0.08;
+            z-index: 0;
+            filter: grayscale(100%);
+        }
+
+        .laptop-background > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-box {
+                padding: 30px 20px;
+            }
+
+            .schedule-day {
+                padding: 30px 20px;
+            }
+
+            .crab-decoration {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">6-HOUR MASTERCLASS & SETUP</div>
+            <h1 class="hero-title">Hire Your First<br>AI Agent</h1>
+            <p class="hero-subtitle">OpenClaw Masterclass by CoLab Lisbon</p>
+            <p class="hero-tagline">Stop juggling tasks. Start delegating to AI.</p>
+
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 20px;">
+                <img src="../crab-clean.png" alt="OpenClaw Masterclass" class="hero-image" style="max-width: 400px; border: none; box-shadow: none; margin: 0;">
+
+                <div class="event-details" style="margin: 0;">
+                    <div class="detail-item">📅 Date TBD</div>
+                    <div class="detail-item">⏰ 6 Hours Hands-On</div>
+                    <div class="detail-item">📍 Lisbon, Portugal</div>
+                    <div class="detail-item">💼 For Entrepreneurs & Operators</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="section laptop-background" style="background: rgba(255, 255, 255, 0.15); margin: 0 -20px; padding: 30px 20px 50px 20px;">
+        <div class="container">
+            <div class="intro-text" style="margin-bottom: 40px;">
+                <p style="margin-bottom: 25px;"><strong>Are you running your business, or is your business running you?</strong></p>
+                <p style="margin-bottom: 25px;">As an entrepreneur, service provider, or small-business owner, you're constantly juggling leads, messages, follow-ups, and logistics. You've probably tried AI tools like ChatGPT or Claude, but here's the problem: <strong>they're stateless</strong>—they don't actually do the work. Every conversation starts from scratch. You end up doing the same admin, copying, pasting, and clicking, just with a fancier interface.</p>
+                <p style="margin-bottom: 25px;"><strong style="color: var(--yellow); font-size: 1.4rem;">OpenClaw is different.</strong></p>
+                <p style="margin-bottom: 25px;">It's an <strong>autonomous AI agent</strong> that runs on your own private server (think of it like hiring a remote employee who works from a secure digital office you control). It connects to the messaging apps you already use—WhatsApp, Telegram, Slack—and unlike standard AI, it has <strong>persistent memory</strong>. It learns your business, your style, your ongoing projects, and actually remembers them between conversations.</p>
+                <p><strong>And it's proactive:</strong> You can set up background jobs (like cron tasks) so your agent wakes up on a schedule, scrapes competitor sites, drafts follow-ups, checks your CRM, and sends you a daily briefing—all without you lifting a finger.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Build -->
+    <section class="section">
+        <div class="container">
+            <h2 style="font-family: 'Gagalin', 'Permanent Marker', cursive; font-size: clamp(2rem, 5vw, 3.5rem); text-align: center; color: var(--gray-dark); margin-bottom: 30px;">In 6 hours, you'll build:</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Your First Autonomous Agent</h3>
+                    <p>Connect it to your messaging app and start delegating tasks by hour one.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Custom System Prompt & Memory</h3>
+                    <p>Define your agent's role, tone, and priorities so it understands your business context and remembers key details across conversations.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Lead Qualification Pipeline</h3>
+                    <p>Triage inbound messages automatically and tag them in your CRM.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Automated Follow-Up System</h3>
+                    <p>Send reminders and nudges on a schedule without manual tracking.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Research Assistant</h3>
+                    <p>Monitor competitors, extract insights, and summarize what matters—automatically.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>24/7 Background Job</h3>
+                    <p>Deploy one fully automated workflow—competitor tracking, lead nurturing, or daily briefings—that runs while you sleep.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="section" style="background: rgba(255, 255, 255, 0.15); margin: 0 -20px; padding: 60px 20px;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <h2 style="font-family: 'Gagalin', 'Permanent Marker', cursive; font-size: clamp(2rem, 5vw, 3.5rem); color: var(--gray-dark); margin-bottom: 30px; text-shadow: 2px 2px 0px rgba(255,255,255,0.5);">OpenClaw Setup for You</h2>
+
+                <div style="background: var(--white); padding: 40px; border: 4px solid var(--gray-dark); box-shadow: 8px 8px 0px rgba(0,0,0,0.2); text-align: left;">
+                    <p style="font-size: 1.15rem; line-height: 1.8; color: var(--gray-dark); margin-bottom: 20px;">
+                        The catch? Setting up OpenClaw the right way means configuring a VPS, containerizing it with Docker, setting up reverse proxies, managing environment variables, and locking down firewall rules.
+                    </p>
+                    <p style="font-size: 1.15rem; line-height: 1.8; color: var(--gray-dark); margin-bottom: 20px;">
+                        <strong>Miss a step, and you could expose your API keys to the internet</strong>—which means anyone could rack up thousands in charges on your OpenAI or Anthropic account before you even notice.
+                    </p>
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: var(--coral-dark); font-weight: 700; text-align: center; margin-top: 30px;">
+                        In this 6-hour, hands-on masterclass, you'll walk in with your laptop and walk out with a production-ready AI agent—fully secured and ready to deploy.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="section">
+        <div class="container">
+            <h2 style="font-family: 'Gagalin', 'Permanent Marker', cursive; font-size: clamp(2rem, 5vw, 3.5rem); text-align: center; color: var(--gray-dark); margin-bottom: 30px;">Every Student Receives:</h2>
+
+            <div class="schedule-day">
+                <div class="schedule-item">
+                    <div class="schedule-title">✅ Pre-Configured, Security-Hardened VPS</div>
+                    <div class="schedule-desc">Docker sandboxing, fail2ban protection, HTTPS certificates, and firewall rules already locked down. You'll get SSH access, full control, and a working environment—without spending a weekend troubleshooting DigitalOcean tutorials.</div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-title">✅ Real Business Workflows</div>
+                    <div class="schedule-desc">Build one fully automated background job tailored to your business—daily competitor tracking, lead nurturing sequences, client check-ins, or morning briefings that run 24/7 while you sleep.</div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-title">✅ Smart API Usage Patterns</div>
+                    <div class="schedule-desc">Learn how to route simple tasks to cheaper models (like GPT-4o-mini or Haiku) and reserve the expensive ones for complex decisions. Set up memory windows and trigger logic so your agent isn't burning tokens on redundant context.</div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-title">✅ Custom Agent Personality & Memory</div>
+                    <div class="schedule-desc">Define your agent's role, tone, and priorities so it understands your business context and remembers key details across conversations.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who This Is For -->
+    <section class="section" style="padding: 40px 0;">
+        <div class="container">
+            <div class="highlight-box">
+                <h3>Who This Is For</h3>
+                <ul style="text-align: left; max-width: 700px; margin: 0 auto;">
+                    <li><strong>Entrepreneurs & solopreneurs</strong> who are comfortable with SaaS tools and APIs but don't want to become DevOps engineers just to run an AI agent.</li>
+                    <li><strong>Service providers & consultants</strong> who want a custom AI assistant that actually integrates with their workflow—not another subscription tool with a cookie-cutter interface.</li>
+                    <li><strong>Small-business owners</strong> who've outgrown Zapier and want something more flexible, powerful, and under their control—without needing to hire a developer.</li>
+                </ul>
+                <p style="margin-top: 30px; font-size: 1rem; line-height: 1.7; font-weight: 400;">
+                    You don't need to be a coder, but you should be comfortable with concepts like APIs, webhooks, and environment variables. <strong>If you've ever connected Zapier to Airtable or set up a Slack bot, you're more than ready.</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshop Experience -->
+    <section class="section" style="background: rgba(255, 255, 255, 0.15); margin: 0 -20px; padding: 80px 20px;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+                <h2 style="font-family: 'Gagalin', 'Permanent Marker', cursive; font-size: clamp(2rem, 5vw, 3.5rem); text-align: center; color: var(--gray-dark); margin-bottom: 50px; text-shadow: 2px 2px 0px rgba(255,255,255,0.5);">A Hands-On, Practical Workshop</h2>
+
+                <div style="display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 30px;">
+                    <img src="../sandhi-house-interior.jpg" alt="Workshop Environment" style="width: 100%; height: 400px; object-fit: cover; border: 5px solid var(--gray-dark); box-shadow: 10px 10px 0px rgba(0,0,0,0.3); filter: grayscale(100%); transition: filter 0.3s ease;" onmouseover="this.style.filter='grayscale(0%)'" onmouseout="this.style.filter='grayscale(100%)'">
+                </div>
+
+                <div style="background: var(--white); padding: 30px; margin-top: 40px; border: 3px solid var(--gray-dark); text-align: center;">
+                    <p style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--coral-dark); letter-spacing: 1px; margin-bottom: 15px;">
+                        No Theory. No Slides. Just Building.
+                    </p>
+                    <p style="font-size: 1rem; line-height: 1.7; color: var(--gray-dark); max-width: 600px; margin: 0 auto;">
+                        You'll spend 6 hours building a real agent for your real business, with real infrastructure that you'll own and control when you leave.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="register">
+        <div class="container">
+            <div class="pricing-box">
+                <div style="background: var(--yellow); color: var(--gray-dark); padding: 8px 20px; margin: -50px -50px 20px -50px; border-bottom: 3px solid var(--gray-dark); font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 2px;">
+                    💼 INVESTMENT
+                </div>
+                <div class="price" style="font-size: 2.5rem;">$299</div>
+                <div class="price-label" style="font-size: 1rem;">6-Hour Masterclass & Setup</div>
+
+                <div style="text-align: left; margin-top: 30px; padding: 0 20px;">
+                    <p style="font-size: 1rem; line-height: 1.8; color: var(--gray-dark); margin-bottom: 12px;">
+                        <strong>This includes:</strong>
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 10px; padding-left: 0; font-size: 0.95rem;">✓ 6 hours of hands-on, in-person instruction</li>
+                        <li style="margin-bottom: 10px; padding-left: 0; font-size: 0.95rem;">✓ Your own fully secured, pre-configured VPS with OpenClaw installed (normally 4–6 hours of setup and troubleshooting)</li>
+                        <li style="margin-bottom: 10px; padding-left: 0; font-size: 0.95rem;">✓ One live workflow tailored to your business, plus clear documentation so you can build more on your own</li>
+                    </ul>
+                </div>
+
+                <a href="#" style="display: inline-block; margin-top: 30px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--coral-dark); text-decoration: underline; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.7';" onmouseout="this.style.opacity='1';">Secure your spot →</a>
+
+                <div class="pricing-includes">
+                    <p style="margin-top: 30px; text-align: center;"><strong>Spots are strictly limited to ensure personalized support.</strong></p>
+                </div>
+            </div>
+
+            <div style="max-width: 700px; margin: 40px auto 0; text-align: center;">
+                <div style="background: var(--white); padding: 35px 45px; border: 4px solid var(--yellow); box-shadow: 6px 6px 0px rgba(0,0,0,0.2);">
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--gray-dark); font-weight: 700; margin: 0 auto; max-width: 550px;">
+                        Walk in with your laptop.<br>
+                        Walk out with a production-ready AI agent—and the knowledge to scale it without blowing your API budget.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta">
+        <div class="container">
+            <p style="font-family: 'Gagalin', 'Permanent Marker', cursive; font-size: 2rem; color: var(--gray-dark); margin-bottom: 20px;">Ready to hire your first AI agent?</p>
+            <a href="#register" class="cta-button">Secure Your Spot</a>
+            <p style="color: var(--gray-mid); margin-top: 30px;">Questions? Email us at <a href="mailto:workshops@colablisbon.com" style="color: var(--coral-dark); text-decoration: underline;">workshops@colablisbon.com</a></p>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
