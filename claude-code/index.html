@@ -10,14 +10,14 @@
     <style>
         @font-face {
             font-family: 'Sceageus';
-            src: url('Sceageus.otf') format('opentype');
+            src: url('../Sceageus.otf') format('opentype');
             font-weight: normal;
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Gagalin';
-            src: url('Gagalin-Regular.otf') format('opentype');
+            src: url('../Gagalin-Regular.otf') format('opentype');
             font-weight: normal;
             font-style: normal;
         }
@@ -747,7 +747,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 80px;
-            background: url('zebra.png') no-repeat center;
+            background: url('../zebra.png') no-repeat center;
             background-size: contain;
             animation: bounce 2s infinite;
         }
@@ -895,7 +895,7 @@
 
     <!-- Animal Decorations -->
     <div class="animal-decoration animal-1">
-        <img src="whitestar.png" alt="Star" style="width: 100%; height: 100%; object-fit: contain;">
+        <img src="../whitestar.png" alt="Star" style="width: 100%; height: 100%; object-fit: contain;">
     </div>
 
     <!-- Hamburger Menu Button -->
@@ -922,19 +922,17 @@
     <!-- Header -->
     <header id="home">
         <div class="container">
-            <img src="colab-logo.png" alt="COLAB LISBON" class="logo">
+            <img src="../colab-logo.png" alt="COLAB LISBON" class="logo">
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="workshops">
-        <img src="lady.png" alt="Retro Computer" class="computer-head">
+        <img src="../lady.png" alt="Retro Computer" class="computer-head">
         <div class="container">
-            <div class="hero-badge">LEARN IN-PERSON</div>
-            <h1 class="hero-title">AI Workshops</h1>
-            <p class="hero-subtitle">Claude & OpenClaw Courses</p>
-
-            <p class="hero-tagline">Come with Ideas, Leave with Products</p>
+            <div class="hero-badge">HANDS-ON WORKSHOP</div>
+            <h1 class="hero-title">Claude Code Workshop</h1>
+            <p class="hero-subtitle">AI for Business Innovation</p>
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px auto; max-width: 900px;">
                 <!-- Cascais Event -->
@@ -959,6 +957,95 @@
                     <a href="https://luma.com/i93sit07" style="display: block; background: var(--gray-dark); color: var(--yellow); padding: 12px 24px; text-align: center; text-decoration: none; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 2px; border: 3px solid var(--gray-dark); box-shadow: 4px 4px 0px var(--yellow); transition: transform 0.3s ease;" onmouseover="this.style.transform='translate(2px, 2px)'; this.style.boxShadow='2px 2px 0px var(--yellow)';" onmouseout="this.style.transform='translate(0, 0)'; this.style.boxShadow='4px 4px 0px var(--yellow)';">SIGN UP</a>
                 </div>
             </div>
+
+            <p class="hero-tagline">Come with Ideas, Leave with Products</p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <div class="feature-card reveal">
+                <div class="feature-accent"></div>
+                <div class="feature-content">
+                    <h2 class="feature-title">Let Claude Do the Heavy Lifting</h2>
+                    <p class="feature-description">Lean back & watch your ideas come to life</p>
+                </div>
+            </div>
+
+            <div class="feature-card reveal">
+                <div class="feature-accent"></div>
+                <div class="feature-content">
+                    <h2 class="feature-title">When AI Clicks with Your Workflow</h2>
+                    <p class="feature-description">Real AI. Real people. Real output. No fluff.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshop Schedule -->
+    <section class="schedule" id="schedule" style="position: relative;">
+        <img src="../computer.png" alt="Retro Computer" class="computer-full">
+        <div class="container">
+            <h2 class="section-title">Workshop Outline</h2>
+            <div class="schedule-grid">
+                <div class="schedule-item reveal">
+                    <div class="schedule-time">13:00-13:15</div>
+                    <div class="schedule-title">Welcome & Introductions</div>
+                    <div class="schedule-desc">Quick intros, your biggest business challenges</div>
+                </div>
+                <div class="schedule-item reveal">
+                    <div class="schedule-time">13:15-14:00</div>
+                    <div class="schedule-title">Claude Fundamentals</div>
+                    <div class="schedule-desc">What Claude can do for your business • Terminal basics vs web interface • Setting up Claude Code</div>
+                </div>
+                <div class="schedule-item reveal">
+                    <div class="schedule-time">14:00-14:45</div>
+                    <div class="schedule-title">Hands-On Practice</div>
+                    <div class="schedule-desc">First commands and prompts • Business automation examples</div>
+                </div>
+                <div class="schedule-item reveal">
+                    <div class="schedule-time">14:45-15:00</div>
+                    <div class="schedule-title">Coffee Break</div>
+                </div>
+                <div class="schedule-item reveal">
+                    <div class="schedule-time">15:00-16:00</div>
+                    <div class="schedule-title">Advanced Applications</div>
+                    <div class="schedule-desc">Workflow automation • Content creation at scale • Data analysis basics • Real participant use cases</div>
+                </div>
+                <div class="schedule-item reveal">
+                    <div class="schedule-time">16:00-16:45</div>
+                    <div class="schedule-title">Innovation Workshop</div>
+                    <div class="schedule-desc">Small groups: Apply Claude to your business • Share & feedback</div>
+                </div>
+                <div class="schedule-item reveal">
+                    <div class="schedule-time">16:45-17:00</div>
+                    <div class="schedule-title">Q&A & Wrap-up</div>
+                </div>
+                <div class="schedule-item reveal">
+                    <div class="schedule-time">17:15+</div>
+                    <div class="schedule-title">Happy Hour & Networking</div>
+                    <div class="schedule-desc">Nova Wine Bar • Pay as you go</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Learn -->
+    <section class="benefits" id="learn">
+        <div class="container">
+            <h2 class="section-title">What You'll Learn</h2>
+            <div class="benefits-list">
+                <div class="benefit-item reveal">
+                    <div class="benefit-text">Master Claude Code for Business Automation</div>
+                </div>
+                <div class="benefit-item reveal">
+                    <div class="benefit-text">Build Custom AI Workflows for Your Work</div>
+                </div>
+                <div class="benefit-item reveal">
+                    <div class="benefit-text">Scale Content & Analysis with Terminal Commands</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -967,7 +1054,7 @@
         <div class="container">
             <h2 class="section-title">The Venues</h2>
             <p style="text-align: center; font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--gray-dark); margin-bottom: 20px;">Cascais & The Kreators Lisboa</p>
-            <img src="venue.jpg" alt="Workshop Venues" class="venue-image-large reveal">
+            <img src="../venue.jpg" alt="Workshop Venues" class="venue-image-large reveal">
         </div>
     </section>
 
@@ -993,7 +1080,7 @@
             <h2 class="section-title">Meet the Team</h2>
             <div class="team-grid">
                 <div class="team-card reveal">
-                    <img src="chelsea.png" alt="Chelsea Rustrum" class="team-photo" style="filter: grayscale(100%); border: 3px solid var(--yellow);">
+                    <img src="../chelsea.png" alt="Chelsea Rustrum" class="team-photo" style="filter: grayscale(100%); border: 3px solid var(--yellow);">
                     <h3 class="team-name">Chelsea Rustrum</h3>
                     <a href="https://www.linkedin.com/in/chelsearustrum/" target="_blank" class="team-linkedin" aria-label="Chelsea Rustrum LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -1002,7 +1089,7 @@
                     </a>
                 </div>
                 <div class="team-card reveal">
-                    <img src="james.png" alt="James Corbett" class="team-photo" style="filter: grayscale(100%); border: 3px solid var(--yellow);">
+                    <img src="../james.png" alt="James Corbett" class="team-photo" style="filter: grayscale(100%); border: 3px solid var(--yellow);">
                     <h3 class="team-name">James Corbett</h3>
                     <a href="https://www.linkedin.com/in/jpcorbett/" target="_blank" class="team-linkedin" aria-label="James Corbett LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -1011,7 +1098,7 @@
                     </a>
                 </div>
                 <div class="team-card reveal">
-                    <img src="verena.png" alt="Verena Husemann" class="team-photo" style="filter: grayscale(100%); border: 3px solid var(--yellow);">
+                    <img src="../verena.png" alt="Verena Husemann" class="team-photo" style="filter: grayscale(100%); border: 3px solid var(--yellow);">
                     <h3 class="team-name">Verena Husemann</h3>
                     <a href="https://www.linkedin.com/in/verenahusemann/" target="_blank" class="team-linkedin" aria-label="Verena Husemann LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
