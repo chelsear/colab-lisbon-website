@@ -450,9 +450,31 @@
                 display: none;
             }
         }
+        /* Header Logo */
+        header {
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="../"><img src="../colab-logo.png" alt="COLAB LISBON" class="logo"></a>
+        </div>
+    </header>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
