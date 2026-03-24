@@ -964,6 +964,7 @@
                 type: 'select',
                 options: [
                     { value: 'clean', label: 'Clean it up - fix grammar, structure it' },
+                    { value: 'tone', label: 'Fix grammar but keep my tone - clean up mistakes, preserve personality' },
                     { value: 'raw', label: 'Keep my raw voice - just organize slightly' },
                     { value: 'ask', label: 'Ask me each time' }
                 ]
@@ -1180,7 +1181,7 @@
             const financialMap = { 'conservative': 'Use conservative estimates.', 'optimistic': 'Use optimistic estimates.', 'range': 'Provide a range (low/medium/high).' };
             if (answers.financial_estimates) md += `### Financial Estimates\n${financialMap[answers.financial_estimates]}\n\n`;
 
-            const brainDumpMap = { 'clean': 'Clean up my brain dumps.', 'raw': 'Keep my raw voice.', 'ask': 'Ask me each time.' };
+            const brainDumpMap = { 'clean': 'Clean up my brain dumps - fix grammar and add structure.', 'tone': 'Fix grammar but keep my tone - clean up mistakes but preserve my personality.', 'raw': 'Keep my raw voice - just organize slightly.', 'ask': 'Ask me each time.' };
             if (answers.brain_dump) md += `### Brain Dump Handling\n${brainDumpMap[answers.brain_dump]}\n\n`;
 
             document.getElementById('output').textContent = md;
