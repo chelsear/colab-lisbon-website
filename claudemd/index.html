@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLAUDE.md Generator for Students</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        h1 {
+            color: #6B46C1;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #6B46C1;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E9D8FD;
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .hint {
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        select {
+            background: white;
+        }
+
+        .optional {
+            color: #888;
+            font-weight: normal;
+            font-size: 0.9em;
+        }
+
+        button {
+            background: #6B46C1;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #553C9A;
+        }
+
+        .output-section {
+            display: none;
+        }
+
+        .output-section.visible {
+            display: block;
+        }
+
+        #output {
+            background: #1a1a2e;
+            color: #eee;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .button-group button {
+            flex: 1;
+        }
+
+        .btn-secondary {
+            background: #718096;
+        }
+
+        .btn-secondary:hover {
+            background: #4A5568;
+        }
+
+        .success-message {
+            background: #C6F6D5;
+            color: #276749;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .success-message.visible {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CLAUDE.md Generator</h1>
+    <p class="subtitle">Create a personalized instruction file for Claude to help you better</p>
+
+    <form id="generator-form">
+        <!-- Basic Info -->
+        <div class="section">
+            <h2>About Your Project</h2>
+
+            <div class="field">
+                <label for="projectName">Project Name</label>
+                <input type="text" id="projectName" placeholder="My Awesome Project">
+            </div>
+
+            <div class="field">
+                <label for="projectDescription">Project Description <span class="optional">(optional)</span></label>
+                <textarea id="projectDescription" placeholder="What is this project about?"></textarea>
+            </div>
+
+            <div class="field">
+                <label for="techStack">Technology Stack</label>
+                <div class="hint">What programming language or framework are you using?</div>
+                <select id="techStack">
+                    <option value="">I don't know yet / Still deciding</option>
+                    <option value="HTML, CSS, JavaScript">Web (HTML/CSS/JavaScript)</option>
+                    <option value="Python">Python</option>
+                    <option value="Node.js, JavaScript">Node.js / JavaScript</option>
+                    <option value="React, JavaScript/TypeScript">React</option>
+                    <option value="Python, Jupyter, pandas, numpy">Data Science / ML</option>
+                    <option value="Mobile development">Mobile App</option>
+                    <option value="other">Other (specify below)</option>
+                </select>
+            </div>
+
+            <div class="field" id="otherTechField" style="display: none;">
+                <label for="otherTech">Specify your tech stack</label>
+                <input type="text" id="otherTech" placeholder="e.g., Ruby on Rails, Go, Rust...">
+            </div>
+
+            <div class="field" id="projectIdeaField" style="display: none;">
+                <label for="projectIdea">What do you want to build? <span class="optional">(optional)</span></label>
+                <div class="hint">Even a rough idea helps Claude give better suggestions</div>
+                <input type="text" id="projectIdea" placeholder="e.g., a website, a game, a tool...">
+            </div>
+        </div>
+
+        <!-- About Me -->
+        <div class="section">
+            <h2>About You</h2>
+
+            <div class="field">
+                <label for="experience">Experience Level</label>
+                <select id="experience">
+                    <option value="beginner">Beginner - I'm new to programming</option>
+                    <option value="intermediate">Intermediate - I have some experience</option>
+                    <option value="advanced">Advanced - I'm comfortable with most concepts</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="language">Preferred Language</label>
+                <div class="hint">What language should Claude use to explain things?</div>
+                <input type="text" id="language" placeholder="English" value="English">
+            </div>
+        </div>
+
+        <!-- Learning Preferences -->
+        <div class="section">
+            <h2>How You Learn Best</h2>
+
+            <div class="field">
+                <label for="learningStyle">Learning Style</label>
+                <select id="learningStyle">
+                    <option value="mix">Mix of everything</option>
+                    <option value="stepbystep">Step-by-step instructions</option>
+                    <option value="examples">Examples I can study and modify</option>
+                    <option value="analogies">Analogies and real-world comparisons</option>
+                    <option value="minimal">Just show me the code</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="encouragement">Encouragement Level</label>
+                <select id="encouragement">
+                    <option value="balanced">Balanced - encourage when I'm struggling</option>
+                    <option value="lots">Lots! Celebrate wins and keep me motivated</option>
+                    <option value="minimal">Keep it professional, just help me code</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="whenStuck">When You're Stuck</label>
+                <div class="hint">How should Claude help when you're having trouble?</div>
+                <select id="whenStuck">
+                    <option value="guide">Ask what I've tried, then guide me</option>
+                    <option value="hints">Give me hints, let me figure it out</option>
+                    <option value="solution">Show me the solution and explain it</option>
+                    <option value="break">Suggest taking a break if I seem frustrated</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="codeComments">Code Comment Style</label>
+                <select id="codeComments">
+                    <option value="helpful">Comments where helpful</option>
+                    <option value="lots">Lots of comments explaining everything</option>
+                    <option value="minimal">Minimal comments, self-documenting code</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Goals & Context -->
+        <div class="section">
+            <h2>Goals & Context <span class="optional">(all optional)</span></h2>
+
+            <div class="field">
+                <label for="learningGoals">What are you trying to learn or build?</label>
+                <textarea id="learningGoals" placeholder="I want to learn how to..."></textarea>
+            </div>
+
+            <div class="field">
+                <label for="isClass">Is this for a class or workshop?</label>
+                <select id="isClass">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
+
+            <div id="classFields" style="display: none;">
+                <div class="field">
+                    <label for="className">Course/Workshop Name</label>
+                    <input type="text" id="className" placeholder="e.g., Intro to Web Development">
+                </div>
+
+                <div class="field">
+                    <label for="restrictions">Any restrictions or requirements?</label>
+                    <div class="hint">e.g., must use certain libraries, can't use AI for certain parts</div>
+                    <textarea id="restrictions" placeholder="We need to use vanilla JavaScript only..."></textarea>
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="additionalContext">Anything else Claude should know?</label>
+                <textarea id="additionalContext" placeholder="Any other preferences, constraints, or context..."></textarea>
+            </div>
+        </div>
+
+        <button type="submit">Generate CLAUDE.md</button>
+    </form>
+
+    <div class="section output-section" id="outputSection">
+        <h2>Your CLAUDE.md File</h2>
+        <p>Copy this content and save it as <code>CLAUDE.md</code> in your project folder.</p>
+        <div id="output"></div>
+        <div class="button-group">
+            <button type="button" class="btn-secondary" onclick="copyToClipboard()">Copy to Clipboard</button>
+            <button type="button" onclick="downloadFile()">Download File</button>
+        </div>
+        <div class="success-message" id="copySuccess">Copied to clipboard!</div>
+    </div>
+
+    <script>
+        // Show/hide conditional fields
+        document.getElementById('techStack').addEventListener('change', function() {
+            document.getElementById('otherTechField').style.display =
+                this.value === 'other' ? 'block' : 'none';
+            document.getElementById('projectIdeaField').style.display =
+                this.value === '' ? 'block' : 'none';
+        });
+
+        document.getElementById('isClass').addEventListener('change', function() {
+            document.getElementById('classFields').style.display =
+                this.value === 'yes' ? 'block' : 'none';
+        });
+
+        // Form submission
+        document.getElementById('generator-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            generateClaudeMd();
+        });
+
+        function generateClaudeMd() {
+            const projectName = document.getElementById('projectName').value || 'My Project';
+            const projectDescription = document.getElementById('projectDescription').value;
+            const techStack = document.getElementById('techStack').value;
+            const otherTech = document.getElementById('otherTech').value;
+            const projectIdea = document.getElementById('projectIdea').value;
+            const experience = document.getElementById('experience').value;
+            const language = document.getElementById('language').value || 'English';
+            const learningStyle = document.getElementById('learningStyle').value;
+            const encouragement = document.getElementById('encouragement').value;
+            const whenStuck = document.getElementById('whenStuck').value;
+            const codeComments = document.getElementById('codeComments').value;
+            const learningGoals = document.getElementById('learningGoals').value;
+            const isClass = document.getElementById('isClass').value;
+            const className = document.getElementById('className').value;
+            const restrictions = document.getElementById('restrictions').value;
+            const additionalContext = document.getElementById('additionalContext').value;
+
+            let md = `# ${projectName}\n`;
+
+            if (projectDescription) {
+                md += `\n${projectDescription}\n`;
+            }
+
+            // About Me section
+            md += `\n## About Me\n\n`;
+            md += `- **Experience Level:** ${experience}\n`;
+            md += `- **Language:** ${language}\n`;
+
+            const finalTechStack = techStack === 'other' ? otherTech : techStack;
+            if (finalTechStack) {
+                md += `- **Tech Stack:** ${finalTechStack}\n`;
+            }
+
+            // Help choosing tech if undecided
+            if (!techStack && projectIdea) {
+                md += `\n## Help Me Choose Technologies\n\n`;
+                md += `I'm still figuring out what technologies to use.\n\n`;
+                md += `**What I want to build:** ${projectIdea}\n\n`;
+                md += `Please help me:\n`;
+                md += `- Understand my options and the pros/cons of each\n`;
+                md += `- Recommend technologies appropriate for my skill level\n`;
+                md += `- Start simple - I can always add complexity later\n`;
+                md += `- Explain why you're suggesting what you suggest\n`;
+            } else if (!techStack) {
+                md += `\n## Getting Started\n\n`;
+                md += `I'm just starting out and still exploring what I want to build. Help me discover possibilities and find a direction that excites me.\n`;
+            }
+
+            // How to Help Me section
+            md += `\n## How to Help Me\n`;
+
+            // Language preference
+            if (language && language.toLowerCase() !== 'english') {
+                md += `\n### Language\nPlease communicate with me in **${language}**. Code can remain in English, but explanations should be in ${language}.\n`;
+            }
+
+            // Explanations based on experience
+            md += `\n### Explanations\n`;
+            switch(experience) {
+                case 'beginner':
+                    md += `Please provide detailed explanations with examples. Break down complex concepts into simple steps. Explain any technical terms used.\n`;
+                    break;
+                case 'advanced':
+                    md += `Concise explanations are fine. Focus on implementation details and best practices.\n`;
+                    break;
+                default:
+                    md += `Provide clear explanations but you can assume familiarity with basic programming concepts. Include examples when introducing new concepts.\n`;
+            }
+
+            // Learning style
+            md += `\n### Learning Style\n`;
+            switch(learningStyle) {
+                case 'stepbystep':
+                    md += `I learn best with step-by-step instructions. Walk me through processes one step at a time.\n`;
+                    break;
+                case 'examples':
+                    md += `I learn best from examples. Show me working code that I can study and modify.\n`;
+                    break;
+                case 'analogies':
+                    md += `I learn best with analogies. Compare programming concepts to real-world things I might already understand.\n`;
+                    break;
+                case 'minimal':
+                    md += `I prefer to see the code and figure out how it works myself. Keep explanations minimal.\n`;
+                    break;
+                default:
+                    md += `Use a mix of explanations, examples, and analogies depending on the concept.\n`;
+            }
+
+            // Code style
+            md += `\n### Code Style\n`;
+            switch(codeComments) {
+                case 'lots':
+                    md += `Add detailed comments explaining what each section of code does and why.\n`;
+                    break;
+                case 'minimal':
+                    md += `Use minimal comments. Prefer self-documenting code with clear variable and function names.\n`;
+                    break;
+                default:
+                    md += `Use comments where helpful to explain non-obvious logic.\n`;
+            }
+
+            // Encouragement
+            if (encouragement !== 'balanced') {
+                md += `\n### Encouragement\n`;
+                if (encouragement === 'lots') {
+                    md += `Be encouraging! Celebrate my progress and help keep me motivated, especially when things get tough.\n`;
+                } else {
+                    md += `Keep responses professional and focused. Skip the encouragement, just help me solve problems.\n`;
+                }
+            }
+
+            // When stuck
+            md += `\n### When I'm Stuck\n`;
+            switch(whenStuck) {
+                case 'hints':
+                    md += `When I'm stuck, give me hints rather than the full answer. Let me work through it.\n`;
+                    break;
+                case 'solution':
+                    md += `When I'm stuck, show me the solution and explain how it works so I can learn from it.\n`;
+                    break;
+                case 'break':
+                    md += `If I seem frustrated, gently suggest taking a short break. Sometimes fresh eyes help!\n`;
+                    break;
+                default:
+                    md += `When I'm stuck, ask what I've already tried, then guide me toward the solution step by step.\n`;
+            }
+
+            // Learning goals
+            if (learningGoals) {
+                md += `\n## Learning Goals\n\n${learningGoals}\n`;
+            }
+
+            // Academic context
+            if (isClass === 'yes') {
+                md += `\n## Academic Context\n\n`;
+                if (className) {
+                    md += `- **Course:** ${className}\n`;
+                }
+                if (restrictions) {
+                    md += `- **Requirements/Restrictions:** ${restrictions}\n`;
+                }
+            }
+
+            // Guidelines
+            md += `\n## Guidelines\n\n`;
+            md += `- Help me understand the concepts, don't just give me the answer\n`;
+            md += `- If I'm going in the wrong direction, guide me back on track\n`;
+            md += `- Suggest improvements and explain why they're better\n`;
+            md += `- Point out potential bugs or issues in my code\n`;
+
+            // Additional context
+            if (additionalContext) {
+                md += `\n## Additional Context\n\n${additionalContext}\n`;
+            }
+
+            // Display output
+            document.getElementById('output').textContent = md;
+            document.getElementById('outputSection').classList.add('visible');
+            document.getElementById('outputSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyToClipboard() {
+            const output = document.getElementById('output').textContent;
+            navigator.clipboard.writeText(output).then(() => {
+                const msg = document.getElementById('copySuccess');
+                msg.classList.add('visible');
+                setTimeout(() => msg.classList.remove('visible'), 2000);
+            });
+        }
+
+        function downloadFile() {
+            const output = document.getElementById('output').textContent;
+            const blob = new Blob([output], { type: 'text/markdown' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'CLAUDE.md';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
