@@ -551,10 +551,10 @@
             <p class="subtitle">Train your AI to understand your business</p>
         </header>
 
-        <div class="progress-container">
+        <div class="progress-container" id="progressContainer" style="display: none;">
             <div class="progress-bar" id="progressBar"></div>
         </div>
-        <div class="progress-text" id="progressText">Ready to start</div>
+        <div class="progress-text" id="progressText" style="display: none;">Ready to start</div>
 
         <!-- Start Screen -->
         <div class="section start-screen" id="startScreen">
@@ -1001,6 +1001,8 @@
 
         function startQuestionnaire() {
             document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'block';
+            document.getElementById('progressText').style.display = 'block';
             document.getElementById('questionsSection').style.display = 'block';
             renderQuestion();
             updateProgress();
@@ -1246,8 +1248,9 @@
             currentQuestion = 0;
             document.getElementById('outputSection').classList.remove('visible');
             document.getElementById('startScreen').style.display = 'block';
+            document.getElementById('progressContainer').style.display = 'none';
+            document.getElementById('progressText').style.display = 'none';
             document.getElementById('progressBar').style.width = '0%';
-            document.getElementById('progressText').textContent = 'Ready to start';
         }
 
         document.addEventListener('keydown', function(e) {
