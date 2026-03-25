@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Use Case Picker | CoLab Lisbon</title>
+    <title>AI Use Case Finder | CoLab Lisbon</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -30,7 +30,6 @@
             overflow-x: hidden;
         }
 
-        /* Animated background shapes */
         .bg-shapes {
             position: fixed;
             top: 0;
@@ -93,448 +92,514 @@
         .container {
             position: relative;
             z-index: 1;
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 40px 20px;
+            min-height: 100vh;
         }
 
-        header {
+        /* Start Screen */
+        .start-screen {
             text-align: center;
-            margin-bottom: 40px;
+            padding: 60px 20px;
         }
 
-        h1 {
+        .start-screen h1 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 3.5rem;
             color: var(--coral);
             letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: var(--charcoal);
-            opacity: 0.8;
-        }
-
-        /* Filter Section */
-        .filters {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(232, 80, 58, 0.1);
-        }
-
-        .filter-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
             margin-bottom: 20px;
+            line-height: 1.1;
         }
 
-        .filter-group {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .filter-label {
-            font-weight: 700;
-            margin-bottom: 10px;
-            display: block;
+        .start-screen .subtitle {
+            font-size: 1.3rem;
             color: var(--charcoal);
+            margin-bottom: 40px;
+            line-height: 1.6;
         }
 
-        .filter-buttons {
+        .start-screen .features {
             display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
             flex-wrap: wrap;
-            gap: 8px;
         }
 
-        .filter-btn {
-            padding: 8px 16px;
-            border: 2px solid var(--charcoal);
-            background: white;
-            border-radius: 25px;
-            cursor: pointer;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
+        .feature {
+            text-align: center;
         }
 
-        .filter-btn:hover {
-            background: var(--salmon);
-            border-color: var(--coral);
-        }
-
-        .filter-btn.active {
-            background: var(--coral);
-            border-color: var(--coral);
-            color: white;
-        }
-
-        .search-box {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #ddd;
-            border-radius: 15px;
-            font-size: 1rem;
-            font-family: 'DM Sans', sans-serif;
-            transition: border-color 0.3s ease;
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: var(--coral);
-        }
-
-        /* Stats bar */
-        .stats-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding: 15px 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-
-        .result-count {
-            font-weight: 700;
-            color: var(--coral);
-        }
-
-        .view-toggle {
-            display: flex;
-            gap: 10px;
-        }
-
-        .view-btn {
-            padding: 8px 12px;
-            border: none;
-            background: #eee;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .view-btn.active {
-            background: var(--lime);
-        }
-
-        /* Use Cases Grid */
-        .use-cases-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 20px;
-        }
-
-        .use-cases-grid.list-view {
-            grid-template-columns: 1fr;
-        }
-
-        .use-case-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border-left: 4px solid transparent;
-        }
-
-        .use-case-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(232, 80, 58, 0.15);
-            border-left-color: var(--coral);
-        }
-
-        .use-case-card.saved {
-            border-left-color: var(--lime);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+        .feature-icon {
+            font-size: 2.5rem;
             margin-bottom: 10px;
         }
 
-        .card-number {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 0.9rem;
-            color: var(--coral);
-            opacity: 0.6;
-        }
-
-        .card-category {
-            font-size: 0.75rem;
-            padding: 4px 10px;
-            background: var(--salmon);
-            color: var(--charcoal);
-            border-radius: 15px;
-            font-weight: 500;
-        }
-
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--charcoal);
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 15px;
-        }
-
-        .tag {
-            font-size: 0.75rem;
-            padding: 4px 8px;
-            background: #f5f5f5;
-            border-radius: 10px;
+        .feature-text {
+            font-size: 0.95rem;
             color: #666;
         }
 
-        .tag.difficulty-beginner { background: #e8f5e9; color: #2e7d32; }
-        .tag.difficulty-intermediate { background: #fff3e0; color: #ef6c00; }
-        .tag.difficulty-advanced { background: #fce4ec; color: #c2185b; }
-
-        .tag.impact-revenue { background: var(--lime); color: var(--charcoal); }
-        .tag.impact-cost { background: #e3f2fd; color: #1565c0; }
-        .tag.impact-growth { background: var(--salmon); color: var(--charcoal); }
-
-        .save-btn {
-            margin-top: 15px;
-            padding: 8px 16px;
-            border: 2px solid var(--lime);
-            background: white;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-
-        .save-btn:hover, .save-btn.saved {
-            background: var(--lime);
-        }
-
-        /* Saved List Panel */
-        .saved-panel {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 400px;
-            height: 100vh;
-            background: white;
-            box-shadow: -10px 0 40px rgba(0,0,0,0.1);
-            z-index: 100;
-            transition: right 0.3s ease;
-            overflow-y: auto;
-        }
-
-        .saved-panel.open {
-            right: 0;
-        }
-
-        .saved-panel-header {
-            padding: 30px;
+        .start-btn {
             background: var(--coral);
             color: white;
-            position: sticky;
-            top: 0;
-        }
-
-        .saved-panel-header h2 {
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.3rem;
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
-            letter-spacing: 1px;
-        }
-
-        .close-panel {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .saved-list {
-            padding: 20px;
-        }
-
-        .saved-item {
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .saved-item-text {
-            flex: 1;
-            font-size: 0.95rem;
-        }
-
-        .remove-btn {
-            background: none;
-            border: none;
-            color: var(--coral);
-            cursor: pointer;
-            padding: 5px;
-            font-size: 1.2rem;
-        }
-
-        .export-btns {
-            padding: 20px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .export-btn {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 700;
-            transition: all 0.3s ease;
-        }
-
-        .export-btn.copy {
-            background: var(--charcoal);
-            color: white;
-        }
-
-        .export-btn.download {
-            background: var(--lime);
-            color: var(--charcoal);
-        }
-
-        /* Floating saved counter */
-        .saved-counter {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--coral);
-            color: white;
-            padding: 15px 25px;
+            letter-spacing: 2px;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(232, 80, 58, 0.3);
-            font-weight: 700;
-            z-index: 50;
             transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(232, 80, 58, 0.3);
         }
 
-        .saved-counter:hover {
-            transform: scale(1.05);
+        .start-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(232, 80, 58, 0.4);
         }
 
-        .saved-counter .count {
-            background: var(--lime);
-            color: var(--charcoal);
-            padding: 2px 10px;
-            border-radius: 20px;
-            margin-left: 10px;
-        }
-
-        /* Category sections */
-        .category-section {
+        /* Progress Bar */
+        .progress-container {
             margin-bottom: 40px;
         }
 
-        .category-header {
+        .progress-bar {
+            height: 8px;
+            background: #eee;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--coral), var(--lime));
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Question Card */
+        .question-card {
+            background: white;
+            border-radius: 25px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .question-number {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
+            font-size: 1rem;
             color: var(--coral);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid var(--lime);
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option {
+            padding: 20px 25px;
+            border: 2px solid #eee;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
 
-        .category-count {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.9rem;
-            background: var(--salmon);
-            padding: 4px 12px;
-            border-radius: 20px;
+        .option:hover {
+            border-color: var(--salmon);
+            background: #FFF9F7;
         }
 
-        /* Empty state */
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #999;
+        .option.selected {
+            border-color: var(--coral);
+            background: linear-gradient(135deg, rgba(232, 80, 58, 0.1), rgba(201, 229, 72, 0.1));
         }
 
-        .empty-state h3 {
+        .option-icon {
             font-size: 1.5rem;
-            margin-bottom: 10px;
+            width: 40px;
+            text-align: center;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .use-cases-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .saved-panel {
-                width: 100%;
-                right: -100%;
-            }
-
-            .filter-row {
-                flex-direction: column;
-            }
+        .option-content {
+            flex: 1;
         }
 
-        /* Quick filters */
-        .quick-filters {
+        .option-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+        }
+
+        .option-desc {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .nav-buttons {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
+            justify-content: space-between;
+            margin-top: 30px;
         }
 
-        .quick-filter {
-            padding: 10px 20px;
-            background: linear-gradient(135deg, var(--coral), var(--salmon));
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
+        .nav-btn {
+            padding: 15px 30px;
+            border-radius: 30px;
             font-family: 'DM Sans', sans-serif;
-            font-weight: 500;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .quick-filter:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 20px rgba(232, 80, 58, 0.3);
+        .nav-btn.back {
+            background: white;
+            border: 2px solid #ddd;
+            color: #888;
         }
 
-        .quick-filter.green {
-            background: linear-gradient(135deg, var(--lime), #9BC736);
+        .nav-btn.back:hover {
+            border-color: var(--charcoal);
             color: var(--charcoal);
+        }
+
+        .nav-btn.next {
+            background: var(--coral);
+            border: none;
+            color: white;
+        }
+
+        .nav-btn.next:hover {
+            background: #d44532;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Results Screen */
+        .results-screen {
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .results-header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.8rem;
+            color: var(--coral);
+            margin-bottom: 10px;
+        }
+
+        .results-header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--coral);
+        }
+
+        .result-card:nth-child(2) {
+            border-left-color: var(--lime);
+        }
+
+        .result-card:nth-child(3) {
+            border-left-color: var(--salmon);
+        }
+
+        .result-rank {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--coral);
+            color: white;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .result-card:nth-child(2) .result-rank {
+            background: var(--lime);
+            color: var(--charcoal);
+        }
+
+        .result-card:nth-child(3) .result-rank {
+            background: var(--salmon);
+            color: var(--charcoal);
+        }
+
+        .result-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            margin-bottom: 10px;
+        }
+
+        .result-category {
+            display: inline-block;
+            background: #f5f5f5;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .why-section {
+            background: #FFFBF9;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .why-section h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            color: var(--coral);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .why-section p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .impact-box {
+            background: linear-gradient(135deg, #f8f8f8, #fff);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .impact-box.time {
+            border: 2px solid var(--lime);
+        }
+
+        .impact-box.money {
+            border: 2px solid var(--coral);
+        }
+
+        .impact-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .impact-label {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .impact-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            color: var(--charcoal);
+            margin-top: 5px;
+        }
+
+        .how-section {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #eee;
+        }
+
+        .how-section h4 {
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--charcoal);
+        }
+
+        .how-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .how-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .step-number {
+            background: var(--lime);
+            color: var(--charcoal);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .restart-btn {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 40px auto;
+            padding: 18px;
+            background: var(--charcoal);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .restart-btn:hover {
+            background: var(--coral);
+        }
+
+        .download-btn {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 18px;
+            background: var(--lime);
+            color: var(--charcoal);
+            border: none;
+            border-radius: 30px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.02);
+        }
+
+        /* Loading Animation */
+        .loading-screen {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid #eee;
+            border-top-color: var(--coral);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 1.3rem;
+            color: var(--charcoal);
+        }
+
+        .loading-subtext {
+            color: #888;
+            margin-top: 10px;
+        }
+
+        /* Hide sections */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .start-screen h1 {
+                font-size: 2.5rem;
+            }
+
+            .question-card {
+                padding: 30px 25px;
+            }
+
+            .question-text {
+                font-size: 1.3rem;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .result-card {
+                padding: 30px 25px;
+            }
         }
     </style>
 </head>
@@ -546,857 +611,745 @@
     </div>
 
     <div class="container">
-        <header>
-            <h1>AI Use Case Picker</h1>
-            <p class="subtitle">Find the perfect AI project for your business from 450+ ideas</p>
-        </header>
+        <!-- Start Screen -->
+        <div id="startScreen" class="start-screen">
+            <h1>Find Your Perfect AI Project</h1>
+            <p class="subtitle">Answer 8 quick questions about your business and we'll recommend the top 3 AI use cases that will save you the most time and money.</p>
 
-        <div class="filters">
-            <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search use cases... (e.g., 'email automation', 'sales', 'pricing')">
-
-            <div class="filter-row" style="margin-top: 20px;">
-                <div class="filter-group">
-                    <span class="filter-label">Difficulty</span>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-filter="difficulty" data-value="all">All</button>
-                        <button class="filter-btn" data-filter="difficulty" data-value="beginner">Beginner</button>
-                        <button class="filter-btn" data-filter="difficulty" data-value="intermediate">Intermediate</button>
-                        <button class="filter-btn" data-filter="difficulty" data-value="advanced">Advanced</button>
-                    </div>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-text">Personalized to<br>your business</div>
                 </div>
-                <div class="filter-group">
-                    <span class="filter-label">Business Impact</span>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-filter="impact" data-value="all">All</button>
-                        <button class="filter-btn" data-filter="impact" data-value="revenue">💰 Revenue</button>
-                        <button class="filter-btn" data-filter="impact" data-value="cost">📉 Cost Saving</button>
-                        <button class="filter-btn" data-filter="impact" data-value="growth">🚀 Growth</button>
-                    </div>
+                <div class="feature">
+                    <div class="feature-icon">⏱️</div>
+                    <div class="feature-text">Takes only<br>2 minutes</div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💡</div>
+                    <div class="feature-text">Actionable<br>recommendations</div>
                 </div>
             </div>
 
-            <div class="quick-filters">
-                <span style="font-weight: 700; margin-right: 10px;">Quick Picks:</span>
-                <button class="quick-filter" onclick="filterQuick('quick-wins')">⚡ Quick Wins</button>
-                <button class="quick-filter green" onclick="filterQuick('money-makers')">💰 Money Makers</button>
-                <button class="quick-filter" onclick="filterQuick('automation')">🤖 Automation</button>
-                <button class="quick-filter green" onclick="filterQuick('sales')">📈 Sales & CRM</button>
-                <button class="quick-filter" onclick="filterQuick('content')">✍️ Content</button>
+            <button class="start-btn" onclick="startQuiz()">START THE QUIZ</button>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quizScreen" class="hidden">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <div class="progress-text">Question <span id="currentQ">1</span> of <span id="totalQ">8</span></div>
+            </div>
+
+            <div class="question-card" id="questionCard">
+                <!-- Question content loaded dynamically -->
             </div>
         </div>
 
-        <div class="stats-bar">
-            <span class="result-count"><span id="resultCount">455</span> use cases</span>
-            <div class="view-toggle">
-                <button class="view-btn active" onclick="setView('grid')" title="Grid view">▦</button>
-                <button class="view-btn" onclick="setView('list')" title="List view">☰</button>
+        <!-- Loading Screen -->
+        <div id="loadingScreen" class="loading-screen hidden">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Analyzing your responses...</div>
+            <div class="loading-subtext">Finding the best AI opportunities for your business</div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="results-screen hidden">
+            <div class="results-header">
+                <h1>Your Top 3 AI Opportunities</h1>
+                <p>Based on your answers, here are the AI projects that will have the biggest impact on your business:</p>
             </div>
-        </div>
-
-        <div class="use-cases-grid" id="useCasesGrid">
-            <!-- Cards generated by JavaScript -->
-        </div>
-    </div>
-
-    <!-- Floating saved counter -->
-    <div class="saved-counter" id="savedCounter" onclick="toggleSavedPanel()">
-        📋 Saved <span class="count" id="savedCount">0</span>
-    </div>
-
-    <!-- Saved panel -->
-    <div class="saved-panel" id="savedPanel">
-        <div class="saved-panel-header">
-            <h2>Your Saved Use Cases</h2>
-            <button class="close-panel" onclick="toggleSavedPanel()">×</button>
-        </div>
-        <div class="saved-list" id="savedList">
-            <div class="empty-state">
-                <h3>No saved items yet</h3>
-                <p>Click "Save" on any use case to add it here</p>
+            <div id="resultsContainer">
+                <!-- Results loaded dynamically -->
             </div>
-        </div>
-        <div class="export-btns">
-            <button class="export-btn copy" onclick="copyToClipboard()">📋 Copy List</button>
-            <button class="export-btn download" onclick="downloadList()">⬇️ Download</button>
+            <button class="download-btn" onclick="downloadResults()">DOWNLOAD MY RESULTS</button>
+            <button class="restart-btn" onclick="restartQuiz()">TAKE QUIZ AGAIN</button>
         </div>
     </div>
 
     <script>
-        // All use cases data
+        // Quiz Questions
+        const questions = [
+            {
+                id: 'business_type',
+                question: "What best describes your business?",
+                options: [
+                    { value: 'service', icon: '💼', title: 'Service-based', desc: 'Consulting, coaching, agency, freelance' },
+                    { value: 'product', icon: '📦', title: 'Product-based', desc: 'E-commerce, physical or digital products' },
+                    { value: 'saas', icon: '☁️', title: 'Software/SaaS', desc: 'Apps, platforms, subscriptions' },
+                    { value: 'content', icon: '📱', title: 'Content/Creator', desc: 'Courses, media, influencer, education' }
+                ]
+            },
+            {
+                id: 'team_size',
+                question: "How big is your team?",
+                options: [
+                    { value: 'solo', icon: '👤', title: 'Just me', desc: 'Solo entrepreneur or freelancer' },
+                    { value: 'small', icon: '👥', title: '2-5 people', desc: 'Small but mighty team' },
+                    { value: 'medium', icon: '👨‍👩‍👧‍👦', title: '6-20 people', desc: 'Growing organization' },
+                    { value: 'large', icon: '🏢', title: '20+ people', desc: 'Established company' }
+                ]
+            },
+            {
+                id: 'biggest_pain',
+                question: "What's your biggest time drain right now?",
+                options: [
+                    { value: 'content', icon: '✍️', title: 'Creating content', desc: 'Writing, social media, marketing materials' },
+                    { value: 'admin', icon: '📋', title: 'Admin & operations', desc: 'Emails, scheduling, paperwork, processes' },
+                    { value: 'sales', icon: '📞', title: 'Sales & follow-ups', desc: 'Leads, proposals, closing deals' },
+                    { value: 'support', icon: '🎧', title: 'Customer support', desc: 'Answering questions, handling requests' }
+                ]
+            },
+            {
+                id: 'revenue_goal',
+                question: "What's most important for your business right now?",
+                options: [
+                    { value: 'grow_revenue', icon: '📈', title: 'Grow revenue', desc: 'Get more customers and sales' },
+                    { value: 'save_time', icon: '⏰', title: 'Save time', desc: 'Work fewer hours, automate tasks' },
+                    { value: 'reduce_costs', icon: '💰', title: 'Reduce costs', desc: 'Cut expenses, improve margins' },
+                    { value: 'scale', icon: '🚀', title: 'Scale operations', desc: 'Handle more without hiring' }
+                ]
+            },
+            {
+                id: 'tech_comfort',
+                question: "How comfortable are you with technology?",
+                options: [
+                    { value: 'beginner', icon: '🌱', title: 'Beginner', desc: 'I use basic tools, learning as I go' },
+                    { value: 'intermediate', icon: '🌿', title: 'Intermediate', desc: 'I can figure out most software' },
+                    { value: 'advanced', icon: '🌳', title: 'Advanced', desc: 'I love automation and new tools' },
+                    { value: 'expert', icon: '🔥', title: 'Expert', desc: 'I can code or build complex systems' }
+                ]
+            },
+            {
+                id: 'budget',
+                question: "What's your budget for AI tools?",
+                options: [
+                    { value: 'free', icon: '🆓', title: 'Free only', desc: 'Just starting, no budget yet' },
+                    { value: 'low', icon: '💵', title: '$20-50/month', desc: 'Happy to invest in good tools' },
+                    { value: 'medium', icon: '💰', title: '$50-200/month', desc: 'Ready to invest in efficiency' },
+                    { value: 'high', icon: '💎', title: '$200+/month', desc: 'ROI matters more than cost' }
+                ]
+            },
+            {
+                id: 'quick_win',
+                question: "Do you need a quick win or long-term transformation?",
+                options: [
+                    { value: 'immediate', icon: '⚡', title: 'Quick win', desc: 'Something I can implement this week' },
+                    { value: 'short', icon: '📅', title: 'This month', desc: 'Willing to spend a few weeks setting up' },
+                    { value: 'medium', icon: '📆', title: 'This quarter', desc: 'Okay with bigger projects that pay off' },
+                    { value: 'strategic', icon: '🎯', title: 'Strategic', desc: 'Building for long-term competitive advantage' }
+                ]
+            },
+            {
+                id: 'current_tools',
+                question: "What tools do you already use?",
+                options: [
+                    { value: 'minimal', icon: '📝', title: 'Just the basics', desc: 'Email, spreadsheets, maybe social media' },
+                    { value: 'some', icon: '🔧', title: 'Some business tools', desc: 'CRM, project management, or marketing tools' },
+                    { value: 'integrated', icon: '🔗', title: 'Connected stack', desc: 'Multiple tools that work together' },
+                    { value: 'advanced', icon: '⚙️', title: 'Advanced setup', desc: 'Automation, APIs, custom workflows' }
+                ]
+            }
+        ];
+
+        // Use Case Database with detailed info
         const useCases = [
-            // Content & Marketing (1-50)
-            { id: 1, title: "Blog post writing from outline", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["content", "writing"] },
-            { id: 2, title: "Social media content calendar", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["social", "planning"] },
-            { id: 3, title: "Email newsletter sequences", category: "Content & Marketing", difficulty: "beginner", impact: "revenue", tags: ["email", "automation"] },
-            { id: 4, title: "Ad copy variations (A/B testing)", category: "Content & Marketing", difficulty: "intermediate", impact: "revenue", tags: ["ads", "testing"] },
-            { id: 5, title: "SEO keyword research & optimization", category: "Content & Marketing", difficulty: "intermediate", impact: "growth", tags: ["seo", "research"] },
-            { id: 6, title: "Product descriptions for e-commerce", category: "Content & Marketing", difficulty: "beginner", impact: "revenue", tags: ["ecommerce", "writing"] },
-            { id: 7, title: "Landing page copy", category: "Content & Marketing", difficulty: "intermediate", impact: "revenue", tags: ["conversion", "writing"] },
-            { id: 8, title: "Press releases", category: "Content & Marketing", difficulty: "intermediate", impact: "growth", tags: ["pr", "writing"] },
-            { id: 9, title: "Case study writing", category: "Content & Marketing", difficulty: "intermediate", impact: "revenue", tags: ["sales", "writing"] },
-            { id: 10, title: "Testimonial request emails", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["email", "social-proof"] },
-            { id: 11, title: "Podcast show notes", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["podcast", "content"] },
-            { id: 12, title: "YouTube video scripts", category: "Content & Marketing", difficulty: "intermediate", impact: "growth", tags: ["video", "writing"] },
-            { id: 13, title: "LinkedIn thought leadership posts", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["linkedin", "social"] },
-            { id: 14, title: "Twitter/X thread creation", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["twitter", "social"] },
-            { id: 15, title: "Instagram caption writing", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["instagram", "social"] },
-            { id: 16, title: "TikTok script hooks", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["tiktok", "video"] },
-            { id: 17, title: "Webinar presentation outlines", category: "Content & Marketing", difficulty: "intermediate", impact: "revenue", tags: ["webinar", "presentation"] },
-            { id: 18, title: "Lead magnet content (ebooks, guides)", category: "Content & Marketing", difficulty: "intermediate", impact: "revenue", tags: ["lead-gen", "content"] },
-            { id: 19, title: "Email subject line generator", category: "Content & Marketing", difficulty: "beginner", impact: "revenue", tags: ["email", "testing"] },
-            { id: 20, title: "Hashtag research", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["social", "research"] },
-            { id: 21, title: "Competitor content analysis", category: "Content & Marketing", difficulty: "intermediate", impact: "growth", tags: ["competitive", "research"] },
-            { id: 22, title: "Content repurposing (blog → social → email)", category: "Content & Marketing", difficulty: "beginner", impact: "cost", tags: ["efficiency", "content"] },
-            { id: 23, title: "Brand voice guidelines document", category: "Content & Marketing", difficulty: "intermediate", impact: "growth", tags: ["branding", "documentation"] },
-            { id: 24, title: "Tagline and slogan brainstorming", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["branding", "creative"] },
-            { id: 25, title: "Website About page copy", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["website", "writing"] },
-            { id: 26, title: "FAQ page creation", category: "Content & Marketing", difficulty: "beginner", impact: "cost", tags: ["support", "content"] },
-            { id: 27, title: "Meta descriptions for SEO", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["seo", "writing"] },
-            { id: 28, title: "Guest post pitches", category: "Content & Marketing", difficulty: "intermediate", impact: "growth", tags: ["outreach", "pr"] },
-            { id: 29, title: "Influencer outreach templates", category: "Content & Marketing", difficulty: "intermediate", impact: "growth", tags: ["influencer", "outreach"] },
-            { id: 30, title: "Affiliate marketing copy", category: "Content & Marketing", difficulty: "intermediate", impact: "revenue", tags: ["affiliate", "writing"] },
-            { id: 31, title: "Product launch announcements", category: "Content & Marketing", difficulty: "beginner", impact: "revenue", tags: ["launch", "writing"] },
-            { id: 32, title: "Holiday/seasonal campaign ideas", category: "Content & Marketing", difficulty: "beginner", impact: "revenue", tags: ["campaigns", "planning"] },
-            { id: 33, title: "User-generated content prompts", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["ugc", "engagement"] },
-            { id: 34, title: "Contest/giveaway rules & copy", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["promotion", "engagement"] },
-            { id: 35, title: "Brand storytelling narratives", category: "Content & Marketing", difficulty: "intermediate", impact: "growth", tags: ["branding", "storytelling"] },
-            { id: 36, title: "Explainer video scripts", category: "Content & Marketing", difficulty: "intermediate", impact: "growth", tags: ["video", "writing"] },
-            { id: 37, title: "Infographic content outlines", category: "Content & Marketing", difficulty: "intermediate", impact: "growth", tags: ["visual", "content"] },
-            { id: 38, title: "Podcast guest interview questions", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["podcast", "planning"] },
-            { id: 39, title: "Community post templates", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["community", "engagement"] },
-            { id: 40, title: "Event promotion copy", category: "Content & Marketing", difficulty: "beginner", impact: "revenue", tags: ["events", "promotion"] },
-            { id: 41, title: "Referral program messaging", category: "Content & Marketing", difficulty: "intermediate", impact: "revenue", tags: ["referral", "growth"] },
-            { id: 42, title: "Upsell/cross-sell email sequences", category: "Content & Marketing", difficulty: "intermediate", impact: "revenue", tags: ["email", "sales"] },
-            { id: 43, title: "Cart abandonment emails", category: "Content & Marketing", difficulty: "intermediate", impact: "revenue", tags: ["ecommerce", "email"] },
-            { id: 44, title: "Win-back campaign copy", category: "Content & Marketing", difficulty: "intermediate", impact: "revenue", tags: ["retention", "email"] },
-            { id: 45, title: "Milestone celebration posts", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["social", "engagement"] },
-            { id: 46, title: "Behind-the-scenes content ideas", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["social", "authenticity"] },
-            { id: 47, title: "Educational content series", category: "Content & Marketing", difficulty: "intermediate", impact: "growth", tags: ["education", "content"] },
-            { id: 48, title: "Industry trend commentary", category: "Content & Marketing", difficulty: "intermediate", impact: "growth", tags: ["thought-leadership", "content"] },
-            { id: 49, title: "Myth-busting content", category: "Content & Marketing", difficulty: "beginner", impact: "growth", tags: ["education", "engagement"] },
-            { id: 50, title: "Comparison/vs content pieces", category: "Content & Marketing", difficulty: "intermediate", impact: "revenue", tags: ["comparison", "seo"] },
-
-            // Customer & Sales (51-95)
-            { id: 51, title: "CRM setup and field configuration", category: "Customer & Sales", difficulty: "intermediate", impact: "cost", tags: ["crm", "setup"] },
-            { id: 52, title: "Sales script frameworks", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["sales", "scripts"] },
-            { id: 53, title: "Cold email templates", category: "Customer & Sales", difficulty: "beginner", impact: "revenue", tags: ["outreach", "email"] },
-            { id: 54, title: "Follow-up sequence automation", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["automation", "sales"] },
-            { id: 55, title: "Lead qualification criteria", category: "Customer & Sales", difficulty: "intermediate", impact: "cost", tags: ["leads", "qualification"] },
-            { id: 56, title: "Discovery call question scripts", category: "Customer & Sales", difficulty: "beginner", impact: "revenue", tags: ["sales", "scripts"] },
-            { id: 57, title: "Objection handling playbook", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["sales", "training"] },
-            { id: 58, title: "Proposal templates", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["proposals", "templates"] },
-            { id: 59, title: "Quote/estimate generators", category: "Customer & Sales", difficulty: "intermediate", impact: "cost", tags: ["pricing", "automation"] },
-            { id: 60, title: "Contract templates", category: "Customer & Sales", difficulty: "intermediate", impact: "cost", tags: ["legal", "templates"] },
-            { id: 61, title: "Onboarding email sequences", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["onboarding", "email"] },
-            { id: 62, title: "Customer welcome packets", category: "Customer & Sales", difficulty: "beginner", impact: "growth", tags: ["onboarding", "experience"] },
-            { id: 63, title: "Upsell conversation scripts", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["upsell", "sales"] },
-            { id: 64, title: "Renewal reminder sequences", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["retention", "automation"] },
-            { id: 65, title: "Churn prevention outreach", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["retention", "email"] },
-            { id: 66, title: "NPS survey follow-ups", category: "Customer & Sales", difficulty: "beginner", impact: "growth", tags: ["feedback", "surveys"] },
-            { id: 67, title: "Customer feedback analysis", category: "Customer & Sales", difficulty: "intermediate", impact: "growth", tags: ["feedback", "analysis"] },
-            { id: 68, title: "Support ticket response templates", category: "Customer & Sales", difficulty: "beginner", impact: "cost", tags: ["support", "templates"] },
-            { id: 69, title: "Chatbot conversation flows", category: "Customer & Sales", difficulty: "intermediate", impact: "cost", tags: ["chatbot", "automation"] },
-            { id: 70, title: "FAQ chatbot training", category: "Customer & Sales", difficulty: "intermediate", impact: "cost", tags: ["chatbot", "support"] },
-            { id: 71, title: "Live chat scripts", category: "Customer & Sales", difficulty: "beginner", impact: "revenue", tags: ["support", "scripts"] },
-            { id: 72, title: "Complaint resolution frameworks", category: "Customer & Sales", difficulty: "intermediate", impact: "growth", tags: ["support", "process"] },
-            { id: 73, title: "Refund policy communication", category: "Customer & Sales", difficulty: "beginner", impact: "cost", tags: ["policy", "communication"] },
-            { id: 74, title: "Customer success check-in templates", category: "Customer & Sales", difficulty: "beginner", impact: "revenue", tags: ["success", "templates"] },
-            { id: 75, title: "Quarterly business review templates", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["qbr", "templates"] },
-            { id: 76, title: "Account health scorecards", category: "Customer & Sales", difficulty: "advanced", impact: "revenue", tags: ["analytics", "health"] },
-            { id: 77, title: "Customer segmentation criteria", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["segmentation", "strategy"] },
-            { id: 78, title: "Ideal customer profile (ICP) documents", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["icp", "strategy"] },
-            { id: 79, title: "Buyer persona development", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["personas", "research"] },
-            { id: 80, title: "Sales battlecards vs competitors", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["competitive", "sales"] },
-            { id: 81, title: "ROI calculators for prospects", category: "Customer & Sales", difficulty: "advanced", impact: "revenue", tags: ["roi", "sales-tools"] },
-            { id: 82, title: "Demo script frameworks", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["demos", "scripts"] },
-            { id: 83, title: "Trial-to-paid conversion emails", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["conversion", "email"] },
-            { id: 84, title: "Partnership pitch templates", category: "Customer & Sales", difficulty: "intermediate", impact: "growth", tags: ["partnerships", "outreach"] },
-            { id: 85, title: "Affiliate recruitment outreach", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["affiliate", "outreach"] },
-            { id: 86, title: "Reseller/channel partner materials", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["partners", "materials"] },
-            { id: 87, title: "Customer advisory board invites", category: "Customer & Sales", difficulty: "intermediate", impact: "growth", tags: ["advisory", "engagement"] },
-            { id: 88, title: "Beta tester recruitment", category: "Customer & Sales", difficulty: "beginner", impact: "growth", tags: ["beta", "recruitment"] },
-            { id: 89, title: "Product feedback surveys", category: "Customer & Sales", difficulty: "beginner", impact: "growth", tags: ["feedback", "surveys"] },
-            { id: 90, title: "Customer interview guides", category: "Customer & Sales", difficulty: "intermediate", impact: "growth", tags: ["research", "interviews"] },
-            { id: 91, title: "Testimonial collection workflows", category: "Customer & Sales", difficulty: "beginner", impact: "growth", tags: ["testimonials", "automation"] },
-            { id: 92, title: "Case study interview questions", category: "Customer & Sales", difficulty: "beginner", impact: "growth", tags: ["case-studies", "research"] },
-            { id: 93, title: "Reference request templates", category: "Customer & Sales", difficulty: "beginner", impact: "revenue", tags: ["references", "sales"] },
-            { id: 94, title: "Customer gifting strategies", category: "Customer & Sales", difficulty: "beginner", impact: "growth", tags: ["retention", "gifting"] },
-            { id: 95, title: "Loyalty program design", category: "Customer & Sales", difficulty: "intermediate", impact: "revenue", tags: ["loyalty", "retention"] },
-
-            // Operations & Automation (96-140)
-            { id: 96, title: "Zapier/Make workflow design", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["automation", "no-code"] },
-            { id: 97, title: "Email automation sequences", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["email", "automation"] },
-            { id: 98, title: "Invoice generation automation", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["invoicing", "automation"] },
-            { id: 99, title: "Payment reminder workflows", category: "Operations & Automation", difficulty: "intermediate", impact: "revenue", tags: ["payments", "automation"] },
-            { id: 100, title: "Expense categorization rules", category: "Operations & Automation", difficulty: "beginner", impact: "cost", tags: ["expenses", "automation"] },
-            { id: 101, title: "Receipt processing workflows", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["receipts", "automation"] },
-            { id: 102, title: "Calendar scheduling automation", category: "Operations & Automation", difficulty: "beginner", impact: "cost", tags: ["calendar", "automation"] },
-            { id: 103, title: "Meeting booking workflows", category: "Operations & Automation", difficulty: "beginner", impact: "cost", tags: ["meetings", "automation"] },
-            { id: 104, title: "Task assignment automation", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["tasks", "automation"] },
-            { id: 105, title: "Project status update triggers", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["projects", "automation"] },
-            { id: 106, title: "Slack notification workflows", category: "Operations & Automation", difficulty: "beginner", impact: "cost", tags: ["slack", "notifications"] },
-            { id: 107, title: "Form submission routing", category: "Operations & Automation", difficulty: "beginner", impact: "cost", tags: ["forms", "routing"] },
-            { id: 108, title: "Lead routing rules", category: "Operations & Automation", difficulty: "intermediate", impact: "revenue", tags: ["leads", "routing"] },
-            { id: 109, title: "Data sync between tools", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["data", "integration"] },
-            { id: 110, title: "Backup automation workflows", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["backup", "automation"] },
-            { id: 111, title: "Report generation scheduling", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["reports", "automation"] },
-            { id: 112, title: "Social media auto-posting", category: "Operations & Automation", difficulty: "beginner", impact: "cost", tags: ["social", "automation"] },
-            { id: 113, title: "RSS-to-social automation", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["rss", "social"] },
-            { id: 114, title: "Inventory alert triggers", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["inventory", "alerts"] },
-            { id: 115, title: "Reorder point notifications", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["inventory", "automation"] },
-            { id: 116, title: "Shipping notification workflows", category: "Operations & Automation", difficulty: "beginner", impact: "growth", tags: ["shipping", "automation"] },
-            { id: 117, title: "Order confirmation automation", category: "Operations & Automation", difficulty: "beginner", impact: "growth", tags: ["orders", "automation"] },
-            { id: 118, title: "Delivery tracking updates", category: "Operations & Automation", difficulty: "intermediate", impact: "growth", tags: ["delivery", "automation"] },
-            { id: 119, title: "Review request automation", category: "Operations & Automation", difficulty: "beginner", impact: "growth", tags: ["reviews", "automation"] },
-            { id: 120, title: "Feedback collection triggers", category: "Operations & Automation", difficulty: "beginner", impact: "growth", tags: ["feedback", "automation"] },
-            { id: 121, title: "Employee onboarding workflows", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["hr", "onboarding"] },
-            { id: 122, title: "Offboarding checklists automation", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["hr", "offboarding"] },
-            { id: 123, title: "Time tracking reminders", category: "Operations & Automation", difficulty: "beginner", impact: "cost", tags: ["time-tracking", "reminders"] },
-            { id: 124, title: "Timesheet approval workflows", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["timesheets", "approval"] },
-            { id: 125, title: "PTO request automation", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["pto", "hr"] },
-            { id: 126, title: "Birthday/anniversary reminders", category: "Operations & Automation", difficulty: "beginner", impact: "growth", tags: ["culture", "reminders"] },
-            { id: 127, title: "Contract renewal alerts", category: "Operations & Automation", difficulty: "intermediate", impact: "revenue", tags: ["contracts", "alerts"] },
-            { id: 128, title: "Subscription management workflows", category: "Operations & Automation", difficulty: "intermediate", impact: "revenue", tags: ["subscriptions", "automation"] },
-            { id: 129, title: "Dunning email automation", category: "Operations & Automation", difficulty: "intermediate", impact: "revenue", tags: ["payments", "email"] },
-            { id: 130, title: "Failed payment retry workflows", category: "Operations & Automation", difficulty: "intermediate", impact: "revenue", tags: ["payments", "automation"] },
-            { id: 131, title: "Affiliate payout automation", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["affiliate", "payments"] },
-            { id: 132, title: "Commission calculation workflows", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["commissions", "automation"] },
-            { id: 133, title: "Referral tracking automation", category: "Operations & Automation", difficulty: "intermediate", impact: "revenue", tags: ["referrals", "tracking"] },
-            { id: 134, title: "UTM parameter tracking", category: "Operations & Automation", difficulty: "intermediate", impact: "growth", tags: ["utm", "tracking"] },
-            { id: 135, title: "Lead source attribution", category: "Operations & Automation", difficulty: "advanced", impact: "revenue", tags: ["attribution", "analytics"] },
-            { id: 136, title: "Webhook integrations", category: "Operations & Automation", difficulty: "advanced", impact: "cost", tags: ["webhooks", "integration"] },
-            { id: 137, title: "API connection workflows", category: "Operations & Automation", difficulty: "advanced", impact: "cost", tags: ["api", "integration"] },
-            { id: 138, title: "Database sync automation", category: "Operations & Automation", difficulty: "advanced", impact: "cost", tags: ["database", "sync"] },
-            { id: 139, title: "File organization workflows", category: "Operations & Automation", difficulty: "beginner", impact: "cost", tags: ["files", "organization"] },
-            { id: 140, title: "Document approval workflows", category: "Operations & Automation", difficulty: "intermediate", impact: "cost", tags: ["documents", "approval"] },
-
-            // Data & Analytics (141-180)
-            { id: 141, title: "Sales dashboard design", category: "Data & Analytics", difficulty: "intermediate", impact: "growth", tags: ["dashboards", "sales"] },
-            { id: 142, title: "Marketing metrics tracking", category: "Data & Analytics", difficulty: "intermediate", impact: "growth", tags: ["metrics", "marketing"] },
-            { id: 143, title: "Customer cohort analysis", category: "Data & Analytics", difficulty: "advanced", impact: "revenue", tags: ["cohorts", "analysis"] },
-            { id: 144, title: "Churn rate analysis", category: "Data & Analytics", difficulty: "intermediate", impact: "revenue", tags: ["churn", "analysis"] },
-            { id: 145, title: "Revenue forecasting models", category: "Data & Analytics", difficulty: "advanced", impact: "revenue", tags: ["forecasting", "revenue"] },
-            { id: 146, title: "Cash flow projections", category: "Data & Analytics", difficulty: "advanced", impact: "cost", tags: ["cash-flow", "planning"] },
-            { id: 147, title: "Expense trend analysis", category: "Data & Analytics", difficulty: "intermediate", impact: "cost", tags: ["expenses", "trends"] },
-            { id: 148, title: "Profit margin calculations", category: "Data & Analytics", difficulty: "intermediate", impact: "revenue", tags: ["profit", "analysis"] },
-            { id: 149, title: "Unit economics modeling", category: "Data & Analytics", difficulty: "advanced", impact: "revenue", tags: ["unit-economics", "modeling"] },
-            { id: 150, title: "Customer lifetime value (LTV) analysis", category: "Data & Analytics", difficulty: "advanced", impact: "revenue", tags: ["ltv", "analysis"] },
-            { id: 151, title: "Customer acquisition cost (CAC) tracking", category: "Data & Analytics", difficulty: "intermediate", impact: "cost", tags: ["cac", "tracking"] },
-            { id: 152, title: "LTV:CAC ratio monitoring", category: "Data & Analytics", difficulty: "advanced", impact: "revenue", tags: ["ltv-cac", "metrics"] },
-            { id: 153, title: "Funnel conversion analysis", category: "Data & Analytics", difficulty: "intermediate", impact: "revenue", tags: ["funnels", "conversion"] },
-            { id: 154, title: "Website traffic analysis", category: "Data & Analytics", difficulty: "beginner", impact: "growth", tags: ["traffic", "analytics"] },
-            { id: 155, title: "SEO ranking tracking", category: "Data & Analytics", difficulty: "intermediate", impact: "growth", tags: ["seo", "rankings"] },
-            { id: 156, title: "Social media analytics", category: "Data & Analytics", difficulty: "beginner", impact: "growth", tags: ["social", "analytics"] },
-            { id: 157, title: "Email performance metrics", category: "Data & Analytics", difficulty: "beginner", impact: "revenue", tags: ["email", "metrics"] },
-            { id: 158, title: "A/B test result analysis", category: "Data & Analytics", difficulty: "intermediate", impact: "revenue", tags: ["ab-testing", "analysis"] },
-            { id: 159, title: "Campaign ROI calculations", category: "Data & Analytics", difficulty: "intermediate", impact: "revenue", tags: ["roi", "campaigns"] },
-            { id: 160, title: "Attribution modeling", category: "Data & Analytics", difficulty: "advanced", impact: "revenue", tags: ["attribution", "modeling"] },
-            { id: 161, title: "Competitive pricing analysis", category: "Data & Analytics", difficulty: "intermediate", impact: "revenue", tags: ["pricing", "competitive"] },
-            { id: 162, title: "Market size estimation", category: "Data & Analytics", difficulty: "advanced", impact: "growth", tags: ["market", "research"] },
-            { id: 163, title: "TAM/SAM/SOM calculations", category: "Data & Analytics", difficulty: "advanced", impact: "growth", tags: ["tam", "market-sizing"] },
-            { id: 164, title: "Industry benchmark comparison", category: "Data & Analytics", difficulty: "intermediate", impact: "growth", tags: ["benchmarks", "comparison"] },
-            { id: 165, title: "Sentiment analysis on reviews", category: "Data & Analytics", difficulty: "intermediate", impact: "growth", tags: ["sentiment", "reviews"] },
-            { id: 166, title: "Customer feedback categorization", category: "Data & Analytics", difficulty: "intermediate", impact: "growth", tags: ["feedback", "categorization"] },
-            { id: 167, title: "Support ticket trend analysis", category: "Data & Analytics", difficulty: "intermediate", impact: "cost", tags: ["support", "trends"] },
-            { id: 168, title: "Product usage analytics", category: "Data & Analytics", difficulty: "intermediate", impact: "growth", tags: ["product", "usage"] },
-            { id: 169, title: "Feature adoption tracking", category: "Data & Analytics", difficulty: "intermediate", impact: "growth", tags: ["features", "adoption"] },
-            { id: 170, title: "User engagement scoring", category: "Data & Analytics", difficulty: "advanced", impact: "revenue", tags: ["engagement", "scoring"] },
-            { id: 171, title: "Net Promoter Score tracking", category: "Data & Analytics", difficulty: "beginner", impact: "growth", tags: ["nps", "tracking"] },
-            { id: 172, title: "Customer satisfaction trends", category: "Data & Analytics", difficulty: "intermediate", impact: "growth", tags: ["csat", "trends"] },
-            { id: 173, title: "Employee satisfaction analysis", category: "Data & Analytics", difficulty: "intermediate", impact: "cost", tags: ["hr", "satisfaction"] },
-            { id: 174, title: "Productivity metrics tracking", category: "Data & Analytics", difficulty: "intermediate", impact: "cost", tags: ["productivity", "metrics"] },
-            { id: 175, title: "Project profitability analysis", category: "Data & Analytics", difficulty: "intermediate", impact: "revenue", tags: ["projects", "profitability"] },
-            { id: 176, title: "Resource utilization reports", category: "Data & Analytics", difficulty: "intermediate", impact: "cost", tags: ["resources", "utilization"] },
-            { id: 177, title: "Inventory turnover analysis", category: "Data & Analytics", difficulty: "intermediate", impact: "cost", tags: ["inventory", "turnover"] },
-            { id: 178, title: "Supplier performance tracking", category: "Data & Analytics", difficulty: "intermediate", impact: "cost", tags: ["suppliers", "performance"] },
-            { id: 179, title: "Quality metrics monitoring", category: "Data & Analytics", difficulty: "intermediate", impact: "cost", tags: ["quality", "metrics"] },
-            { id: 180, title: "SLA compliance reporting", category: "Data & Analytics", difficulty: "intermediate", impact: "cost", tags: ["sla", "compliance"] },
-
-            // Decision Making & Strategy (181-225)
-            { id: 181, title: "Pricing strategy analysis", category: "Decision Making & Strategy", difficulty: "advanced", impact: "revenue", tags: ["pricing", "strategy"] },
-            { id: 182, title: "Price increase modeling", category: "Decision Making & Strategy", difficulty: "advanced", impact: "revenue", tags: ["pricing", "modeling"] },
-            { id: 183, title: "Discount impact analysis", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "revenue", tags: ["discounts", "analysis"] },
-            { id: 184, title: "Market entry evaluation", category: "Decision Making & Strategy", difficulty: "advanced", impact: "growth", tags: ["market", "expansion"] },
-            { id: 185, title: "Go/no-go decision frameworks", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "cost", tags: ["decisions", "frameworks"] },
-            { id: 186, title: "Build vs buy analysis", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "cost", tags: ["build-buy", "analysis"] },
-            { id: 187, title: "Hire vs outsource decisions", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "cost", tags: ["hiring", "outsourcing"] },
-            { id: 188, title: "Vendor selection scorecards", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "cost", tags: ["vendors", "selection"] },
-            { id: 189, title: "Partnership evaluation criteria", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "growth", tags: ["partnerships", "evaluation"] },
-            { id: 190, title: "Investment decision frameworks", category: "Decision Making & Strategy", difficulty: "advanced", impact: "revenue", tags: ["investment", "frameworks"] },
-            { id: 191, title: "Acquisition target analysis", category: "Decision Making & Strategy", difficulty: "advanced", impact: "growth", tags: ["acquisition", "analysis"] },
-            { id: 192, title: "Merger feasibility assessment", category: "Decision Making & Strategy", difficulty: "advanced", impact: "growth", tags: ["mergers", "feasibility"] },
-            { id: 193, title: "Exit strategy planning", category: "Decision Making & Strategy", difficulty: "advanced", impact: "revenue", tags: ["exit", "planning"] },
-            { id: 194, title: "Scenario planning models", category: "Decision Making & Strategy", difficulty: "advanced", impact: "cost", tags: ["scenarios", "planning"] },
-            { id: 195, title: "Risk assessment matrices", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "cost", tags: ["risk", "assessment"] },
-            { id: 196, title: "SWOT analysis facilitation", category: "Decision Making & Strategy", difficulty: "beginner", impact: "growth", tags: ["swot", "analysis"] },
-            { id: 197, title: "Porter's Five Forces analysis", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "growth", tags: ["porters", "analysis"] },
-            { id: 198, title: "Competitive positioning maps", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "growth", tags: ["positioning", "competitive"] },
-            { id: 199, title: "Blue ocean strategy canvas", category: "Decision Making & Strategy", difficulty: "advanced", impact: "growth", tags: ["blue-ocean", "strategy"] },
-            { id: 200, title: "Business model canvas creation", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "growth", tags: ["business-model", "canvas"] },
-            { id: 201, title: "Value proposition design", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "revenue", tags: ["value-prop", "design"] },
-            { id: 202, title: "OKR planning and tracking", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "growth", tags: ["okr", "planning"] },
-            { id: 203, title: "KPI selection frameworks", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "growth", tags: ["kpi", "frameworks"] },
-            { id: 204, title: "Goal setting workshops", category: "Decision Making & Strategy", difficulty: "beginner", impact: "growth", tags: ["goals", "workshops"] },
-            { id: 205, title: "Quarterly planning facilitation", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "growth", tags: ["quarterly", "planning"] },
-            { id: 206, title: "Annual strategy development", category: "Decision Making & Strategy", difficulty: "advanced", impact: "growth", tags: ["annual", "strategy"] },
-            { id: 207, title: "Budget allocation decisions", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "cost", tags: ["budget", "allocation"] },
-            { id: 208, title: "Resource prioritization", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "cost", tags: ["resources", "prioritization"] },
-            { id: 209, title: "Project prioritization scoring", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "cost", tags: ["projects", "prioritization"] },
-            { id: 210, title: "Feature roadmap planning", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "growth", tags: ["roadmap", "features"] },
-            { id: 211, title: "Technical debt assessment", category: "Decision Making & Strategy", difficulty: "advanced", impact: "cost", tags: ["tech-debt", "assessment"] },
-            { id: 212, title: "Platform migration decisions", category: "Decision Making & Strategy", difficulty: "advanced", impact: "cost", tags: ["migration", "platforms"] },
-            { id: 213, title: "Tool consolidation analysis", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "cost", tags: ["tools", "consolidation"] },
-            { id: 214, title: "Vendor negotiation prep", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "cost", tags: ["vendors", "negotiation"] },
-            { id: 215, title: "Contract renewal decisions", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "cost", tags: ["contracts", "renewal"] },
-            { id: 216, title: "Lease vs buy analysis", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "cost", tags: ["lease-buy", "analysis"] },
-            { id: 217, title: "Expansion location analysis", category: "Decision Making & Strategy", difficulty: "advanced", impact: "growth", tags: ["expansion", "location"] },
-            { id: 218, title: "Hiring plan development", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "growth", tags: ["hiring", "planning"] },
-            { id: 219, title: "Compensation benchmarking", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "cost", tags: ["compensation", "benchmarking"] },
-            { id: 220, title: "Benefits package design", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "cost", tags: ["benefits", "hr"] },
-            { id: 221, title: "Organizational restructuring", category: "Decision Making & Strategy", difficulty: "advanced", impact: "cost", tags: ["org-structure", "restructuring"] },
-            { id: 222, title: "Role definition decisions", category: "Decision Making & Strategy", difficulty: "intermediate", impact: "cost", tags: ["roles", "definitions"] },
-            { id: 223, title: "Succession planning", category: "Decision Making & Strategy", difficulty: "advanced", impact: "cost", tags: ["succession", "planning"] },
-            { id: 224, title: "Crisis response planning", category: "Decision Making & Strategy", difficulty: "advanced", impact: "cost", tags: ["crisis", "planning"] },
-            { id: 225, title: "Business continuity planning", category: "Decision Making & Strategy", difficulty: "advanced", impact: "cost", tags: ["continuity", "planning"] },
-
-            // Internal Systems & Documentation (226-265)
-            { id: 226, title: "Standard Operating Procedures (SOPs)", category: "Internal Systems & Documentation", difficulty: "beginner", impact: "cost", tags: ["sops", "documentation"] },
-            { id: 227, title: "Employee handbook creation", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["handbook", "hr"] },
-            { id: 228, title: "Policy documentation", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["policies", "documentation"] },
-            { id: 229, title: "Process flowcharts", category: "Internal Systems & Documentation", difficulty: "beginner", impact: "cost", tags: ["processes", "flowcharts"] },
-            { id: 230, title: "Training manual development", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["training", "manuals"] },
-            { id: 231, title: "Onboarding documentation", category: "Internal Systems & Documentation", difficulty: "beginner", impact: "cost", tags: ["onboarding", "documentation"] },
-            { id: 232, title: "Role descriptions", category: "Internal Systems & Documentation", difficulty: "beginner", impact: "cost", tags: ["roles", "hr"] },
-            { id: 233, title: "Job posting templates", category: "Internal Systems & Documentation", difficulty: "beginner", impact: "cost", tags: ["jobs", "templates"] },
-            { id: 234, title: "Interview question banks", category: "Internal Systems & Documentation", difficulty: "beginner", impact: "cost", tags: ["interviews", "hr"] },
-            { id: 235, title: "Performance review templates", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["performance", "templates"] },
-            { id: 236, title: "1:1 meeting frameworks", category: "Internal Systems & Documentation", difficulty: "beginner", impact: "cost", tags: ["meetings", "frameworks"] },
-            { id: 237, title: "Team meeting agendas", category: "Internal Systems & Documentation", difficulty: "beginner", impact: "cost", tags: ["meetings", "agendas"] },
-            { id: 238, title: "All-hands presentation templates", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["presentations", "templates"] },
-            { id: 239, title: "Company wiki/knowledge base", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["wiki", "knowledge"] },
-            { id: 240, title: "Internal FAQ documents", category: "Internal Systems & Documentation", difficulty: "beginner", impact: "cost", tags: ["faq", "internal"] },
-            { id: 241, title: "Troubleshooting guides", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["troubleshooting", "guides"] },
-            { id: 242, title: "Technical documentation", category: "Internal Systems & Documentation", difficulty: "advanced", impact: "cost", tags: ["technical", "documentation"] },
-            { id: 243, title: "API documentation", category: "Internal Systems & Documentation", difficulty: "advanced", impact: "cost", tags: ["api", "documentation"] },
-            { id: 244, title: "User guides/manuals", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["user-guides", "documentation"] },
-            { id: 245, title: "Quick reference cards", category: "Internal Systems & Documentation", difficulty: "beginner", impact: "cost", tags: ["reference", "quick-guides"] },
-            { id: 246, title: "Cheat sheets", category: "Internal Systems & Documentation", difficulty: "beginner", impact: "cost", tags: ["cheat-sheets", "reference"] },
-            { id: 247, title: "Decision trees", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["decisions", "trees"] },
-            { id: 248, title: "Escalation procedures", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["escalation", "procedures"] },
-            { id: 249, title: "Communication templates", category: "Internal Systems & Documentation", difficulty: "beginner", impact: "cost", tags: ["communication", "templates"] },
-            { id: 250, title: "Announcement templates", category: "Internal Systems & Documentation", difficulty: "beginner", impact: "cost", tags: ["announcements", "templates"] },
-            { id: 251, title: "Change management docs", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["change-management", "documentation"] },
-            { id: 252, title: "Project documentation templates", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["projects", "templates"] },
-            { id: 253, title: "Post-mortem templates", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["post-mortems", "templates"] },
-            { id: 254, title: "Lessons learned frameworks", category: "Internal Systems & Documentation", difficulty: "beginner", impact: "growth", tags: ["lessons", "frameworks"] },
-            { id: 255, title: "Best practices guides", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["best-practices", "guides"] },
-            { id: 256, title: "Style guides", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["style", "guides"] },
-            { id: 257, title: "Brand guidelines", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "growth", tags: ["brand", "guidelines"] },
-            { id: 258, title: "Voice and tone guides", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "growth", tags: ["voice", "tone"] },
-            { id: 259, title: "Legal compliance checklists", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["legal", "compliance"] },
-            { id: 260, title: "Security protocols", category: "Internal Systems & Documentation", difficulty: "advanced", impact: "cost", tags: ["security", "protocols"] },
-            { id: 261, title: "Privacy policy templates", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["privacy", "legal"] },
-            { id: 262, title: "Terms of service drafts", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["tos", "legal"] },
-            { id: 263, title: "Data handling procedures", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["data", "procedures"] },
-            { id: 264, title: "Vendor management docs", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["vendors", "documentation"] },
-            { id: 265, title: "Asset inventory systems", category: "Internal Systems & Documentation", difficulty: "intermediate", impact: "cost", tags: ["assets", "inventory"] },
-
-            // Product & Development (266-305)
-            { id: 266, title: "No-code app prototypes", category: "Product & Development", difficulty: "intermediate", impact: "growth", tags: ["no-code", "prototypes"] },
-            { id: 267, title: "Internal tool building", category: "Product & Development", difficulty: "intermediate", impact: "cost", tags: ["internal-tools", "development"] },
-            { id: 268, title: "Database schema design", category: "Product & Development", difficulty: "advanced", impact: "cost", tags: ["database", "schema"] },
-            { id: 269, title: "Airtable/Notion setups", category: "Product & Development", difficulty: "beginner", impact: "cost", tags: ["airtable", "notion"] },
-            { id: 270, title: "Spreadsheet automation", category: "Product & Development", difficulty: "intermediate", impact: "cost", tags: ["spreadsheets", "automation"] },
-            { id: 271, title: "Custom calculator tools", category: "Product & Development", difficulty: "intermediate", impact: "revenue", tags: ["calculators", "tools"] },
-            { id: 272, title: "Booking/scheduling systems", category: "Product & Development", difficulty: "intermediate", impact: "revenue", tags: ["booking", "scheduling"] },
-            { id: 273, title: "Customer portal design", category: "Product & Development", difficulty: "advanced", impact: "growth", tags: ["portals", "customers"] },
-            { id: 274, title: "Member directory systems", category: "Product & Development", difficulty: "intermediate", impact: "growth", tags: ["directories", "members"] },
-            { id: 275, title: "Event management tools", category: "Product & Development", difficulty: "intermediate", impact: "revenue", tags: ["events", "management"] },
-            { id: 276, title: "Survey/form builders", category: "Product & Development", difficulty: "beginner", impact: "growth", tags: ["surveys", "forms"] },
-            { id: 277, title: "Quiz/assessment tools", category: "Product & Development", difficulty: "intermediate", impact: "revenue", tags: ["quizzes", "assessments"] },
-            { id: 278, title: "Lead scoring systems", category: "Product & Development", difficulty: "advanced", impact: "revenue", tags: ["leads", "scoring"] },
-            { id: 279, title: "Simple CRM builds", category: "Product & Development", difficulty: "intermediate", impact: "revenue", tags: ["crm", "no-code"] },
-            { id: 280, title: "Project management setups", category: "Product & Development", difficulty: "intermediate", impact: "cost", tags: ["projects", "management"] },
-            { id: 281, title: "Time tracking systems", category: "Product & Development", difficulty: "intermediate", impact: "cost", tags: ["time-tracking", "systems"] },
-            { id: 282, title: "Expense tracking tools", category: "Product & Development", difficulty: "intermediate", impact: "cost", tags: ["expenses", "tracking"] },
-            { id: 283, title: "Invoice generators", category: "Product & Development", difficulty: "intermediate", impact: "cost", tags: ["invoices", "generators"] },
-            { id: 284, title: "Proposal builders", category: "Product & Development", difficulty: "intermediate", impact: "revenue", tags: ["proposals", "builders"] },
-            { id: 285, title: "Contract management systems", category: "Product & Development", difficulty: "intermediate", impact: "cost", tags: ["contracts", "management"] },
-            { id: 286, title: "Digital signature workflows", category: "Product & Development", difficulty: "intermediate", impact: "cost", tags: ["signatures", "workflows"] },
-            { id: 287, title: "File sharing systems", category: "Product & Development", difficulty: "beginner", impact: "cost", tags: ["files", "sharing"] },
-            { id: 288, title: "Collaboration workspaces", category: "Product & Development", difficulty: "intermediate", impact: "cost", tags: ["collaboration", "workspaces"] },
-            { id: 289, title: "Task management systems", category: "Product & Development", difficulty: "beginner", impact: "cost", tags: ["tasks", "management"] },
-            { id: 290, title: "Habit tracking tools", category: "Product & Development", difficulty: "beginner", impact: "growth", tags: ["habits", "tracking"] },
-            { id: 291, title: "Goal tracking dashboards", category: "Product & Development", difficulty: "intermediate", impact: "growth", tags: ["goals", "dashboards"] },
-            { id: 292, title: "OKR tracking systems", category: "Product & Development", difficulty: "intermediate", impact: "growth", tags: ["okr", "tracking"] },
-            { id: 293, title: "Feedback collection tools", category: "Product & Development", difficulty: "beginner", impact: "growth", tags: ["feedback", "tools"] },
-            { id: 294, title: "Review management systems", category: "Product & Development", difficulty: "intermediate", impact: "growth", tags: ["reviews", "management"] },
-            { id: 295, title: "Testimonial display widgets", category: "Product & Development", difficulty: "beginner", impact: "revenue", tags: ["testimonials", "widgets"] },
-            { id: 296, title: "Social proof tools", category: "Product & Development", difficulty: "intermediate", impact: "revenue", tags: ["social-proof", "tools"] },
-            { id: 297, title: "Countdown/urgency widgets", category: "Product & Development", difficulty: "beginner", impact: "revenue", tags: ["urgency", "widgets"] },
-            { id: 298, title: "Pop-up/modal builders", category: "Product & Development", difficulty: "beginner", impact: "revenue", tags: ["popups", "modals"] },
-            { id: 299, title: "Landing page builders", category: "Product & Development", difficulty: "intermediate", impact: "revenue", tags: ["landing-pages", "builders"] },
-            { id: 300, title: "Email template builders", category: "Product & Development", difficulty: "beginner", impact: "cost", tags: ["email", "templates"] },
-            { id: 301, title: "Chatbot builders", category: "Product & Development", difficulty: "intermediate", impact: "cost", tags: ["chatbots", "builders"] },
-            { id: 302, title: "FAQ bot systems", category: "Product & Development", difficulty: "intermediate", impact: "cost", tags: ["faq", "bots"] },
-            { id: 303, title: "Knowledge base systems", category: "Product & Development", difficulty: "intermediate", impact: "cost", tags: ["knowledge-base", "systems"] },
-            { id: 304, title: "Help desk setups", category: "Product & Development", difficulty: "intermediate", impact: "cost", tags: ["helpdesk", "support"] },
-            { id: 305, title: "Ticketing systems", category: "Product & Development", difficulty: "intermediate", impact: "cost", tags: ["ticketing", "support"] },
-
-            // Industry-Specific (306-335)
-            // E-commerce
-            { id: 306, title: "Product catalog management", category: "Industry-Specific: E-commerce", difficulty: "intermediate", impact: "cost", tags: ["ecommerce", "catalog"] },
-            { id: 307, title: "Inventory forecasting", category: "Industry-Specific: E-commerce", difficulty: "advanced", impact: "cost", tags: ["ecommerce", "inventory"] },
-            { id: 308, title: "Dynamic pricing rules", category: "Industry-Specific: E-commerce", difficulty: "advanced", impact: "revenue", tags: ["ecommerce", "pricing"] },
-            { id: 309, title: "Bundle/kit recommendations", category: "Industry-Specific: E-commerce", difficulty: "intermediate", impact: "revenue", tags: ["ecommerce", "bundles"] },
-            { id: 310, title: "Return prediction models", category: "Industry-Specific: E-commerce", difficulty: "advanced", impact: "cost", tags: ["ecommerce", "returns"] },
-            // SaaS
-            { id: 311, title: "Trial engagement scoring", category: "Industry-Specific: SaaS", difficulty: "advanced", impact: "revenue", tags: ["saas", "trials"] },
-            { id: 312, title: "Feature usage analysis", category: "Industry-Specific: SaaS", difficulty: "intermediate", impact: "growth", tags: ["saas", "features"] },
-            { id: 313, title: "Upgrade trigger identification", category: "Industry-Specific: SaaS", difficulty: "advanced", impact: "revenue", tags: ["saas", "upgrades"] },
-            { id: 314, title: "Churn prediction models", category: "Industry-Specific: SaaS", difficulty: "advanced", impact: "revenue", tags: ["saas", "churn"] },
-            { id: 315, title: "Usage-based billing setup", category: "Industry-Specific: SaaS", difficulty: "advanced", impact: "revenue", tags: ["saas", "billing"] },
-            // Consulting/Agency
-            { id: 316, title: "Proposal automation", category: "Industry-Specific: Consulting", difficulty: "intermediate", impact: "revenue", tags: ["consulting", "proposals"] },
-            { id: 317, title: "Scope of work templates", category: "Industry-Specific: Consulting", difficulty: "intermediate", impact: "cost", tags: ["consulting", "sow"] },
-            { id: 318, title: "Client reporting automation", category: "Industry-Specific: Consulting", difficulty: "intermediate", impact: "cost", tags: ["consulting", "reporting"] },
-            { id: 319, title: "Utilization tracking", category: "Industry-Specific: Consulting", difficulty: "intermediate", impact: "cost", tags: ["consulting", "utilization"] },
-            { id: 320, title: "Project profitability analysis", category: "Industry-Specific: Consulting", difficulty: "intermediate", impact: "revenue", tags: ["consulting", "profitability"] },
-            // Coaching/Courses
-            { id: 321, title: "Curriculum development", category: "Industry-Specific: Education", difficulty: "intermediate", impact: "growth", tags: ["education", "curriculum"] },
-            { id: 322, title: "Lesson plan creation", category: "Industry-Specific: Education", difficulty: "beginner", impact: "cost", tags: ["education", "lessons"] },
-            { id: 323, title: "Student progress tracking", category: "Industry-Specific: Education", difficulty: "intermediate", impact: "growth", tags: ["education", "progress"] },
-            { id: 324, title: "Certification workflows", category: "Industry-Specific: Education", difficulty: "intermediate", impact: "revenue", tags: ["education", "certifications"] },
-            { id: 325, title: "Community engagement systems", category: "Industry-Specific: Education", difficulty: "intermediate", impact: "growth", tags: ["education", "community"] },
-            // Real Estate
-            { id: 326, title: "Listing description generation", category: "Industry-Specific: Real Estate", difficulty: "beginner", impact: "revenue", tags: ["real-estate", "listings"] },
-            { id: 327, title: "Market analysis reports", category: "Industry-Specific: Real Estate", difficulty: "intermediate", impact: "revenue", tags: ["real-estate", "analysis"] },
-            { id: 328, title: "Comparable property analysis", category: "Industry-Specific: Real Estate", difficulty: "intermediate", impact: "revenue", tags: ["real-estate", "comps"] },
-            { id: 329, title: "Client matching systems", category: "Industry-Specific: Real Estate", difficulty: "intermediate", impact: "revenue", tags: ["real-estate", "matching"] },
-            { id: 330, title: "Transaction coordination", category: "Industry-Specific: Real Estate", difficulty: "intermediate", impact: "cost", tags: ["real-estate", "transactions"] },
-            // Healthcare/Wellness
-            { id: 331, title: "Appointment reminder systems", category: "Industry-Specific: Healthcare", difficulty: "beginner", impact: "cost", tags: ["healthcare", "appointments"] },
-            { id: 332, title: "Patient intake automation", category: "Industry-Specific: Healthcare", difficulty: "intermediate", impact: "cost", tags: ["healthcare", "intake"] },
-            { id: 333, title: "Treatment plan templates", category: "Industry-Specific: Healthcare", difficulty: "intermediate", impact: "cost", tags: ["healthcare", "treatment"] },
-            { id: 334, title: "Progress tracking systems", category: "Industry-Specific: Healthcare", difficulty: "intermediate", impact: "growth", tags: ["healthcare", "progress"] },
-            { id: 335, title: "Compliance documentation", category: "Industry-Specific: Healthcare", difficulty: "intermediate", impact: "cost", tags: ["healthcare", "compliance"] },
-
-            // Advanced/Emerging (336-355)
-            { id: 336, title: "AI agent workflows", category: "Advanced & Emerging", difficulty: "advanced", impact: "growth", tags: ["ai", "agents"] },
-            { id: 337, title: "Multi-step reasoning chains", category: "Advanced & Emerging", difficulty: "advanced", impact: "growth", tags: ["ai", "reasoning"] },
-            { id: 338, title: "Automated research pipelines", category: "Advanced & Emerging", difficulty: "advanced", impact: "cost", tags: ["ai", "research"] },
-            { id: 339, title: "Content-to-code generation", category: "Advanced & Emerging", difficulty: "advanced", impact: "cost", tags: ["ai", "code-gen"] },
-            { id: 340, title: "Voice interface prototypes", category: "Advanced & Emerging", difficulty: "advanced", impact: "growth", tags: ["voice", "prototypes"] },
-            { id: 341, title: "Predictive analytics models", category: "Advanced & Emerging", difficulty: "advanced", impact: "revenue", tags: ["ai", "predictive"] },
-            { id: 342, title: "Recommendation engines", category: "Advanced & Emerging", difficulty: "advanced", impact: "revenue", tags: ["ai", "recommendations"] },
-            { id: 343, title: "Personalization systems", category: "Advanced & Emerging", difficulty: "advanced", impact: "revenue", tags: ["ai", "personalization"] },
-            { id: 344, title: "Dynamic content generation", category: "Advanced & Emerging", difficulty: "advanced", impact: "growth", tags: ["ai", "content"] },
-            { id: 345, title: "Real-time translation workflows", category: "Advanced & Emerging", difficulty: "advanced", impact: "growth", tags: ["ai", "translation"] },
-            { id: 346, title: "Sentiment monitoring systems", category: "Advanced & Emerging", difficulty: "intermediate", impact: "growth", tags: ["ai", "sentiment"] },
-            { id: 347, title: "Trend detection pipelines", category: "Advanced & Emerging", difficulty: "advanced", impact: "growth", tags: ["ai", "trends"] },
-            { id: 348, title: "Anomaly detection rules", category: "Advanced & Emerging", difficulty: "advanced", impact: "cost", tags: ["ai", "anomaly"] },
-            { id: 349, title: "Fraud prevention logic", category: "Advanced & Emerging", difficulty: "advanced", impact: "cost", tags: ["ai", "fraud"] },
-            { id: 350, title: "Quality assurance automation", category: "Advanced & Emerging", difficulty: "advanced", impact: "cost", tags: ["ai", "qa"] },
-            { id: 351, title: "Testing scenario generation", category: "Advanced & Emerging", difficulty: "advanced", impact: "cost", tags: ["ai", "testing"] },
-            { id: 352, title: "Documentation from code", category: "Advanced & Emerging", difficulty: "intermediate", impact: "cost", tags: ["ai", "documentation"] },
-            { id: 353, title: "Code review assistance", category: "Advanced & Emerging", difficulty: "advanced", impact: "cost", tags: ["ai", "code-review"] },
-            { id: 354, title: "Architecture decision records", category: "Advanced & Emerging", difficulty: "intermediate", impact: "cost", tags: ["ai", "architecture"] },
-            { id: 355, title: "Technical spec generation", category: "Advanced & Emerging", difficulty: "intermediate", impact: "cost", tags: ["ai", "specs"] },
-
-            // NEW: High-Intent Lead Capture (356-365)
-            { id: 356, title: "Savings/ROI calculators that capture emails", category: "High-Intent Lead Capture", difficulty: "intermediate", impact: "revenue", tags: ["lead-gen", "calculators", "roi"] },
-            { id: 357, title: "RFP/bid opportunity scrapers for your industry", category: "High-Intent Lead Capture", difficulty: "advanced", impact: "revenue", tags: ["lead-gen", "scraping", "rfp"] },
-            { id: 358, title: "Competitor switch-kit generators (migration guides)", category: "High-Intent Lead Capture", difficulty: "intermediate", impact: "revenue", tags: ["lead-gen", "competitive", "migration"] },
-            { id: 359, title: "Audit/assessment tools that pre-qualify leads", category: "High-Intent Lead Capture", difficulty: "intermediate", impact: "revenue", tags: ["lead-gen", "assessment", "qualification"] },
-            { id: 360, title: "Waitlist systems with referral mechanics", category: "High-Intent Lead Capture", difficulty: "intermediate", impact: "growth", tags: ["lead-gen", "waitlist", "referral"] },
-            { id: 361, title: "Free tool embeds that showcase your expertise", category: "High-Intent Lead Capture", difficulty: "intermediate", impact: "revenue", tags: ["lead-gen", "tools", "authority"] },
-            { id: 362, title: "Quiz funnels that segment by purchase intent", category: "High-Intent Lead Capture", difficulty: "intermediate", impact: "revenue", tags: ["lead-gen", "quizzes", "segmentation"] },
-            { id: 363, title: "Comparison shopping tools for your market", category: "High-Intent Lead Capture", difficulty: "advanced", impact: "revenue", tags: ["lead-gen", "comparison", "tools"] },
-            { id: 364, title: "Industry benchmark reports as lead magnets", category: "High-Intent Lead Capture", difficulty: "intermediate", impact: "revenue", tags: ["lead-gen", "benchmarks", "content"] },
-            { id: 365, title: "Automated demo environment generators", category: "High-Intent Lead Capture", difficulty: "advanced", impact: "revenue", tags: ["lead-gen", "demos", "automation"] },
-
-            // NEW: Sales Velocity & Closing (366-375)
-            { id: 366, title: "Automated proposal drafters from call notes", category: "Sales Velocity & Closing", difficulty: "advanced", impact: "revenue", tags: ["sales", "proposals", "automation"] },
-            { id: 367, title: "Objection response databases with win-rate tracking", category: "Sales Velocity & Closing", difficulty: "intermediate", impact: "revenue", tags: ["sales", "objections", "tracking"] },
-            { id: 368, title: "Mutual Action Plan (MAP) generators", category: "Sales Velocity & Closing", difficulty: "intermediate", impact: "revenue", tags: ["sales", "maps", "planning"] },
-            { id: 369, title: "Champion enablement content creators", category: "Sales Velocity & Closing", difficulty: "intermediate", impact: "revenue", tags: ["sales", "champions", "content"] },
-            { id: 370, title: "Deal risk scoring with next-action suggestions", category: "Sales Velocity & Closing", difficulty: "advanced", impact: "revenue", tags: ["sales", "risk", "scoring"] },
-            { id: 371, title: "Competitive displacement playbooks", category: "Sales Velocity & Closing", difficulty: "intermediate", impact: "revenue", tags: ["sales", "competitive", "playbooks"] },
-            { id: 372, title: "Value engineering calculators", category: "Sales Velocity & Closing", difficulty: "advanced", impact: "revenue", tags: ["sales", "value", "calculators"] },
-            { id: 373, title: "Executive summary generators for complex deals", category: "Sales Velocity & Closing", difficulty: "intermediate", impact: "revenue", tags: ["sales", "executive", "summaries"] },
-            { id: 374, title: "Multi-stakeholder influence mapping tools", category: "Sales Velocity & Closing", difficulty: "advanced", impact: "revenue", tags: ["sales", "stakeholders", "mapping"] },
-            { id: 375, title: "Contract redline prediction and response systems", category: "Sales Velocity & Closing", difficulty: "advanced", impact: "revenue", tags: ["sales", "contracts", "legal"] },
-
-            // NEW: Retention & Expansion (376-385)
-            { id: 376, title: "Usage-based upsell opportunity alerts", category: "Retention & Expansion", difficulty: "advanced", impact: "revenue", tags: ["retention", "upsell", "alerts"] },
-            { id: 377, title: "Customer health score dashboards with triggers", category: "Retention & Expansion", difficulty: "advanced", impact: "revenue", tags: ["retention", "health", "dashboards"] },
-            { id: 378, title: "Automated ROI/value realization reports", category: "Retention & Expansion", difficulty: "intermediate", impact: "revenue", tags: ["retention", "roi", "reports"] },
-            { id: 379, title: "Expansion opportunity identification systems", category: "Retention & Expansion", difficulty: "advanced", impact: "revenue", tags: ["retention", "expansion", "identification"] },
-            { id: 380, title: "Churn risk predictors with save playbooks", category: "Retention & Expansion", difficulty: "advanced", impact: "revenue", tags: ["retention", "churn", "prediction"] },
-            { id: 381, title: "Customer milestone celebration automation", category: "Retention & Expansion", difficulty: "beginner", impact: "growth", tags: ["retention", "milestones", "automation"] },
-            { id: 382, title: "Renewal pricing optimization models", category: "Retention & Expansion", difficulty: "advanced", impact: "revenue", tags: ["retention", "pricing", "renewals"] },
-            { id: 383, title: "Cross-sell recommendation engines", category: "Retention & Expansion", difficulty: "advanced", impact: "revenue", tags: ["retention", "cross-sell", "recommendations"] },
-            { id: 384, title: "Customer advocacy program automation", category: "Retention & Expansion", difficulty: "intermediate", impact: "growth", tags: ["retention", "advocacy", "automation"] },
-            { id: 385, title: "Success story capture and publishing workflows", category: "Retention & Expansion", difficulty: "intermediate", impact: "growth", tags: ["retention", "stories", "content"] },
-
-            // NEW: Operational Leverage (386-395)
-            { id: 386, title: "Meeting-to-SOP converters (record → document)", category: "Operational Leverage", difficulty: "intermediate", impact: "cost", tags: ["operations", "meetings", "sops"] },
-            { id: 387, title: "Tech stack audit and consolidation analyzers", category: "Operational Leverage", difficulty: "intermediate", impact: "cost", tags: ["operations", "tech-stack", "audit"] },
-            { id: 388, title: "Vendor spend optimization dashboards", category: "Operational Leverage", difficulty: "intermediate", impact: "cost", tags: ["operations", "vendors", "spend"] },
-            { id: 389, title: "Process bottleneck identification systems", category: "Operational Leverage", difficulty: "advanced", impact: "cost", tags: ["operations", "bottlenecks", "process"] },
-            { id: 390, title: "Capacity planning models", category: "Operational Leverage", difficulty: "advanced", impact: "cost", tags: ["operations", "capacity", "planning"] },
-            { id: 391, title: "Knowledge extraction from departing employees", category: "Operational Leverage", difficulty: "intermediate", impact: "cost", tags: ["operations", "knowledge", "offboarding"] },
-            { id: 392, title: "Compliance monitoring and alert systems", category: "Operational Leverage", difficulty: "advanced", impact: "cost", tags: ["operations", "compliance", "monitoring"] },
-            { id: 393, title: "Quality assurance sampling automation", category: "Operational Leverage", difficulty: "intermediate", impact: "cost", tags: ["operations", "qa", "sampling"] },
-            { id: 394, title: "Internal service level tracking", category: "Operational Leverage", difficulty: "intermediate", impact: "cost", tags: ["operations", "sla", "internal"] },
-            { id: 395, title: "Resource allocation optimization tools", category: "Operational Leverage", difficulty: "advanced", impact: "cost", tags: ["operations", "resources", "optimization"] },
-
-            // NEW: Direct Revenue Channels (396-455)
-            // Affiliate & Partnership Revenue
-            { id: 396, title: "Affiliate performance leaderboards", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["affiliate", "leaderboards", "performance"] },
-            { id: 397, title: "Partner deal registration systems", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["partners", "deals", "registration"] },
-            { id: 398, title: "Co-marketing campaign coordinators", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "growth", tags: ["partners", "co-marketing", "campaigns"] },
-            { id: 399, title: "Revenue share calculation automation", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "cost", tags: ["partners", "revenue-share", "automation"] },
-            { id: 400, title: "Partner portal content management", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "growth", tags: ["partners", "portals", "content"] },
-            { id: 401, title: "Affiliate recruitment and vetting workflows", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["affiliate", "recruitment", "vetting"] },
-            { id: 402, title: "Commission dispute resolution systems", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "cost", tags: ["affiliate", "commissions", "disputes"] },
-            { id: 403, title: "Partner certification tracking", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "growth", tags: ["partners", "certifications", "tracking"] },
-            { id: 404, title: "Joint venture opportunity evaluators", category: "Direct Revenue Channels", difficulty: "advanced", impact: "revenue", tags: ["partners", "jv", "evaluation"] },
-            { id: 405, title: "Channel conflict detection systems", category: "Direct Revenue Channels", difficulty: "advanced", impact: "cost", tags: ["partners", "conflicts", "detection"] },
-            // Pricing & Monetization
-            { id: 406, title: "Dynamic pricing engines", category: "Direct Revenue Channels", difficulty: "advanced", impact: "revenue", tags: ["pricing", "dynamic", "engines"] },
-            { id: 407, title: "Price elasticity testing frameworks", category: "Direct Revenue Channels", difficulty: "advanced", impact: "revenue", tags: ["pricing", "elasticity", "testing"] },
-            { id: 408, title: "Bundle optimization analyzers", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["pricing", "bundles", "optimization"] },
-            { id: 409, title: "Discount impact calculators", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["pricing", "discounts", "calculators"] },
-            { id: 410, title: "Freemium conversion optimizers", category: "Direct Revenue Channels", difficulty: "advanced", impact: "revenue", tags: ["pricing", "freemium", "conversion"] },
-            { id: 411, title: "Usage-based pricing model builders", category: "Direct Revenue Channels", difficulty: "advanced", impact: "revenue", tags: ["pricing", "usage-based", "models"] },
-            { id: 412, title: "Price increase communication systems", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["pricing", "communication", "increases"] },
-            { id: 413, title: "Competitive pricing monitors", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["pricing", "competitive", "monitoring"] },
-            { id: 414, title: "Margin optimization tools", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["pricing", "margins", "optimization"] },
-            { id: 415, title: "Revenue leakage detectors", category: "Direct Revenue Channels", difficulty: "advanced", impact: "revenue", tags: ["pricing", "leakage", "detection"] },
-            // Content Monetization
-            { id: 416, title: "Paywall optimization systems", category: "Direct Revenue Channels", difficulty: "advanced", impact: "revenue", tags: ["content", "paywall", "optimization"] },
-            { id: 417, title: "Premium content gating strategies", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["content", "gating", "premium"] },
-            { id: 418, title: "Sponsored content matching platforms", category: "Direct Revenue Channels", difficulty: "advanced", impact: "revenue", tags: ["content", "sponsored", "matching"] },
-            { id: 419, title: "Newsletter monetization dashboards", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["content", "newsletter", "monetization"] },
-            { id: 420, title: "Course/training pricing optimizers", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["content", "courses", "pricing"] },
-            { id: 421, title: "Membership tier value calculators", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["content", "membership", "tiers"] },
-            { id: 422, title: "Content licensing opportunity finders", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["content", "licensing", "opportunities"] },
-            { id: 423, title: "Syndication revenue trackers", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["content", "syndication", "tracking"] },
-            { id: 424, title: "Speaking engagement lead generators", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["content", "speaking", "lead-gen"] },
-            { id: 425, title: "Book/ebook launch coordinators", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["content", "books", "launches"] },
-            // Lead Generation Engines
-            { id: 426, title: "SEO content gap analyzers", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "growth", tags: ["seo", "content-gaps", "analysis"] },
-            { id: 427, title: "Keyword opportunity scorers", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "growth", tags: ["seo", "keywords", "scoring"] },
-            { id: 428, title: "Backlink outreach automation", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "growth", tags: ["seo", "backlinks", "outreach"] },
-            { id: 429, title: "Guest posting opportunity finders", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "growth", tags: ["seo", "guest-posts", "outreach"] },
-            { id: 430, title: "Podcast guesting pitch systems", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "growth", tags: ["podcasts", "pitching", "outreach"] },
-            { id: 431, title: "PR opportunity monitors", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "growth", tags: ["pr", "opportunities", "monitoring"] },
-            { id: 432, title: "HARO response automation", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "growth", tags: ["pr", "haro", "automation"] },
-            { id: 433, title: "Industry event ROI calculators", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["events", "roi", "calculators"] },
-            { id: 434, title: "Webinar promotion optimizers", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["webinars", "promotion", "optimization"] },
-            { id: 435, title: "Lead magnet performance trackers", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["lead-magnets", "performance", "tracking"] },
-            // Conversion Optimization
-            { id: 436, title: "Landing page variant generators", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["conversion", "landing-pages", "variants"] },
-            { id: 437, title: "Form abandonment recovery systems", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["conversion", "forms", "recovery"] },
-            { id: 438, title: "Exit intent offer optimizers", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["conversion", "exit-intent", "offers"] },
-            { id: 439, title: "Social proof placement testers", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["conversion", "social-proof", "testing"] },
-            { id: 440, title: "Trust signal effectiveness trackers", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["conversion", "trust", "tracking"] },
-            { id: 441, title: "Checkout flow optimizers", category: "Direct Revenue Channels", difficulty: "advanced", impact: "revenue", tags: ["conversion", "checkout", "optimization"] },
-            { id: 442, title: "Upsell/cross-sell timing systems", category: "Direct Revenue Channels", difficulty: "advanced", impact: "revenue", tags: ["conversion", "upsell", "timing"] },
-            { id: 443, title: "Cart recovery sequence builders", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["conversion", "cart", "recovery"] },
-            { id: 444, title: "Free trial conversion optimizers", category: "Direct Revenue Channels", difficulty: "advanced", impact: "revenue", tags: ["conversion", "trials", "optimization"] },
-            { id: 445, title: "Demo booking rate improvers", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["conversion", "demos", "booking"] },
-            // CAC Reduction
-            { id: 446, title: "Channel attribution models", category: "Direct Revenue Channels", difficulty: "advanced", impact: "cost", tags: ["attribution", "channels", "models"] },
-            { id: 447, title: "Ad spend optimization dashboards", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "cost", tags: ["ads", "spend", "optimization"] },
-            { id: 448, title: "Organic vs paid mix analyzers", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "cost", tags: ["marketing", "organic", "paid"] },
-            { id: 449, title: "Referral program ROI trackers", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["referrals", "roi", "tracking"] },
-            { id: 450, title: "Influencer partnership evaluators", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "revenue", tags: ["influencer", "partnerships", "evaluation"] },
-            { id: 451, title: "Community-led growth metrics", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "growth", tags: ["community", "growth", "metrics"] },
-            { id: 452, title: "Word-of-mouth tracking systems", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "growth", tags: ["wom", "tracking", "systems"] },
-            { id: 453, title: "Brand search volume monitors", category: "Direct Revenue Channels", difficulty: "beginner", impact: "growth", tags: ["brand", "search", "monitoring"] },
-            { id: 454, title: "Customer acquisition forecasters", category: "Direct Revenue Channels", difficulty: "advanced", impact: "revenue", tags: ["acquisition", "forecasting", "planning"] },
-            { id: 455, title: "Marketing efficiency dashboards", category: "Direct Revenue Channels", difficulty: "intermediate", impact: "cost", tags: ["marketing", "efficiency", "dashboards"] }
+            {
+                id: 1,
+                title: "AI-Powered Email Response Templates",
+                category: "Customer & Sales",
+                description: "Create a library of customizable email templates that AI can personalize for each situation.",
+                whyText: "You mentioned spending significant time on admin tasks and emails. With AI templates, you can respond to common inquiries in seconds instead of minutes, while still sounding personal and professional.",
+                timeSaved: "5-10 hrs/week",
+                moneySaved: "$500-1,500/month",
+                howSteps: [
+                    "Identify your 10 most common email types (inquiries, follow-ups, thank yous, etc.)",
+                    "Create base templates for each with Claude, including personalization variables",
+                    "Set up a simple system (even just a doc) to copy, customize, and send",
+                    "Refine templates based on response rates over 2 weeks"
+                ],
+                scores: { admin: 10, support: 8, beginner: 10, free: 10, immediate: 10, minimal: 10, solo: 9, service: 9 }
+            },
+            {
+                id: 2,
+                title: "Social Media Content Batch Creator",
+                category: "Content & Marketing",
+                description: "Generate a month's worth of social media posts in one sitting using AI to maintain consistency.",
+                whyText: "Content creation is eating up your time. By batching your social media with AI, you can create 30 days of posts in 2-3 hours instead of scrambling daily. This keeps you consistent while freeing up creative energy for strategy.",
+                timeSaved: "8-12 hrs/month",
+                moneySaved: "$400-800/month",
+                howSteps: [
+                    "Define your content pillars (3-5 themes you always talk about)",
+                    "Use Claude to generate 30 post ideas based on your pillars",
+                    "Refine and add your personal voice to the best ones",
+                    "Schedule them all using a free tool like Buffer or Later"
+                ],
+                scores: { content: 10, grow_revenue: 8, beginner: 10, free: 9, immediate: 9, minimal: 9, content_biz: 10, solo: 10 }
+            },
+            {
+                id: 3,
+                title: "Sales Proposal Generator",
+                category: "Customer & Sales",
+                description: "Create professional, customized proposals in minutes by feeding AI your services and client details.",
+                whyText: "Every hour spent writing proposals is an hour not spent serving clients or finding new ones. An AI proposal system can cut your proposal time by 80% while actually improving quality and consistency.",
+                timeSaved: "3-5 hrs/week",
+                moneySaved: "$1,000-3,000/month",
+                howSteps: [
+                    "Document your services, pricing, and past proposal examples",
+                    "Create a proposal template structure with Claude",
+                    "Build a simple intake form for client details",
+                    "Use Claude to generate customized proposals from the template + details"
+                ],
+                scores: { sales: 10, grow_revenue: 10, service: 10, intermediate: 8, low: 8, short: 8, some: 8, small: 9 }
+            },
+            {
+                id: 4,
+                title: "Customer FAQ Chatbot",
+                category: "Customer Support",
+                description: "Build a simple AI assistant that can answer common customer questions 24/7.",
+                whyText: "You're spending too much time answering the same questions over and over. A FAQ bot handles 70% of inquiries automatically, letting you focus on complex issues that actually need your expertise.",
+                timeSaved: "10-15 hrs/week",
+                moneySaved: "$1,500-3,000/month",
+                howSteps: [
+                    "List your 20-30 most frequently asked questions and answers",
+                    "Organize them into categories (pricing, process, policies, etc.)",
+                    "Set up a simple chatbot using a tool like Tidio or Crisp (free tiers available)",
+                    "Train it with your FAQ content and test thoroughly"
+                ],
+                scores: { support: 10, save_time: 10, scale: 10, intermediate: 9, low: 9, short: 9, some: 9, medium: 10, product: 9 }
+            },
+            {
+                id: 5,
+                title: "Automated Lead Follow-Up Sequences",
+                category: "Sales & Automation",
+                description: "Set up AI-written email sequences that nurture leads automatically based on their behavior.",
+                whyText: "You're losing deals because leads fall through the cracks. Automated follow-up ensures every lead gets consistent, personalized attention - even when you're busy with other things.",
+                timeSaved: "5-8 hrs/week",
+                moneySaved: "$2,000-5,000/month",
+                howSteps: [
+                    "Map your ideal follow-up timeline (day 1, 3, 7, 14, etc.)",
+                    "Use Claude to write a sequence of 5-7 emails that provide value and build trust",
+                    "Set up automation in your email tool or CRM",
+                    "Track open rates and refine messaging monthly"
+                ],
+                scores: { sales: 10, grow_revenue: 10, save_time: 8, intermediate: 8, low: 8, medium_budget: 9, some: 10, integrated: 10, small: 9, service: 9 }
+            },
+            {
+                id: 6,
+                title: "Meeting Notes & Action Item Extractor",
+                category: "Operations",
+                description: "Use AI to turn meeting recordings or notes into structured summaries with clear action items.",
+                whyText: "Meetings are only valuable if follow-through happens. AI can turn your messy notes into organized summaries with clear owners and deadlines, ensuring nothing falls through the cracks.",
+                timeSaved: "3-5 hrs/week",
+                moneySaved: "$300-600/month",
+                howSteps: [
+                    "Start recording meetings (Zoom, Google Meet, or voice memo)",
+                    "Use a transcription tool (Otter.ai free tier works great)",
+                    "Feed transcripts to Claude with a prompt for summaries + action items",
+                    "Share structured notes with your team within hours"
+                ],
+                scores: { admin: 9, save_time: 10, intermediate: 8, free: 8, immediate: 9, some: 8, medium: 10, large: 10, small: 8 }
+            },
+            {
+                id: 7,
+                title: "Product Description Writer",
+                category: "E-commerce & Content",
+                description: "Generate compelling, SEO-optimized product descriptions at scale using AI.",
+                whyText: "Writing unique descriptions for every product is exhausting and time-consuming. AI can generate compelling, SEO-friendly copy that converts, letting you list products 10x faster.",
+                timeSaved: "10-20 hrs/month",
+                moneySaved: "$500-2,000/month",
+                howSteps: [
+                    "Create a template with your brand voice and key selling points",
+                    "Gather product specs, features, and target keywords",
+                    "Use Claude to generate descriptions in batches",
+                    "Edit for accuracy and upload to your store"
+                ],
+                scores: { content: 9, product: 10, scale: 9, beginner: 9, free: 9, short: 8, minimal: 9, solo: 9 }
+            },
+            {
+                id: 8,
+                title: "Client Onboarding Automation",
+                category: "Operations & Customer Success",
+                description: "Create an automated welcome sequence that gets new clients started without manual hand-holding.",
+                whyText: "Great onboarding determines client success and retention. An automated system ensures every client gets a consistent, thorough welcome experience while freeing you from repetitive tasks.",
+                timeSaved: "5-10 hrs/week",
+                moneySaved: "$800-2,000/month",
+                howSteps: [
+                    "Map out your ideal onboarding journey (what clients need to know/do)",
+                    "Create welcome emails, how-to guides, and FAQ docs with Claude",
+                    "Set up automated email sequence triggered by new client signup",
+                    "Add personal check-in touchpoints at key milestones"
+                ],
+                scores: { admin: 9, support: 9, scale: 10, service: 10, saas: 10, intermediate: 8, low: 9, short: 9, some: 9, small: 10 }
+            },
+            {
+                id: 9,
+                title: "Competitor Analysis Reports",
+                category: "Strategy & Research",
+                description: "Use AI to regularly analyze competitor content, pricing, and positioning to stay ahead.",
+                whyText: "Knowing what competitors are doing helps you differentiate and spot opportunities. AI can do the research legwork, surfacing insights that would take you hours to compile manually.",
+                timeSaved: "4-8 hrs/month",
+                moneySaved: "$300-800/month",
+                howSteps: [
+                    "Identify 3-5 key competitors to track",
+                    "Create a template for the information you want to capture",
+                    "Use Claude to analyze their websites, social, and content monthly",
+                    "Compile insights into actionable strategy recommendations"
+                ],
+                scores: { grow_revenue: 9, strategic: 10, advanced: 9, medium_budget: 8, medium_time: 9, integrated: 8, saas: 9, medium: 9 }
+            },
+            {
+                id: 10,
+                title: "Invoice & Expense Automation",
+                category: "Finance & Operations",
+                description: "Automate invoice creation, expense categorization, and financial reporting.",
+                whyText: "Financial admin is necessary but not the best use of your time. Automation ensures accuracy, speeds up cash flow, and gives you real-time visibility into your business finances.",
+                timeSaved: "4-6 hrs/month",
+                moneySaved: "$200-500/month",
+                howSteps: [
+                    "Choose an invoicing tool with automation features (Wave is free)",
+                    "Set up recurring invoices for regular clients",
+                    "Create expense categories and rules for auto-categorization",
+                    "Use AI to generate financial summaries monthly"
+                ],
+                scores: { admin: 10, reduce_costs: 10, save_time: 9, beginner: 9, free: 10, short: 8, minimal: 10, solo: 10, service: 8 }
+            },
+            {
+                id: 11,
+                title: "Course/Training Content Generator",
+                category: "Education & Content",
+                description: "Create comprehensive course outlines, lesson plans, and educational content with AI assistance.",
+                whyText: "Creating educational content is incredibly time-intensive. AI can help you structure courses, generate lesson content, and create supplementary materials 5x faster than starting from scratch.",
+                timeSaved: "15-30 hrs/course",
+                moneySaved: "$1,000-5,000/course",
+                howSteps: [
+                    "Define your course topic and learning objectives",
+                    "Use Claude to create a comprehensive module outline",
+                    "Generate lesson content, examples, and exercises for each module",
+                    "Create quizzes, worksheets, and supplementary materials"
+                ],
+                scores: { content: 10, content_biz: 10, scale: 9, intermediate: 9, low: 8, medium_time: 10, some: 8, solo: 9 }
+            },
+            {
+                id: 12,
+                title: "SOP & Process Documentation",
+                category: "Operations & Team",
+                description: "Document your business processes so tasks can be delegated or automated consistently.",
+                whyText: "You can't scale what isn't documented. SOPs let you hand off tasks confidently, onboard team members faster, and identify what can be automated. This is foundational for growth.",
+                timeSaved: "10-20 hrs/month",
+                moneySaved: "$500-2,000/month",
+                howSteps: [
+                    "List all recurring tasks in your business",
+                    "Record yourself doing each task (Loom works great)",
+                    "Use Claude to turn recordings into step-by-step SOPs",
+                    "Store in a central location (Notion, Google Drive) for team access"
+                ],
+                scores: { admin: 8, scale: 10, save_time: 8, intermediate: 8, free: 9, medium_time: 9, some: 8, small: 10, medium: 10 }
+            },
+            {
+                id: 13,
+                title: "Personalized Upsell & Cross-sell Emails",
+                category: "Sales & Revenue",
+                description: "Create AI-powered email campaigns that recommend additional products/services based on purchase history.",
+                whyText: "Your existing customers are your best revenue source. AI can analyze purchase patterns and create personalized recommendations that feel helpful rather than salesy, increasing lifetime value.",
+                timeSaved: "3-5 hrs/week",
+                moneySaved: "$1,000-5,000/month",
+                howSteps: [
+                    "Analyze your product/service catalog for natural pairings",
+                    "Segment customers by what they've purchased",
+                    "Use Claude to write personalized recommendation emails for each segment",
+                    "Set up automated triggers based on purchase behavior"
+                ],
+                scores: { sales: 9, grow_revenue: 10, product: 10, saas: 9, advanced: 9, medium_budget: 9, medium_time: 8, integrated: 10, medium: 9 }
+            },
+            {
+                id: 14,
+                title: "Blog-to-Social Content Repurposer",
+                category: "Content & Marketing",
+                description: "Turn one piece of long-form content into dozens of social posts, emails, and snippets automatically.",
+                whyText: "You're creating great content but only using it once. AI can repurpose a single blog post into 20+ pieces of content across platforms, maximizing your content ROI dramatically.",
+                timeSaved: "6-10 hrs/month",
+                moneySaved: "$400-1,000/month",
+                howSteps: [
+                    "Take your best-performing blog posts or content pieces",
+                    "Feed them to Claude with prompts for different formats",
+                    "Generate Twitter threads, LinkedIn posts, email snippets, and quotes",
+                    "Schedule across platforms throughout the month"
+                ],
+                scores: { content: 10, grow_revenue: 8, save_time: 9, beginner: 10, free: 10, immediate: 9, minimal: 9, solo: 10, content_biz: 10 }
+            },
+            {
+                id: 15,
+                title: "Dynamic Pricing Optimizer",
+                category: "Revenue & Strategy",
+                description: "Use AI to analyze market conditions and optimize your pricing for maximum revenue.",
+                whyText: "Most businesses leave money on the table with static pricing. AI can help you test price points, analyze competitor pricing, and find the optimal price that maximizes revenue without losing customers.",
+                timeSaved: "2-4 hrs/month",
+                moneySaved: "$2,000-10,000/month",
+                howSteps: [
+                    "Gather historical sales data and pricing information",
+                    "Use Claude to analyze price elasticity and market positioning",
+                    "Design A/B tests for different price points",
+                    "Implement dynamic pricing rules based on demand signals"
+                ],
+                scores: { grow_revenue: 10, reduce_costs: 8, product: 10, saas: 10, expert: 10, high: 10, strategic: 10, advanced_tools: 10, medium: 9, large: 10 }
+            },
+            {
+                id: 16,
+                title: "Customer Feedback Analyzer",
+                category: "Customer Success & Product",
+                description: "Automatically categorize and extract insights from customer reviews, surveys, and support tickets.",
+                whyText: "Your customers are telling you exactly what they want - if you're listening. AI can process hundreds of feedback points to surface trends, pain points, and opportunities you'd otherwise miss.",
+                timeSaved: "5-10 hrs/month",
+                moneySaved: "$500-2,000/month",
+                howSteps: [
+                    "Collect all customer feedback sources (reviews, surveys, tickets, emails)",
+                    "Use Claude to categorize feedback by theme and sentiment",
+                    "Generate monthly insight reports with actionable recommendations",
+                    "Prioritize product/service improvements based on frequency and impact"
+                ],
+                scores: { support: 9, scale: 9, product: 9, saas: 10, intermediate: 9, low: 9, short: 9, some: 9, medium: 10 }
+            },
+            {
+                id: 17,
+                title: "Weekly Newsletter Writer",
+                category: "Content & Marketing",
+                description: "Create engaging weekly newsletters with AI that curate content, write summaries, and maintain your voice.",
+                whyText: "Newsletters build relationships but take forever to write. AI can help you curate content, write engaging copy, and maintain consistency - turning a 3-hour task into 30 minutes.",
+                timeSaved: "8-12 hrs/month",
+                moneySaved: "$400-1,000/month",
+                howSteps: [
+                    "Define your newsletter format and content pillars",
+                    "Create a weekly content curation system (save links, notes throughout week)",
+                    "Use Claude to write sections based on your notes and format",
+                    "Edit for your voice and personal touches, then send"
+                ],
+                scores: { content: 10, grow_revenue: 8, content_biz: 10, beginner: 9, free: 9, short: 9, minimal: 9, solo: 10 }
+            },
+            {
+                id: 18,
+                title: "Sales Call Prep Assistant",
+                category: "Sales",
+                description: "Use AI to research prospects and prepare personalized talking points before every sales call.",
+                whyText: "Preparation is the key to closing deals, but research takes time. AI can compile prospect information and create custom talking points in minutes, making every call more effective.",
+                timeSaved: "4-8 hrs/week",
+                moneySaved: "$1,500-4,000/month",
+                howSteps: [
+                    "Create a research template (company info, recent news, potential pain points)",
+                    "Before calls, gather prospect's website, LinkedIn, and recent content",
+                    "Use Claude to analyze and create personalized talking points",
+                    "Add specific questions and potential objections to address"
+                ],
+                scores: { sales: 10, grow_revenue: 10, service: 10, saas: 9, intermediate: 8, low: 8, immediate: 9, some: 9, small: 10 }
+            },
+            {
+                id: 19,
+                title: "Automated Review Response System",
+                category: "Customer Success & Marketing",
+                description: "Generate thoughtful, personalized responses to customer reviews across all platforms.",
+                whyText: "Responding to reviews builds trust and improves SEO, but it's tedious. AI can draft personalized responses that address specific feedback while maintaining your brand voice.",
+                timeSaved: "3-6 hrs/month",
+                moneySaved: "$200-500/month",
+                howSteps: [
+                    "Set up alerts for new reviews across platforms",
+                    "Create response templates for different review types (positive, negative, neutral)",
+                    "Use Claude to personalize responses based on specific feedback",
+                    "Review, adjust, and post within 24 hours"
+                ],
+                scores: { support: 8, grow_revenue: 7, product: 9, beginner: 10, free: 10, immediate: 10, minimal: 10, solo: 9 }
+            },
+            {
+                id: 20,
+                title: "Contract & Legal Document Drafter",
+                category: "Operations & Legal",
+                description: "Use AI to create first drafts of contracts, agreements, and legal documents based on templates.",
+                whyText: "Legal documents are necessary but expensive. AI can create solid first drafts based on your templates, reducing lawyer time and ensuring you don't operate without proper agreements.",
+                timeSaved: "5-10 hrs/month",
+                moneySaved: "$500-2,000/month",
+                howSteps: [
+                    "Gather your existing contracts and identify common elements",
+                    "Create modular templates with variable sections",
+                    "Use Claude to draft new documents by combining templates with specifics",
+                    "Have a lawyer review final versions for critical agreements"
+                ],
+                scores: { admin: 9, reduce_costs: 10, service: 10, intermediate: 9, low: 8, short: 9, some: 8, small: 9 }
+            }
         ];
 
         // State
-        let savedUseCases = JSON.parse(localStorage.getItem('savedUseCases') || '[]');
-        let currentFilters = {
-            difficulty: 'all',
-            impact: 'all',
-            search: ''
-        };
+        let currentQuestion = 0;
+        let answers = {};
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            renderUseCases();
-            updateSavedCount();
-            setupFilterListeners();
-        });
-
-        function setupFilterListeners() {
-            // Filter buttons
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const filter = e.target.dataset.filter;
-                    const value = e.target.dataset.value;
-
-                    // Update active state
-                    document.querySelectorAll(`[data-filter="${filter}"]`).forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-
-                    currentFilters[filter] = value;
-                    renderUseCases();
-                });
-            });
-
-            // Search box
-            document.getElementById('searchBox').addEventListener('input', (e) => {
-                currentFilters.search = e.target.value.toLowerCase();
-                renderUseCases();
-            });
+        // Start Quiz
+        function startQuiz() {
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('quizScreen').classList.remove('hidden');
+            document.getElementById('totalQ').textContent = questions.length;
+            showQuestion(0);
         }
 
-        function filterUseCases() {
-            return useCases.filter(uc => {
-                // Difficulty filter
-                if (currentFilters.difficulty !== 'all' && uc.difficulty !== currentFilters.difficulty) {
-                    return false;
-                }
+        // Show Question
+        function showQuestion(index) {
+            const q = questions[index];
+            currentQuestion = index;
 
-                // Impact filter
-                if (currentFilters.impact !== 'all' && uc.impact !== currentFilters.impact) {
-                    return false;
-                }
+            // Update progress
+            const progress = ((index) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('currentQ').textContent = index + 1;
 
-                // Search filter
-                if (currentFilters.search) {
-                    const searchText = currentFilters.search;
-                    const matchTitle = uc.title.toLowerCase().includes(searchText);
-                    const matchCategory = uc.category.toLowerCase().includes(searchText);
-                    const matchTags = uc.tags.some(tag => tag.includes(searchText));
-                    if (!matchTitle && !matchCategory && !matchTags) {
-                        return false;
-                    }
-                }
-
-                return true;
-            });
-        }
-
-        function renderUseCases() {
-            const filtered = filterUseCases();
-            const grid = document.getElementById('useCasesGrid');
-
-            document.getElementById('resultCount').textContent = filtered.length;
-
-            if (filtered.length === 0) {
-                grid.innerHTML = `
-                    <div class="empty-state" style="grid-column: 1/-1;">
-                        <h3>No use cases found</h3>
-                        <p>Try adjusting your filters or search terms</p>
-                    </div>
-                `;
-                return;
-            }
-
-            // Group by category
-            const grouped = {};
-            filtered.forEach(uc => {
-                const cat = uc.category;
-                if (!grouped[cat]) grouped[cat] = [];
-                grouped[cat].push(uc);
-            });
-
-            let html = '';
-            Object.keys(grouped).forEach(category => {
-                html += `
-                    <div class="category-section" style="grid-column: 1/-1;">
-                        <h2 class="category-header">
-                            ${getCategoryEmoji(category)} ${category}
-                            <span class="category-count">${grouped[category].length}</span>
-                        </h2>
-                        <div class="use-cases-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px;">
-                            ${grouped[category].map(uc => renderCard(uc)).join('')}
+            // Build question HTML
+            const card = document.getElementById('questionCard');
+            card.innerHTML = `
+                <div class="question-number">QUESTION ${index + 1}</div>
+                <div class="question-text">${q.question}</div>
+                <div class="options">
+                    ${q.options.map(opt => `
+                        <div class="option ${answers[q.id] === opt.value ? 'selected' : ''}"
+                             onclick="selectOption('${q.id}', '${opt.value}')">
+                            <div class="option-icon">${opt.icon}</div>
+                            <div class="option-content">
+                                <div class="option-title">${opt.title}</div>
+                                <div class="option-desc">${opt.desc}</div>
+                            </div>
                         </div>
-                    </div>
-                `;
-            });
-
-            grid.innerHTML = html;
-        }
-
-        function getCategoryEmoji(category) {
-            const emojis = {
-                'Content & Marketing': '📝',
-                'Customer & Sales': '💬',
-                'Operations & Automation': '⚙️',
-                'Data & Analytics': '📊',
-                'Decision Making & Strategy': '🧠',
-                'Internal Systems & Documentation': '📋',
-                'Product & Development': '🛠️',
-                'Industry-Specific: E-commerce': '🛒',
-                'Industry-Specific: SaaS': '☁️',
-                'Industry-Specific: Consulting': '💼',
-                'Industry-Specific: Education': '🎓',
-                'Industry-Specific: Real Estate': '🏠',
-                'Industry-Specific: Healthcare': '🏥',
-                'Advanced & Emerging': '🚀',
-                'High-Intent Lead Capture': '💰',
-                'Sales Velocity & Closing': '📈',
-                'Retention & Expansion': '💎',
-                'Operational Leverage': '⚙️',
-                'Direct Revenue Channels': '🚀'
-            };
-            return emojis[category] || '📌';
-        }
-
-        function renderCard(uc) {
-            const isSaved = savedUseCases.includes(uc.id);
-            return `
-                <div class="use-case-card ${isSaved ? 'saved' : ''}" data-id="${uc.id}">
-                    <div class="card-header">
-                        <span class="card-number">#${uc.id}</span>
-                        <span class="card-category">${uc.category.split(':')[0]}</span>
-                    </div>
-                    <h3 class="card-title">${uc.title}</h3>
-                    <div class="card-tags">
-                        <span class="tag difficulty-${uc.difficulty}">${uc.difficulty}</span>
-                        <span class="tag impact-${uc.impact}">${getImpactLabel(uc.impact)}</span>
-                        ${uc.tags.slice(0, 2).map(tag => `<span class="tag">${tag}</span>`).join('')}
-                    </div>
-                    <button class="save-btn ${isSaved ? 'saved' : ''}" onclick="toggleSave(${uc.id})">
-                        ${isSaved ? '✓ Saved' : '+ Save'}
+                    `).join('')}
+                </div>
+                <div class="nav-buttons">
+                    <button class="nav-btn back" onclick="prevQuestion()" ${index === 0 ? 'style="visibility:hidden"' : ''}>
+                        ← Back
+                    </button>
+                    <button class="nav-btn next" onclick="nextQuestion()" ${!answers[q.id] ? 'disabled' : ''}>
+                        ${index === questions.length - 1 ? 'See Results' : 'Next →'}
                     </button>
                 </div>
             `;
+
+            // Animate in
+            card.style.animation = 'none';
+            card.offsetHeight; // Trigger reflow
+            card.style.animation = 'slideIn 0.5s ease';
         }
 
-        function getImpactLabel(impact) {
-            const labels = {
-                'revenue': '💰 Revenue',
-                'cost': '📉 Cost Saving',
-                'growth': '🚀 Growth'
-            };
-            return labels[impact] || impact;
+        // Select Option
+        function selectOption(questionId, value) {
+            answers[questionId] = value;
+            showQuestion(currentQuestion);
         }
 
-        function toggleSave(id) {
-            const index = savedUseCases.indexOf(id);
-            if (index > -1) {
-                savedUseCases.splice(index, 1);
+        // Navigation
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                showQuestion(currentQuestion + 1);
             } else {
-                savedUseCases.push(id);
+                showLoading();
             }
-            localStorage.setItem('savedUseCases', JSON.stringify(savedUseCases));
-            updateSavedCount();
-            renderUseCases();
-            renderSavedList();
         }
 
-        function updateSavedCount() {
-            document.getElementById('savedCount').textContent = savedUseCases.length;
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                showQuestion(currentQuestion - 1);
+            }
         }
 
-        function toggleSavedPanel() {
-            document.getElementById('savedPanel').classList.toggle('open');
-            renderSavedList();
+        // Show Loading
+        function showLoading() {
+            document.getElementById('quizScreen').classList.add('hidden');
+            document.getElementById('loadingScreen').classList.remove('hidden');
+
+            // Simulate analysis time
+            setTimeout(() => {
+                showResults();
+            }, 2500);
         }
 
-        function renderSavedList() {
-            const list = document.getElementById('savedList');
-            if (savedUseCases.length === 0) {
-                list.innerHTML = `
-                    <div class="empty-state">
-                        <h3>No saved items yet</h3>
-                        <p>Click "Save" on any use case to add it here</p>
+        // Calculate & Show Results
+        function showResults() {
+            document.getElementById('loadingScreen').classList.add('hidden');
+            document.getElementById('resultsScreen').classList.remove('hidden');
+
+            // Score each use case based on answers
+            const scoredUseCases = useCases.map(uc => {
+                let score = 0;
+
+                // Business type match
+                if (answers.business_type === 'service' && uc.scores.service) score += uc.scores.service;
+                if (answers.business_type === 'product' && uc.scores.product) score += uc.scores.product;
+                if (answers.business_type === 'saas' && uc.scores.saas) score += uc.scores.saas;
+                if (answers.business_type === 'content' && uc.scores.content_biz) score += uc.scores.content_biz;
+
+                // Team size match
+                if (answers.team_size === 'solo' && uc.scores.solo) score += uc.scores.solo;
+                if (answers.team_size === 'small' && uc.scores.small) score += uc.scores.small;
+                if (answers.team_size === 'medium' && uc.scores.medium) score += uc.scores.medium;
+                if (answers.team_size === 'large' && uc.scores.large) score += uc.scores.large;
+
+                // Pain point match (highest weight)
+                if (answers.biggest_pain === 'content' && uc.scores.content) score += uc.scores.content * 1.5;
+                if (answers.biggest_pain === 'admin' && uc.scores.admin) score += uc.scores.admin * 1.5;
+                if (answers.biggest_pain === 'sales' && uc.scores.sales) score += uc.scores.sales * 1.5;
+                if (answers.biggest_pain === 'support' && uc.scores.support) score += uc.scores.support * 1.5;
+
+                // Goal match (high weight)
+                if (answers.revenue_goal === 'grow_revenue' && uc.scores.grow_revenue) score += uc.scores.grow_revenue * 1.3;
+                if (answers.revenue_goal === 'save_time' && uc.scores.save_time) score += uc.scores.save_time * 1.3;
+                if (answers.revenue_goal === 'reduce_costs' && uc.scores.reduce_costs) score += uc.scores.reduce_costs * 1.3;
+                if (answers.revenue_goal === 'scale' && uc.scores.scale) score += uc.scores.scale * 1.3;
+
+                // Tech comfort match
+                if (answers.tech_comfort === 'beginner' && uc.scores.beginner) score += uc.scores.beginner;
+                if (answers.tech_comfort === 'intermediate' && uc.scores.intermediate) score += uc.scores.intermediate;
+                if (answers.tech_comfort === 'advanced' && uc.scores.advanced) score += uc.scores.advanced;
+                if (answers.tech_comfort === 'expert' && uc.scores.expert) score += uc.scores.expert;
+
+                // Budget match
+                if (answers.budget === 'free' && uc.scores.free) score += uc.scores.free;
+                if (answers.budget === 'low' && uc.scores.low) score += uc.scores.low;
+                if (answers.budget === 'medium' && uc.scores.medium_budget) score += uc.scores.medium_budget;
+                if (answers.budget === 'high' && uc.scores.high) score += uc.scores.high;
+
+                // Timeline match
+                if (answers.quick_win === 'immediate' && uc.scores.immediate) score += uc.scores.immediate;
+                if (answers.quick_win === 'short' && uc.scores.short) score += uc.scores.short;
+                if (answers.quick_win === 'medium' && uc.scores.medium_time) score += uc.scores.medium_time;
+                if (answers.quick_win === 'strategic' && uc.scores.strategic) score += uc.scores.strategic;
+
+                // Tools match
+                if (answers.current_tools === 'minimal' && uc.scores.minimal) score += uc.scores.minimal;
+                if (answers.current_tools === 'some' && uc.scores.some) score += uc.scores.some;
+                if (answers.current_tools === 'integrated' && uc.scores.integrated) score += uc.scores.integrated;
+                if (answers.current_tools === 'advanced' && uc.scores.advanced_tools) score += uc.scores.advanced_tools;
+
+                return { ...uc, score };
+            });
+
+            // Get top 3
+            const top3 = scoredUseCases
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 3);
+
+            // Store for download
+            window.topResults = top3;
+            window.userAnswers = answers;
+
+            // Render results
+            const container = document.getElementById('resultsContainer');
+            container.innerHTML = top3.map((uc, i) => `
+                <div class="result-card">
+                    <div class="result-rank">#${i + 1}</div>
+                    <h3 class="result-title">${uc.title}</h3>
+                    <span class="result-category">${uc.category}</span>
+
+                    <div class="why-section">
+                        <h4>WHY THIS IS PERFECT FOR YOU</h4>
+                        <p>${customizeWhyText(uc, answers)}</p>
                     </div>
-                `;
-                return;
-            }
 
-            const savedItems = savedUseCases.map(id => useCases.find(uc => uc.id === id)).filter(Boolean);
-            list.innerHTML = savedItems.map(uc => `
-                <div class="saved-item">
-                    <span class="saved-item-text">${uc.id}. ${uc.title}</span>
-                    <button class="remove-btn" onclick="toggleSave(${uc.id})">×</button>
+                    <div class="impact-grid">
+                        <div class="impact-box time">
+                            <div class="impact-icon">⏱️</div>
+                            <div class="impact-label">Time Saved</div>
+                            <div class="impact-value">${uc.timeSaved}</div>
+                        </div>
+                        <div class="impact-box money">
+                            <div class="impact-icon">💰</div>
+                            <div class="impact-label">Value Created</div>
+                            <div class="impact-value">${uc.moneySaved}</div>
+                        </div>
+                    </div>
+
+                    <div class="how-section">
+                        <h4>How to Get Started:</h4>
+                        <div class="how-steps">
+                            ${uc.howSteps.map((step, j) => `
+                                <div class="how-step">
+                                    <div class="step-number">${j + 1}</div>
+                                    <div class="step-text">${step}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
                 </div>
             `).join('');
         }
 
-        function setView(view) {
-            const grid = document.getElementById('useCasesGrid');
-            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
-            if (view === 'list') {
-                grid.classList.add('list-view');
-                document.querySelectorAll('.view-btn')[1].classList.add('active');
-            } else {
-                grid.classList.remove('list-view');
-                document.querySelectorAll('.view-btn')[0].classList.add('active');
+        // Customize why text based on answers
+        function customizeWhyText(useCase, answers) {
+            let text = useCase.whyText;
+
+            // Add personalization based on answers
+            const personalizations = [];
+
+            if (answers.team_size === 'solo') {
+                personalizations.push("As a solo operator, this is especially valuable because you're wearing all the hats - this gives you leverage.");
+            } else if (answers.team_size === 'small') {
+                personalizations.push("With a small team, this helps you punch above your weight and compete with bigger players.");
+            } else if (answers.team_size === 'medium' || answers.team_size === 'large') {
+                personalizations.push("For your team size, this creates compounding efficiency gains across the organization.");
             }
-        }
 
-        function filterQuick(type) {
-            // Reset filters
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('[data-value="all"]').forEach(btn => btn.classList.add('active'));
-            currentFilters.difficulty = 'all';
-            currentFilters.impact = 'all';
-
-            switch(type) {
-                case 'quick-wins':
-                    document.querySelector('[data-value="beginner"]').click();
-                    break;
-                case 'money-makers':
-                    document.querySelector('[data-value="revenue"]').click();
-                    break;
-                case 'automation':
-                    document.getElementById('searchBox').value = 'automation';
-                    currentFilters.search = 'automation';
-                    break;
-                case 'sales':
-                    document.getElementById('searchBox').value = 'sales crm';
-                    currentFilters.search = 'sales';
-                    break;
-                case 'content':
-                    document.getElementById('searchBox').value = 'content';
-                    currentFilters.search = 'content';
-                    break;
+            if (answers.revenue_goal === 'grow_revenue') {
+                personalizations.push("This directly supports your revenue growth goals by freeing up time for high-value activities.");
+            } else if (answers.revenue_goal === 'save_time') {
+                personalizations.push("This directly addresses your need to save time and work smarter, not harder.");
+            } else if (answers.revenue_goal === 'reduce_costs') {
+                personalizations.push("This helps reduce costs by eliminating the need for additional hires or expensive tools.");
+            } else if (answers.revenue_goal === 'scale') {
+                personalizations.push("This is key infrastructure for scaling - you'll handle 2-3x the volume without proportional time increase.");
             }
-            renderUseCases();
+
+            if (personalizations.length > 0) {
+                text += " " + personalizations[Math.floor(Math.random() * personalizations.length)];
+            }
+
+            return text;
         }
 
-        function copyToClipboard() {
-            const savedItems = savedUseCases.map(id => useCases.find(uc => uc.id === id)).filter(Boolean);
-            const text = savedItems.map(uc => `${uc.id}. ${uc.title} (${uc.category})`).join('\n');
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Copied to clipboard!');
-            });
-        }
+        // Download Results
+        function downloadResults() {
+            const results = window.topResults;
+            const answers = window.userAnswers;
 
-        function downloadList() {
-            const savedItems = savedUseCases.map(id => useCases.find(uc => uc.id === id)).filter(Boolean);
-            let text = "# My AI Use Case Priorities\n\n";
+            let text = "# Your Personalized AI Use Case Recommendations\n\n";
             text += `Generated: ${new Date().toLocaleDateString()}\n\n`;
+            text += "---\n\n";
 
-            savedItems.forEach((uc, i) => {
-                text += `## ${i + 1}. ${uc.title}\n`;
-                text += `- **Category:** ${uc.category}\n`;
-                text += `- **Difficulty:** ${uc.difficulty}\n`;
-                text += `- **Impact:** ${uc.impact}\n`;
-                text += `- **Tags:** ${uc.tags.join(', ')}\n\n`;
+            results.forEach((uc, i) => {
+                text += `## #${i + 1}: ${uc.title}\n\n`;
+                text += `**Category:** ${uc.category}\n\n`;
+                text += `### Why This Is Perfect For You\n${customizeWhyText(uc, answers)}\n\n`;
+                text += `### Expected Impact\n`;
+                text += `- **Time Saved:** ${uc.timeSaved}\n`;
+                text += `- **Value Created:** ${uc.moneySaved}\n\n`;
+                text += `### How to Get Started\n`;
+                uc.howSteps.forEach((step, j) => {
+                    text += `${j + 1}. ${step}\n`;
+                });
+                text += "\n---\n\n";
             });
+
+            text += "\n*Generated by CoLab Lisbon AI Use Case Finder*\n";
+            text += "*colablisbon.com/usecases*\n";
 
             const blob = new Blob([text], { type: 'text/markdown' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'my-ai-use-cases.md';
+            a.download = 'my-ai-recommendations.md';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
+        }
+
+        // Restart Quiz
+        function restartQuiz() {
+            answers = {};
+            currentQuestion = 0;
+            document.getElementById('resultsScreen').classList.add('hidden');
+            document.getElementById('startScreen').classList.remove('hidden');
         }
     </script>
 </body>
