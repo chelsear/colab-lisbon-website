@@ -1165,9 +1165,7 @@ Please help me:
 
                     <div class="prompt-box">
                         <h4>EXAMPLE PROMPT TO GET STARTED</h4>
-                        <div class="prompt-text" id="prompt-${i}">
-                            <button class="copy-prompt-btn" onclick="copyPrompt(${i})">Copy</button>${prompt}
-                        </div>
+                        <div class="prompt-text" id="prompt-${i}"><button class="copy-prompt-btn" onclick="copyPrompt(${i})">Copy</button>${prompt.trim()}</div>
                     </div>
                 </div>
             `}).join('');
