@@ -1,0 +1,9 @@
+# robots.txt for colablisbon.com
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://colablisbon.com/sitemap.xml
+
+# LLM guidance
+# llms.txt: https://colablisbon.com/llms.txt
