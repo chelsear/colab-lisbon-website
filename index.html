@@ -642,6 +642,11 @@
             margin: 0 auto;
             display: block;
             filter: grayscale(100%);
+            transition: filter 0.4s ease;
+        }
+
+        .venue-image-large:hover {
+            filter: grayscale(0%);
         }
 
         /* Community Collage */
@@ -818,8 +823,14 @@
             border-radius: 50%;
             border: 3px solid var(--yellow);
             margin: 0 auto 20px;
-            filter: brightness(1.2) contrast(0.9);
+            filter: grayscale(100%) brightness(1.2) contrast(0.9);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: filter 0.4s ease;
+        }
+
+        .team-card:hover .team-photo,
+        .team-photo:hover {
+            filter: grayscale(0%) brightness(1.05) contrast(1);
         }
 
         .team-name {
@@ -1156,7 +1167,7 @@
             <h2 class="section-title">Meet the Team</h2>
             <div class="team-grid">
                 <div class="team-card reveal">
-                    <img src="chelsea.png" alt="Chelsea Rustrum" class="team-photo" style="filter: grayscale(100%); border: 3px solid var(--yellow);">
+                    <img src="chelsea.png" alt="Chelsea Rustrum" class="team-photo">
                     <h3 class="team-name">Chelsea Rustrum</h3>
                     <a href="https://www.linkedin.com/in/chelsearustrum/" target="_blank" class="team-linkedin" aria-label="Chelsea Rustrum LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -1165,7 +1176,7 @@
                     </a>
                 </div>
                 <div class="team-card reveal">
-                    <img src="james.png" alt="James Corbett" class="team-photo" style="filter: grayscale(100%); border: 3px solid var(--yellow);">
+                    <img src="james.png" alt="James Corbett" class="team-photo">
                     <h3 class="team-name">James Corbett</h3>
                     <a href="https://www.linkedin.com/in/jpcorbett/" target="_blank" class="team-linkedin" aria-label="James Corbett LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -1174,7 +1185,7 @@
                     </a>
                 </div>
                 <div class="team-card reveal">
-                    <img src="verena.png" alt="Verena Husemann" class="team-photo" style="filter: grayscale(100%); border: 3px solid var(--yellow);">
+                    <img src="verena.png" alt="Verena Husemann" class="team-photo">
                     <h3 class="team-name">Verena Husemann</h3>
                     <a href="https://www.linkedin.com/in/verenahusemann/" target="_blank" class="team-linkedin" aria-label="Verena Husemann LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
