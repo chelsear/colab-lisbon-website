@@ -47,12 +47,14 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --ink: #2b2b2b;
+            --ink: #545454;
+            --ink-deep: #3f3f3f;
             --gray: #6b6b6b;
             --line: #e7e7e7;
             --coral: #e7583b;
             --coral-deep: #c9411f;
-            --tint: #fdf0ec;
+            --green: #e9f174;
+            --green-tint: #f7fadb;
             --white: #FFFFFF;
             --radius: 14px;
         }
@@ -185,12 +187,12 @@
         }
 
         .option:hover {
-            border-color: var(--coral);
+            border-color: var(--ink);
         }
 
         .option.selected {
-            border-color: var(--coral);
-            background: var(--tint);
+            border-color: var(--ink);
+            background: var(--green-tint);
         }
 
         .option-title {
@@ -209,8 +211,8 @@
         /* ============ BUTTONS ============ */
         .btn {
             display: inline-block;
-            background: var(--coral);
-            color: var(--white);
+            background: var(--ink);
+            color: var(--green);
             border: none;
             border-radius: 999px;
             padding: 16px 40px;
@@ -224,7 +226,7 @@
             transition: background 0.15s ease;
         }
 
-        .btn:hover { background: var(--coral-deep); }
+        .btn:hover { background: var(--ink-deep); }
 
         .btn-block {
             display: block;
@@ -274,7 +276,7 @@
         .building-pct {
             font-size: 3.4rem;
             font-weight: 800;
-            color: var(--coral);
+            color: var(--ink);
             margin-bottom: 8px;
             font-variant-numeric: tabular-nums;
         }
@@ -341,12 +343,12 @@
         }
 
         .gate-box input[type="email"]:focus {
-            border-color: var(--coral);
+            border-color: var(--ink);
         }
 
         /* ============ PLAN ============ */
         .plan-intro {
-            background: var(--tint);
+            background: var(--green-tint);
             border-left: 4px solid var(--coral);
             border-radius: 0 12px 12px 0;
             padding: 18px 22px;
@@ -371,7 +373,7 @@
         .track-name {
             font-size: clamp(1.9rem, 6vw, 2.5rem);
             font-weight: 800;
-            color: var(--coral);
+            color: var(--ink);
             margin-bottom: 14px;
         }
 
@@ -397,11 +399,15 @@
         }
 
         .week-label {
-            font-size: 0.8rem;
+            display: inline-block;
+            font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 1.5px;
-            color: var(--coral-deep);
-            margin-bottom: 4px;
+            background: var(--coral);
+            color: var(--green);
+            padding: 3px 12px;
+            border-radius: 999px;
+            margin-bottom: 7px;
         }
 
         .week-items {
@@ -427,7 +433,7 @@
         .offer-box h3 {
             font-size: 1.25rem;
             font-weight: 700;
-            color: var(--coral-deep);
+            color: var(--ink);
             margin-bottom: 16px;
         }
 
@@ -463,10 +469,14 @@
         }
 
         .module-num {
-            font-size: 0.78rem;
+            display: inline-block;
+            font-size: 0.7rem;
             font-weight: 700;
             letter-spacing: 1.5px;
-            color: var(--coral-deep);
+            background: var(--coral);
+            color: var(--green);
+            padding: 3px 12px;
+            border-radius: 999px;
         }
 
         .module-title {
