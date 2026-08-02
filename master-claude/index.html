@@ -133,7 +133,7 @@
             height: 4px;
             background: var(--line);
             border-radius: 2px;
-            overflow: hidden;
+            position: relative;
         }
 
         .progress-fill {
@@ -142,6 +142,17 @@
             width: 0%;
             transition: width 0.35s ease;
             border-radius: 2px;
+            position: relative;
+        }
+
+        .progress-crab {
+            position: absolute;
+            right: -7px;
+            top: 50%;
+            transform: translateY(-52%);
+            font-size: 15px;
+            line-height: 1;
+            pointer-events: none;
         }
 
         .progress-text {
@@ -177,29 +188,68 @@
             background: var(--white);
             border: 2px solid var(--line);
             border-radius: var(--radius);
-            padding: 15px 18px;
+            padding: 13px 18px 13px 13px;
             text-align: left;
             cursor: pointer;
             font-family: inherit;
-            transition: border-color 0.15s ease, background 0.15s ease;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
         }
 
         .option:hover {
             border-color: var(--ink);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .option:active {
+            transform: scale(0.98);
+            box-shadow: none;
         }
 
         .option.selected {
             border-color: var(--ink);
             background: var(--green-tint);
+            animation: pop 0.25s ease;
         }
 
+        @keyframes pop {
+            0% { transform: scale(1); }
+            40% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        .option-chip {
+            flex-shrink: 0;
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: #f2f2f2;
+            font-size: 1.35rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s ease;
+        }
+
+        .option.selected .option-chip {
+            background: var(--green);
+        }
+
+        .option-text { min-width: 0; }
+
         .option-title {
+            display: block;
             font-weight: 600;
             font-size: 1.02rem;
             color: var(--ink);
         }
 
         .option-desc {
+            display: block;
             font-size: 0.9rem;
             color: var(--gray);
             margin-top: 2px;
@@ -221,10 +271,19 @@
             cursor: pointer;
             text-decoration: none;
             text-align: center;
-            transition: background 0.15s ease;
+            transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
         }
 
-        .btn:hover { background: var(--ink-deep); }
+        .btn:hover {
+            background: var(--ink-deep);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+            box-shadow: none;
+        }
 
         .btn-block {
             display: block;
@@ -268,7 +327,19 @@
         /* ============ BUILDING ============ */
         .building-box {
             text-align: center;
-            padding-top: 70px;
+            padding-top: 40px;
+        }
+
+        .building-crab {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+            animation: bob 1.8s ease-in-out infinite;
+        }
+
+        @keyframes bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-9px); }
         }
 
         .building-pct {
@@ -305,7 +376,7 @@
 
         .build-step .tick {
             display: inline-block;
-            width: 22px;
+            width: 26px;
             color: var(--ink);
             font-weight: 700;
         }
@@ -315,6 +386,19 @@
             max-width: 440px;
             margin: 50px auto 0;
             text-align: center;
+        }
+
+        .gate-emoji {
+            width: 68px;
+            height: 68px;
+            border-radius: 50%;
+            background: var(--green-tint);
+            font-size: 1.9rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
         }
 
         .gate-box h2 {
@@ -357,6 +441,12 @@
         .track-card {
             text-align: center;
             margin-bottom: 44px;
+        }
+
+        .track-emoji {
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 10px;
         }
 
         .track-label {
@@ -494,7 +584,7 @@
         }
 
         .included-list li {
-            padding: 10px 0 10px 32px;
+            padding: 10px 0 10px 34px;
             position: relative;
             line-height: 1.5;
             border-bottom: 1px solid var(--line);
@@ -502,12 +592,9 @@
 
         .included-list li:last-child { border-bottom: none; }
 
-        .included-list li::before {
-            content: '✓';
+        .included-list li .li-emoji {
             position: absolute;
-            left: 4px;
-            color: var(--ink);
-            font-weight: 700;
+            left: 2px;
         }
 
         .plan-cta-wrap {
@@ -612,7 +699,7 @@
             </div>
             <div id="progressWrap">
                 <div class="progress-track" role="progressbar" id="progressBar" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-label="Quiz progress">
-                    <div class="progress-fill" id="progressFill"></div>
+                    <div class="progress-fill" id="progressFill"><span class="progress-crab" aria-hidden="true">🦀</span></div>
                 </div>
                 <div class="progress-text" aria-live="polite" id="progressText"><span id="currentQ">1</span> of <span id="totalQ">6</span></div>
             </div>
@@ -631,7 +718,7 @@
         <div class="wrap">
             <div class="inter-box">
                 <img src="/community-1.jpg" alt="Group vibe coding session at a long table in Lisbon" loading="lazy">
-                <h2>You're in good company</h2>
+                <h2>🎉 You're in good company</h2>
                 <p>This curriculum has been taught live 20+ times in Lisbon to 200+ people — most of whom had never opened a terminal. Three more questions and your plan is ready.</p>
                 <button type="button" class="btn" onclick="continueInter()">Continue →</button>
             </div>
@@ -642,6 +729,7 @@
     <div id="buildingScreen" class="screen hidden">
         <div class="wrap">
             <div class="building-box">
+                <img src="/crab-clean.png" alt="" class="building-crab" aria-hidden="true">
                 <div class="building-pct" id="buildPct">0%</div>
                 <h2>Building your plan</h2>
                 <div class="build-step" id="buildStep1"><span class="tick">·</span> Reading your answers</div>
@@ -655,6 +743,7 @@
     <div id="gateScreen" class="screen hidden">
         <div class="wrap">
             <div class="gate-box">
+                <div class="gate-emoji" aria-hidden="true">🎁</div>
                 <h2>Your plan is ready</h2>
                 <p>Enter your email and your plan appears right here. We'll also keep you in the loop as founding-member modules ship.</p>
                 <form name="master-claude-plan" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="gateForm">
@@ -684,6 +773,7 @@
 
             <div class="track-card">
                 <div class="track-label">Your track</div>
+                <div class="track-emoji" id="trackEmoji" aria-hidden="true"></div>
                 <div class="track-name" id="trackName"></div>
                 <p class="track-desc" id="trackDesc"></p>
             </div>
@@ -692,7 +782,7 @@
             <div id="weeksContainer"></div>
 
             <div class="offer-box">
-                <h3>Straight Talk</h3>
+                <h3>Straight Talk 🤝</h3>
                 <p>This is a founding-member pre-sell. The course is the recording of the workshop we've taught live 20+ times in Lisbon to 200+ people — produced properly for online, module by module.</p>
                 <p>Founding members get each module the moment it ships. Within 48 hours of joining, you'll get an invite to a live onboarding session with us.</p>
                 <div class="offer-price">€199</div>
@@ -706,47 +796,47 @@
                 <p class="micro-line">€199 founding price · 14-day refund, no questions asked</p>
             </div>
 
-            <h2 class="plan-section-title">The Curriculum</h2>
+            <h2 class="plan-section-title">The Curriculum 📚</h2>
             <div>
                 <div class="module-card">
                     <div class="module-num">MODULE 1</div>
-                    <div class="module-title">Claude Fundamentals: Think in Outcomes, Not Prompts</div>
+                    <div class="module-title">🧠 Claude Fundamentals: Think in Outcomes, Not Prompts</div>
                     <div class="module-desc">Setup, prompting patterns that actually transfer, and your personal operating manual.</div>
                 </div>
                 <div class="module-card">
                     <div class="module-num">MODULE 2</div>
-                    <div class="module-title">Knowledge Work on Autopilot</div>
+                    <div class="module-title">⚡ Knowledge Work on Autopilot</div>
                     <div class="module-desc">Projects, style capture, and a research pipeline that does the heavy reading for you.</div>
                 </div>
                 <div class="module-card">
                     <div class="module-num">MODULE 3</div>
-                    <div class="module-title">Claude Code Basics: First Terminal Wins</div>
+                    <div class="module-title">🦀 Claude Code Basics: First Terminal Wins</div>
                     <div class="module-desc">Install, CLAUDE.md, and three real tasks that don't require writing a line of code.</div>
                 </div>
                 <div class="module-card">
                     <div class="module-num">MODULE 4</div>
-                    <div class="module-title">Build &amp; Ship an App</div>
+                    <div class="module-title">🚀 Build &amp; Ship an App</div>
                     <div class="module-desc">Spec → prototype → debug → deploy on Netlify. A real app, live on the internet.</div>
                 </div>
                 <div class="module-card">
                     <div class="module-num">MODULE 5</div>
-                    <div class="module-title">Automations &amp; Agents</div>
+                    <div class="module-title">🤖 Automations &amp; Agents</div>
                     <div class="module-desc">MCP, custom skills, and agent loops. Save 2+ hours a week on autopilot.</div>
                 </div>
                 <div class="module-card">
                     <div class="module-num">MODULE 6</div>
-                    <div class="module-title">Capstone: Portfolio Project</div>
+                    <div class="module-title">🏆 Capstone: Portfolio Project</div>
                     <div class="module-desc">Track-specific templates, a finished project, and a demo + write-up you can show off.</div>
                 </div>
             </div>
 
-            <h2 class="plan-section-title">What's Included</h2>
+            <h2 class="plan-section-title">What's Included 🎒</h2>
             <ul class="included-list">
-                <li>All 6 modules, delivered as they ship — you get each one immediately</li>
-                <li>Live onboarding session with the CoLab team</li>
-                <li>Templates, prompts, and CLAUDE.md starters from the live workshops</li>
-                <li>Access to the CoLab WhatsApp community</li>
-                <li>Lifetime access to this version of the course, including any updates we make to these 6 modules</li>
+                <li><span class="li-emoji" aria-hidden="true">🎥</span>All 6 modules, delivered as they ship — you get each one immediately</li>
+                <li><span class="li-emoji" aria-hidden="true">🧑‍🏫</span>Live onboarding session with the CoLab team</li>
+                <li><span class="li-emoji" aria-hidden="true">📦</span>Templates, prompts, and CLAUDE.md starters from the live workshops</li>
+                <li><span class="li-emoji" aria-hidden="true">💬</span>Access to the CoLab WhatsApp community</li>
+                <li><span class="li-emoji" aria-hidden="true">♾️</span>Lifetime access to this version of the course, including any updates we make to these 6 modules</li>
             </ul>
 
             <div class="plan-cta-wrap">
@@ -754,7 +844,7 @@
                 <p class="micro-line">€199 founding price · 14-day refund, no questions asked</p>
             </div>
 
-            <h2 class="plan-section-title">Questions, Answered Honestly</h2>
+            <h2 class="plan-section-title">Questions, Answered Honestly 🙋</h2>
             <div>
                 <div class="faq-item">
                     <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">When do I get access? <span class="arrow">+</span></button>
@@ -783,7 +873,7 @@
             </div>
 
             <div class="no-pressure">
-                Not ready? Totally fine. Take the quiz insights, join the <a href="https://chat.whatsapp.com/CXtyztHhiy90LU6NulY7XQ" target="_blank" rel="noopener noreferrer">free WhatsApp community</a>, and come back if it clicks. The course will still be here.
+                Not ready? Totally fine. Take the quiz insights, join the <a href="https://chat.whatsapp.com/CXtyztHhiy90LU6NulY7XQ" target="_blank" rel="noopener noreferrer">free WhatsApp community</a>, and come back if it clicks. The course will still be here. 🤙
             </div>
 
             <div class="plan-cta-wrap">
@@ -805,60 +895,60 @@
                 id: 'role',
                 question: "What best describes you?",
                 options: [
-                    { value: 'founder', title: 'Founder / entrepreneur', desc: 'Building a company or a side project' },
-                    { value: 'ops', title: 'Operations / marketing / admin', desc: 'You run processes and keep things moving' },
-                    { value: 'freelance', title: 'Freelancer / consultant', desc: 'You sell your time and expertise' },
-                    { value: 'exec', title: 'Executive / manager', desc: 'You lead a team and drown in busywork' },
-                    { value: 'curious', title: 'Curious human', desc: 'No title needed. You just want to learn this.' }
+                    { value: 'founder', emoji: '🚀', title: 'Founder / entrepreneur', desc: 'Building a company or a side project' },
+                    { value: 'ops', emoji: '⚙️', title: 'Operations / marketing / admin', desc: 'You run processes and keep things moving' },
+                    { value: 'freelance', emoji: '💼', title: 'Freelancer / consultant', desc: 'You sell your time and expertise' },
+                    { value: 'exec', emoji: '📈', title: 'Executive / manager', desc: 'You lead a team and drown in busywork' },
+                    { value: 'curious', emoji: '🧠', title: 'Curious human', desc: 'No title needed. You just want to learn this.' }
                 ]
             },
             {
                 id: 'coding',
                 question: "How's your relationship with code?",
                 options: [
-                    { value: 'none', title: "We've never met", desc: 'Zero code. Not even HTML.' },
-                    { value: 'copypaste', title: 'Copy-paste warrior', desc: 'I can paste a snippet and pray' },
-                    { value: 'scripts', title: 'I hack scripts together', desc: 'Some Python, spreadsheet formulas, APIs' },
-                    { value: 'dev', title: "I'm a developer", desc: 'I write code for a living (or close to it)' }
+                    { value: 'none', emoji: '🙈', title: "We've never met", desc: 'Zero code. Not even HTML.' },
+                    { value: 'copypaste', emoji: '📋', title: 'Copy-paste warrior', desc: 'I can paste a snippet and pray' },
+                    { value: 'scripts', emoji: '🧪', title: 'I hack scripts together', desc: 'Some Python, spreadsheet formulas, APIs' },
+                    { value: 'dev', emoji: '👩‍💻', title: "I'm a developer", desc: 'I write code for a living (or close to it)' }
                 ]
             },
             {
                 id: 'claude',
                 question: "How much have you used Claude?",
                 options: [
-                    { value: 'never', title: 'Never, or barely', desc: 'Heard about it. Maybe poked at it once.' },
-                    { value: 'chat', title: 'I chat with it sometimes', desc: 'Questions, drafts, the occasional brainstorm' },
-                    { value: 'daily', title: 'Daily driver', desc: "It's part of my routine" },
-                    { value: 'code', title: "I've used Claude Code", desc: 'Terminal and all' }
+                    { value: 'never', emoji: '🌱', title: 'Never, or barely', desc: 'Heard about it. Maybe poked at it once.' },
+                    { value: 'chat', emoji: '💬', title: 'I chat with it sometimes', desc: 'Questions, drafts, the occasional brainstorm' },
+                    { value: 'daily', emoji: '☕', title: 'Daily driver', desc: "It's part of my routine" },
+                    { value: 'code', emoji: '🦀', title: "I've used Claude Code", desc: 'Terminal and all' }
                 ]
             },
             {
                 id: 'goal',
                 question: "What do you most want to get out of this?",
                 options: [
-                    { value: 'automate', title: 'Automate my busywork', desc: 'Email, research, reports, admin' },
-                    { value: 'build', title: 'Build an app or product', desc: 'Ship something real without a dev team' },
-                    { value: 'agents', title: 'Set up agents & automations', desc: 'Systems that run without me' },
-                    { value: 'all', title: 'Honestly? All of it', desc: 'Give me the full toolkit' }
+                    { value: 'automate', emoji: '⚡', title: 'Automate my busywork', desc: 'Email, research, reports, admin' },
+                    { value: 'build', emoji: '🛠️', title: 'Build an app or product', desc: 'Ship something real without a dev team' },
+                    { value: 'agents', emoji: '🤖', title: 'Set up agents & automations', desc: 'Systems that run without me' },
+                    { value: 'all', emoji: '🎁', title: 'Honestly? All of it', desc: 'Give me the full toolkit' }
                 ]
             },
             {
                 id: 'hours',
                 question: "How much time can you give this per week?",
                 options: [
-                    { value: 'low', title: '2–3 hours', desc: 'Steady and sustainable' },
-                    { value: 'mid', title: '4–6 hours', desc: 'A proper evening or two' },
-                    { value: 'high', title: '7+ hours', desc: 'I want to move fast' }
+                    { value: 'low', emoji: '🐢', title: '2–3 hours', desc: 'Steady and sustainable' },
+                    { value: 'mid', emoji: '🚶', title: '4–6 hours', desc: 'A proper evening or two' },
+                    { value: 'high', emoji: '🐇', title: '7+ hours', desc: 'I want to move fast' }
                 ]
             },
             {
                 id: 'blocker',
                 question: "What's stopped you so far?",
                 options: [
-                    { value: 'start', title: "I don't know where to start", desc: 'Too many entry points, no map' },
-                    { value: 'meh', title: 'I tried AI and it felt meh', desc: 'Generic answers, nothing stuck' },
-                    { value: 'time', title: 'No time', desc: 'Learning always loses to doing' },
-                    { value: 'overwhelm', title: 'Too many tools, too much noise', desc: 'Every week a new "game changer"' }
+                    { value: 'start', emoji: '🗺️', title: "I don't know where to start", desc: 'Too many entry points, no map' },
+                    { value: 'meh', emoji: '😑', title: 'I tried AI and it felt meh', desc: 'Generic answers, nothing stuck' },
+                    { value: 'time', emoji: '⏳', title: 'No time', desc: 'Learning always loses to doing' },
+                    { value: 'overwhelm', emoji: '🌪️', title: 'Too many tools, too much noise', desc: 'Every week a new "game changer"' }
                 ]
             }
         ];
@@ -866,6 +956,7 @@
         const TRACKS = {
             A: {
                 name: 'The Automator',
+                emoji: '⚡',
                 desc: "Your fastest wins come from automating knowledge work — email, research, reports, admin. You don't need to become a developer. You need Claude doing your busywork by week two.",
                 emphasis: [
                     'Your focus: deep dive — build your personal operating manual.',
@@ -878,6 +969,7 @@
             },
             B: {
                 name: 'The Builder',
+                emoji: '🛠️',
                 desc: "You're here to ship something real. Your plan front-loads just enough fundamentals, then goes deep on Claude Code and building — and deploying — an actual app.",
                 emphasis: [
                     'Your focus: quick pass — prompting patterns for builders.',
@@ -890,6 +982,7 @@
             },
             AB: {
                 name: 'The Agent Boss',
+                emoji: '🤖',
                 desc: "You already move fast with AI. Your plan skims the fundamentals and goes deep on Claude Code, MCP, custom skills, and agent loops that run without you.",
                 emphasis: [
                     'Your focus: skim — steal the operating manual idea, skip the basics.',
@@ -987,8 +1080,11 @@
                 <div class="options">
                     ${q.options.map(opt => `
                         <button type="button" class="option ${answers[q.id] === opt.value ? 'selected' : ''}" aria-pressed="${answers[q.id] === opt.value}" onclick="selectOpt('${q.id}', '${opt.value}')">
-                            <div class="option-title">${opt.title}</div>
-                            <div class="option-desc">${opt.desc}</div>
+                            <span class="option-chip" aria-hidden="true">${opt.emoji}</span>
+                            <span class="option-text">
+                                <span class="option-title">${opt.title}</span>
+                                <span class="option-desc">${opt.desc}</span>
+                            </span>
                         </button>
                     `).join('')}
                 </div>
@@ -1064,7 +1160,7 @@
             setTimeout(() => {
                 const el = document.getElementById(id);
                 el.classList.add('done');
-                el.querySelector('.tick').textContent = '✓';
+                el.querySelector('.tick').textContent = '✅';
             }, delay);
         }
 
@@ -1165,7 +1261,8 @@
             const pace = answers.hours || 'mid';
             const pacing = PACING[pace];
 
-            document.getElementById('planIntro').textContent = BLOCKER_INTROS[answers.blocker] || "Here's the plan that fits how you answered.";
+            document.getElementById('planIntro').textContent = '💡 ' + (BLOCKER_INTROS[answers.blocker] || "Here's the plan that fits how you answered.");
+            document.getElementById('trackEmoji').textContent = t.emoji;
             document.getElementById('trackName').textContent = t.name;
             document.getElementById('trackDesc').textContent = t.desc;
             document.getElementById('planWeeksTitle').textContent = 'Your ' + pacing.weeks + '-Week Plan (' + pacing.label + ')';

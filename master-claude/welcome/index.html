@@ -54,7 +54,8 @@
             border-radius: 50%;
             background: var(--ink);
             color: var(--green);
-            font-size: 2rem;
+            font-size: 1.8rem;
+            line-height: 1;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -89,13 +90,12 @@
 
         .step-num {
             flex-shrink: 0;
-            width: 30px;
-            height: 30px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
-            background: var(--ink);
-            color: var(--green);
-            font-weight: 700;
-            font-size: 0.95rem;
+            background: #f2f2f2;
+            font-size: 1rem;
+            line-height: 1;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -156,26 +156,26 @@
     </header>
 
     <div class="wrap">
-        <div class="checkmark">✓</div>
+        <div class="checkmark" aria-hidden="true">🎉</div>
         <h1>You're In</h1>
         <p class="sub">Welcome, founding member. Master Claude is officially yours. Here's what happens next:</p>
 
         <div class="step">
-            <div class="step-num">1</div>
+            <div class="step-num" aria-hidden="true">📧</div>
             <div class="step-body">
                 <strong>Check your email</strong>
                 Your Stripe receipt just landed. That's your proof of founding-member status.
             </div>
         </div>
         <div class="step">
-            <div class="step-num">2</div>
+            <div class="step-num" aria-hidden="true">⏰</div>
             <div class="step-body">
                 <strong>Watch for your onboarding invite</strong>
                 Within 48 hours we'll email you an invite to the live onboarding session with the CoLab team. Before then, make sure you have a Claude account — the Claude Code modules need a paid plan, and we'll help you get set up.
             </div>
         </div>
         <div class="step">
-            <div class="step-num">3</div>
+            <div class="step-num" aria-hidden="true">💬</div>
             <div class="step-body">
                 <strong>Join the community</strong>
                 Say hi in the <a href="https://chat.whatsapp.com/CXtyztHhiy90LU6NulY7XQ" target="_blank" rel="noopener noreferrer">CoLab WhatsApp group</a> — it's where builds get shared and questions get answered.
