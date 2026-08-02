@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Claude - Online Course | CoLab Lisbon</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Master Claude: the online course from CoLab Lisbon. Automate your busywork, build apps without writing code, and ship things you're proud of. Founding member pre-sell.">
+    <meta name="keywords" content="Claude course, Claude Code, AI course, learn Claude, AI automation, build apps with AI, CoLab Lisbon">
+    <meta name="author" content="CoLab Lisbon">
+    <link rel="canonical" href="https://colablisbon.com/master-claude/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://colablisbon.com/master-claude/">
+    <meta property="og:title" content="Master Claude - Online Course | CoLab Lisbon">
+    <meta property="og:description" content="The workshop 200+ people took in Lisbon - now from your couch. Take the 2-minute quiz and get your personalized learning plan.">
+    <meta property="og:image" content="https://colablisbon.com/community-1.jpg">
+    <meta property="og:site_name" content="CoLab Lisbon">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://colablisbon.com/master-claude/">
+    <meta name="twitter:title" content="Master Claude - Online Course | CoLab Lisbon">
+    <meta name="twitter:description" content="The workshop 200+ people took in Lisbon - now from your couch. Take the 2-minute quiz and get your personalized learning plan.">
+    <meta name="twitter:image" content="https://colablisbon.com/community-1.jpg">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "Master Claude",
+        "description": "Online course from CoLab Lisbon: automate your busywork, build apps without writing code, and run agents with Claude and Claude Code.",
+        "url": "https://colablisbon.com/master-claude/",
+        "provider": {
+            "@type": "Organization",
+            "name": "CoLab Lisbon",
+            "url": "https://colablisbon.com"
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Gagalin';
+            src: url('/Gagalin-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --coral-light: #FFB4A2;
+            --coral-dark: #e7583b;
+            --coral-text: #c9411f; /* AA-compliant coral for small text on white */
+            --yellow: #e9f174;
+            --yellow-bright: #f0f594;
+            --gray-dark: #545454;
+            --gray-mid: #666;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--coral-light);
+            color: var(--gray-dark);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Coral angled band behind landing hero only.
+           Absolute (not fixed) so it scrolls with the page instead of
+           following the viewport, and sized to the hero content. */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: clamp(780px, 95vh, 820px);
+            background: var(--coral-dark);
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            z-index: -1;
+        }
+
+        /* Quiz/gate/plan screens sit on solid coral-light */
+        body.funnel-active::before {
+            display: none;
+        }
+
+        /* Keep the white logo legible on funnel screens */
+        body.funnel-active header {
+            background: var(--coral-dark);
+            padding: 20px 0;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .narrow {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        header {
+            padding: 30px 0 10px;
+        }
+
+        .logo {
+            height: 64px;
+            width: auto;
+        }
+
+        .hidden { display: none !important; }
+
+        /* ============ LANDING ============ */
+        .hero {
+            padding: 50px 0 60px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--gray-dark);
+            padding: 8px 24px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            transform: rotate(-2deg);
+            margin-bottom: 30px;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+        }
+
+        .hero-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.8rem, 10vw, 6.5rem);
+            line-height: 0.95;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            color: var(--yellow);
+            text-shadow:
+                -3px -3px 0 var(--white),
+                3px -3px 0 var(--white),
+                -3px 3px 0 var(--white),
+                3px 3px 0 var(--white),
+                -6px 6px 0 var(--gray-dark);
+        }
+
+        .hero-sub {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.3rem, 3.5vw, 2rem);
+            color: var(--white);
+            text-shadow: 2px 2px 0px var(--gray-dark);
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-tagline {
+            font-family: 'Gagalin', 'Permanent Marker', cursive;
+            font-size: clamp(1.1rem, 3vw, 1.8rem);
+            color: var(--white);
+            text-shadow: 2px 2px 0px var(--gray-dark);
+            margin-bottom: 10px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gray-dark);
+            color: var(--yellow);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            padding: 20px 50px;
+            text-decoration: none;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 6px 6px 0px var(--yellow);
+            border: 3px solid var(--gray-dark);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .cta-button:hover {
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0px var(--yellow);
+        }
+
+        .cta-button.on-white {
+            box-shadow: 6px 6px 0px var(--coral-dark);
+        }
+
+        .cta-button.on-white:hover {
+            box-shadow: 3px 3px 0px var(--coral-dark);
+        }
+
+        .micro-line {
+            font-size: 0.95rem;
+            color: var(--gray-dark);
+            opacity: 0.85;
+        }
+
+        .hero .micro-line {
+            color: var(--white);
+            text-shadow: 1px 1px 0px var(--gray-dark);
+            opacity: 1;
+        }
+
+        .resume-banner {
+            max-width: 600px;
+            margin: 0 auto 25px;
+            background: var(--white);
+            border: 3px solid var(--gray-dark);
+            box-shadow: 5px 5px 0px var(--yellow);
+            padding: 15px 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .resume-banner span {
+            font-weight: 700;
+        }
+
+        .resume-banner button {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            padding: 8px 18px;
+            border: 3px solid var(--gray-dark);
+            cursor: pointer;
+            background: var(--yellow);
+            color: var(--gray-dark);
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+        }
+
+        .resume-banner button.ghost {
+            background: var(--white);
+        }
+
+        .section-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            text-transform: uppercase;
+            text-align: center;
+            color: var(--gray-dark);
+            margin-bottom: 40px;
+        }
+
+        /* Outcomes strip */
+        .outcomes {
+            padding: 60px 0;
+        }
+
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .outcome-card {
+            background: var(--yellow);
+            border: 4px solid var(--gray-dark);
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.25);
+            padding: 30px 25px;
+        }
+
+        .outcome-card h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            color: var(--gray-dark);
+        }
+
+        .outcome-card p {
+            line-height: 1.6;
+            color: var(--gray-dark);
+        }
+
+        /* Collage */
+        .collage-section {
+            padding: 60px 0;
+        }
+
+        .collage {
+            columns: 3;
+            column-gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 10px;
+        }
+
+        .polaroid {
+            display: inline-block;
+            width: 100%;
+            background: var(--white);
+            padding: 12px 12px 16px;
+            border: 4px solid var(--gray-dark);
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.25);
+            margin-bottom: 40px;
+            break-inside: avoid;
+            position: relative;
+            transform: rotate(var(--rot, 0deg));
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 2px solid var(--gray-dark);
+        }
+
+        .polaroid-caption {
+            font-family: 'Gagalin', 'Permanent Marker', cursive;
+            font-size: 1.1rem;
+            color: var(--gray-dark);
+            text-align: center;
+            padding-top: 12px;
+        }
+
+        .polaroid::before {
+            content: '';
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            width: 90px;
+            height: 26px;
+            background: var(--yellow);
+            transform: translateX(-50%) rotate(-4deg);
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.15);
+            z-index: 2;
+        }
+
+        .polaroid:nth-child(odd) { --rot: -2.5deg; }
+        .polaroid:nth-child(even) { --rot: 2deg; }
+        .polaroid:nth-child(3n) { --rot: -1.2deg; box-shadow: 8px 8px 0px var(--yellow); }
+        .polaroid:nth-child(4n)::before { transform: translateX(-50%) rotate(5deg); background: var(--coral-dark); }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.04);
+            box-shadow: 12px 12px 0px rgba(0,0,0,0.3);
+            z-index: 5;
+        }
+
+        /* How it works */
+        .how {
+            padding: 60px 0;
+        }
+
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .how-card {
+            background: var(--white);
+            border: 4px solid var(--gray-dark);
+            border-top: 8px solid var(--coral-dark);
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.2);
+            padding: 30px 25px;
+            position: relative;
+        }
+
+        .how-num {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2.5rem;
+            color: var(--coral-dark);
+            margin-bottom: 10px;
+        }
+
+        .how-card h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.15rem;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .how-card p {
+            line-height: 1.6;
+            color: var(--gray-mid);
+        }
+
+        .how-note {
+            text-align: center;
+            margin-top: 30px;
+            font-family: 'Gagalin', 'Permanent Marker', cursive;
+            font-size: 1.2rem;
+            color: var(--gray-dark);
+        }
+
+        /* Team */
+        .team {
+            padding: 60px 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .team-card {
+            background: var(--white);
+            padding: 35px 25px;
+            text-align: center;
+            border: 4px solid var(--gray-dark);
+            border-top: 8px solid var(--yellow);
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .team-card:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .team-photo {
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--yellow);
+            margin: 0 auto 20px;
+            filter: grayscale(100%) brightness(1.2) contrast(0.9);
+            transition: filter 0.4s ease;
+        }
+
+        .team-card:hover .team-photo {
+            filter: grayscale(0%) brightness(1.05) contrast(1);
+        }
+
+        .team-name {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.4rem;
+            color: var(--gray-dark);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .team-role {
+            color: var(--gray-mid);
+            font-size: 0.95rem;
+        }
+
+        /* Bottom CTA */
+        .bottom-cta {
+            text-align: center;
+            padding: 70px 0 100px;
+        }
+
+        .bottom-cta h2 {
+            font-family: 'Gagalin', 'Permanent Marker', cursive;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            color: var(--gray-dark);
+            margin-bottom: 10px;
+        }
+
+        /* ============ QUIZ ============ */
+        .funnel-screen {
+            min-height: 100vh;
+            padding: 40px 0 80px;
+        }
+
+        .progress-container {
+            max-width: 720px;
+            margin: 20px auto 30px;
+        }
+
+        .progress-bar {
+            height: 18px;
+            background: var(--white);
+            border: 3px solid var(--gray-dark);
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--coral-dark);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .question-card {
+            background: var(--white);
+            border: 4px solid var(--gray-dark);
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.25);
+            padding: 35px 30px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .question-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            color: var(--coral-dark);
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+            margin-bottom: 25px;
+            color: var(--gray-dark);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            width: 100%;
+            min-height: 48px;
+            border: 3px solid var(--gray-dark);
+            background: var(--white);
+            padding: 14px 18px;
+            cursor: pointer;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+            transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+            text-align: left;
+        }
+
+        .option:hover {
+            background: var(--yellow-bright);
+            transform: translate(1px, 1px);
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.15);
+        }
+
+        .option.selected {
+            background: var(--yellow);
+            box-shadow: 4px 4px 0px var(--coral-dark);
+        }
+
+        .option-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--gray-dark);
+        }
+
+        .option-desc {
+            font-size: 0.9rem;
+            color: var(--gray-mid);
+            margin-top: 3px;
+        }
+
+        .quiz-nav {
+            margin-top: 25px;
+        }
+
+        .back-btn {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            background: var(--white);
+            border: 3px solid var(--gray-dark);
+            padding: 10px 22px;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+        }
+
+        .back-btn:hover {
+            background: var(--yellow-bright);
+        }
+
+        /* ============ BUILDING ============ */
+        .building-box {
+            background: var(--white);
+            border: 4px solid var(--gray-dark);
+            box-shadow: 8px 8px 0px var(--yellow);
+            padding: 50px 35px;
+            max-width: 560px;
+            margin: 80px auto 0;
+            text-align: center;
+        }
+
+        .building-box h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .build-step {
+            font-size: 1.1rem;
+            color: var(--gray-mid);
+            margin-bottom: 14px;
+            opacity: 0.25;
+            transition: opacity 0.4s ease;
+            text-align: left;
+            max-width: 380px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .build-step.done {
+            opacity: 1;
+            color: var(--gray-dark);
+            font-weight: 700;
+        }
+
+        .build-step .tick {
+            display: inline-block;
+            width: 22px;
+            color: var(--coral-dark);
+            font-weight: 700;
+        }
+
+        /* ============ GATE ============ */
+        .gate-box {
+            background: var(--white);
+            border: 4px solid var(--gray-dark);
+            box-shadow: 8px 8px 0px var(--yellow);
+            padding: 45px 35px;
+            max-width: 560px;
+            margin: 60px auto 0;
+            text-align: center;
+        }
+
+        .gate-box h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            color: var(--coral-dark);
+        }
+
+        .gate-box p {
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .gate-box input[type="email"] {
+            width: 100%;
+            padding: 15px 18px;
+            border: 3px solid var(--gray-dark);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 18px;
+        }
+
+        .gate-box button[type="submit"] {
+            width: 100%;
+            background: var(--gray-dark);
+            color: var(--yellow);
+            padding: 16px 30px;
+            border: 3px solid var(--gray-dark);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            box-shadow: 5px 5px 0px var(--coral-dark);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .gate-box button[type="submit"]:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0px var(--coral-dark);
+        }
+
+        .gate-box .micro-line {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: var(--gray-mid);
+        }
+
+        /* ============ PLAN ============ */
+        .plan-intro {
+            background: var(--yellow);
+            border: 4px solid var(--gray-dark);
+            box-shadow: 6px 6px 0px rgba(0,0,0,0.2);
+            padding: 20px 25px;
+            font-family: 'Gagalin', 'Permanent Marker', cursive;
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+        }
+
+        .track-card {
+            background: var(--white);
+            border: 4px solid var(--gray-dark);
+            border-top: 10px solid var(--coral-dark);
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.25);
+            padding: 35px 30px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .track-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            color: var(--gray-mid);
+            margin-bottom: 8px;
+        }
+
+        .track-name {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
+            color: var(--coral-dark);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .track-desc {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--gray-dark);
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .plan-section-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            text-transform: uppercase;
+            margin: 45px 0 20px;
+            color: var(--gray-dark);
+        }
+
+        .week-row {
+            background: var(--white);
+            border: 3px solid var(--gray-dark);
+            border-left: 8px solid var(--yellow);
+            padding: 16px 20px;
+            margin-bottom: 12px;
+        }
+
+        .week-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+            color: var(--coral-dark);
+            margin-bottom: 4px;
+        }
+
+        .week-items {
+            line-height: 1.5;
+        }
+
+        .week-items .emph {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--gray-mid);
+            font-style: italic;
+        }
+
+        /* Offer */
+        .offer-box {
+            background: var(--white);
+            border: 5px solid var(--gray-dark);
+            box-shadow: 10px 10px 0px var(--yellow);
+            padding: 40px 30px;
+            margin: 50px 0;
+        }
+
+        .offer-box h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            color: var(--coral-dark);
+            margin-bottom: 18px;
+        }
+
+        .offer-box p {
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        .offer-price {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: var(--gray-dark);
+            margin: 20px 0 5px;
+        }
+
+        .offer-price-note {
+            font-size: 0.95rem;
+            color: var(--gray-mid);
+            margin-bottom: 10px;
+        }
+
+        .module-card {
+            background: var(--white);
+            border: 3px solid var(--gray-dark);
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+            padding: 20px 22px;
+            margin-bottom: 15px;
+        }
+
+        .module-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            color: var(--coral-dark);
+        }
+
+        .module-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 4px 0 6px;
+        }
+
+        .module-desc {
+            font-size: 0.95rem;
+            color: var(--gray-mid);
+            line-height: 1.5;
+        }
+
+        .included-list {
+            list-style: none;
+        }
+
+        .included-list li {
+            background: var(--white);
+            border: 3px solid var(--gray-dark);
+            border-left: 8px solid var(--coral-dark);
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .plan-cta-wrap {
+            text-align: center;
+            margin: 45px 0;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--white);
+            border: 3px solid var(--gray-dark);
+            margin-bottom: 12px;
+        }
+
+        .faq-q {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 18px 20px;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--gray-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .faq-q .arrow {
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--coral-dark);
+            font-size: 1.3rem;
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-q .arrow {
+            transform: rotate(90deg);
+        }
+
+        .faq-a {
+            display: none;
+            padding: 0 20px 18px;
+            line-height: 1.7;
+            color: var(--gray-mid);
+        }
+
+        .faq-item.open .faq-a {
+            display: block;
+        }
+
+        .no-pressure {
+            text-align: center;
+            margin: 50px 0 30px;
+            padding: 25px;
+            border: 3px dashed var(--gray-dark);
+            line-height: 1.7;
+        }
+
+        .no-pressure a {
+            color: var(--coral-text);
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9rem;
+            color: var(--gray-mid);
+        }
+
+        footer a {
+            color: var(--gray-dark);
+        }
+
+        @media (max-width: 768px) {
+            .collage {
+                columns: 2;
+                column-gap: 22px;
+            }
+
+            .polaroid {
+                margin-bottom: 22px;
+                padding: 8px 8px 10px;
+            }
+
+            .polaroid::before {
+                width: 60px;
+                height: 18px;
+                top: -9px;
+            }
+
+            .question-card {
+                padding: 25px 18px;
+            }
+
+            .offer-box {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cta-button {
+                padding: 16px 20px;
+                font-size: 1.25rem;
+                letter-spacing: 1px;
+                white-space: nowrap;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header persists across all funnel screens -->
+    <header>
+        <div class="container">
+            <a href="/"><img src="/colab-logo.png" alt="COLAB LISBON" class="logo"></a>
+        </div>
+    </header>
+
+    <!-- ==================== LANDING ==================== -->
+    <div id="landingScreen">
+        <section class="hero">
+            <div class="container">
+                <div id="resumeBanner" class="resume-banner hidden">
+                    <span>You have a quiz in progress.</span>
+                    <button onclick="resumeQuiz()">RESUME</button>
+                    <button class="ghost" onclick="discardQuiz()">START OVER</button>
+                </div>
+
+                <div class="hero-badge">ONLINE COURSE · FOUNDING MEMBERS</div>
+                <h1 class="hero-title">Master Claude</h1>
+                <p class="hero-sub">Automate your busywork. Build apps without writing code. Ship things you're proud of.</p>
+                <p class="hero-tagline">The workshop 200+ people took in Lisbon — now from your couch.</p>
+                <button class="cta-button" onclick="startQuiz()">GET YOUR LEARNING PLAN →</button>
+                <p class="micro-line">2 minutes. 6 questions. No spam, no fake countdown timers.</p>
+            </div>
+        </section>
+
+        <section class="outcomes">
+            <div class="container">
+                <div class="outcomes-grid">
+                    <div class="outcome-card">
+                        <h3>Save Hours Every Week</h3>
+                        <p>Turn repetitive email, research, and reporting into two-minute Claude workflows — and get your evenings back.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <h3>Build Real Apps</h3>
+                        <p>Go from idea to a working, deployed app with Claude Code — without writing the code yourself.</p>
+                    </div>
+                    <div class="outcome-card">
+                        <h3>Run Agents That Work</h3>
+                        <p>Set up automations and agents that keep working while you don't. MCP, custom skills, agent loops — demystified.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="collage-section">
+            <div class="container">
+                <h2 class="section-title">Taught Live to 200+ People Since Feb</h2>
+                <div class="collage">
+                    <div class="polaroid">
+                        <img src="/community-1.jpg" alt="Group vibe coding session at a long table" loading="lazy">
+                        <div class="polaroid-caption">vibe coding sessions</div>
+                    </div>
+                    <div class="polaroid">
+                        <img src="/community-3.jpg" alt="Workshop presentation on agentic thinking" loading="lazy">
+                        <div class="polaroid-caption">live in lisbon</div>
+                    </div>
+                    <div class="polaroid">
+                        <img src="/community-5.jpg" alt="Workshop participants building together" loading="lazy">
+                        <div class="polaroid-caption">builders building</div>
+                    </div>
+                    <div class="polaroid">
+                        <img src="/community-7.jpg" alt="Community members at a CoLab workshop" loading="lazy">
+                        <div class="polaroid-caption">new friends</div>
+                    </div>
+                    <div class="polaroid">
+                        <img src="/community-4.jpg" alt="Hands-on session at CoLab Lisbon" loading="lazy">
+                        <div class="polaroid-caption">hands-on, always</div>
+                    </div>
+                    <div class="polaroid">
+                        <img src="/community-8.jpg" alt="Workshop demo day" loading="lazy">
+                        <div class="polaroid-caption">demo day energy</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <div class="how-grid">
+                    <div class="how-card">
+                        <div class="how-num">1</div>
+                        <h3>Answer 6 Quick Questions</h3>
+                        <p>Tell us where you're starting from, what you want to build, and how much time you've got.</p>
+                    </div>
+                    <div class="how-card">
+                        <div class="how-num">2</div>
+                        <h3>Get Your Learning Plan</h3>
+                        <p>We match you to one of three tracks and lay out a week-by-week plan that fits your schedule.</p>
+                    </div>
+                    <div class="how-card">
+                        <div class="how-num">3</div>
+                        <h3>Claim Founding Access</h3>
+                        <p>Join as a founding member at the pre-sell price and get each module the moment it ships.</p>
+                    </div>
+                </div>
+                <p class="how-note">Your plan is generated right here in your browser. No AI theater.</p>
+            </div>
+        </section>
+
+        <section class="team">
+            <div class="container">
+                <h2 class="section-title">Your Instructors</h2>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <img src="/chelsea.png" alt="Chelsea Rustrum" class="team-photo">
+                        <h3 class="team-name">Chelsea Rustrum</h3>
+                        <p class="team-role">Author, community builder, and AI workflow obsessive.</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="/james.png" alt="James Corbett" class="team-photo">
+                        <h3 class="team-name">James Corbett</h3>
+                        <p class="team-role">Builder and educator. Ships with Claude Code daily.</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="/verena.png" alt="Verena Husemann" class="team-photo">
+                        <h3 class="team-name">Verena Husemann</h3>
+                        <p class="team-role">Operator turned automator. Systems that stick.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bottom-cta">
+            <div class="container">
+                <h2>Find out which track fits you</h2>
+                <button class="cta-button" onclick="startQuiz()">GET YOUR LEARNING PLAN →</button>
+                <p class="micro-line">2 minutes. 6 questions. Plan generated in your browser.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== QUIZ ==================== -->
+    <div id="quizScreen" class="funnel-screen hidden">
+        <div class="container">
+            <div class="progress-container">
+                <div class="progress-bar" role="progressbar" id="progressBar" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-label="Quiz progress">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" aria-live="polite">QUESTION <span id="currentQ">1</span> OF <span id="totalQ">6</span></div>
+            </div>
+            <div class="question-card" id="questionCard"></div>
+        </div>
+    </div>
+
+    <!-- ==================== BUILDING ==================== -->
+    <div id="buildingScreen" class="funnel-screen hidden">
+        <div class="container">
+            <div class="building-box">
+                <h2>Building Your Plan</h2>
+                <div class="build-step" id="buildStep1"><span class="tick">·</span> Reading your answers</div>
+                <div class="build-step" id="buildStep2"><span class="tick">·</span> Matching you to a track</div>
+                <div class="build-step" id="buildStep3"><span class="tick">·</span> Assembling your week-by-week plan</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== EMAIL GATE ==================== -->
+    <div id="gateScreen" class="funnel-screen hidden">
+        <div class="container">
+            <div class="gate-box">
+                <h2>Your Plan Is Ready</h2>
+                <p>Enter your email and your plan appears right here. We'll also keep you in the loop as founding-member modules ship.</p>
+                <form name="master-claude-plan" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="gateForm">
+                    <input type="hidden" name="form-name" value="master-claude-plan">
+                    <p style="display: none;">
+                        <label>Don't fill this out: <input name="bot-field"></label>
+                    </p>
+                    <input type="hidden" name="role" id="hfRole" value="">
+                    <input type="hidden" name="coding" id="hfCoding" value="">
+                    <input type="hidden" name="claude" id="hfClaude" value="">
+                    <input type="hidden" name="goal" id="hfGoal" value="">
+                    <input type="hidden" name="hours" id="hfHours" value="">
+                    <input type="hidden" name="blocker" id="hfBlocker" value="">
+                    <input type="hidden" name="track" id="hfTrack" value="">
+                    <input type="email" name="email" id="gateEmail" required placeholder="you@example.com" aria-label="Email address">
+                    <button type="submit">SHOW MY PLAN →</button>
+                </form>
+                <p class="micro-line">No spam. Course updates only. Unsubscribe anytime.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== PLAN ==================== -->
+    <div id="planScreen" class="funnel-screen hidden">
+        <div class="container narrow">
+            <div class="plan-intro" id="planIntro"></div>
+
+            <div class="track-card">
+                <div class="track-label">YOUR TRACK</div>
+                <div class="track-name" id="trackName"></div>
+                <p class="track-desc" id="trackDesc"></p>
+            </div>
+
+            <h2 class="plan-section-title" id="planWeeksTitle"></h2>
+            <div id="weeksContainer"></div>
+
+            <div class="offer-box">
+                <h3>Straight Talk</h3>
+                <p>This is a founding-member pre-sell. The course is the recording of the workshop we've taught live 20+ times in Lisbon to 200+ people — produced properly for online, module by module.</p>
+                <p>Founding members get each module the moment it ships. Within 48 hours of joining, you'll get an invite to a live onboarding session with us.</p>
+                <div class="offer-price">€199</div>
+                <p class="offer-price-note">Planned price after full launch: €349–397. That's our stated intent, not a fake discount.</p>
+                <p>No countdown timer. Founding pricing ends when all six modules are produced and live — a real production milestone, not an arbitrary deadline.</p>
+                <p style="font-weight: 700; color: var(--gray-dark);">14-day money-back refund, no questions asked.</p>
+            </div>
+
+            <div class="plan-cta-wrap">
+                <a href="/master-claude/checkout/" class="cta-button on-white">CLAIM FOUNDING ACCESS →</a>
+                <p class="micro-line">€199 founding price · 14-day refund, no questions asked</p>
+            </div>
+
+            <h2 class="plan-section-title">The Curriculum</h2>
+            <div>
+                <div class="module-card">
+                    <div class="module-num">MODULE 1</div>
+                    <div class="module-title">Claude Fundamentals: Think in Outcomes, Not Prompts</div>
+                    <div class="module-desc">Setup, prompting patterns that actually transfer, and your personal operating manual.</div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">MODULE 2</div>
+                    <div class="module-title">Knowledge Work on Autopilot</div>
+                    <div class="module-desc">Projects, style capture, and a research pipeline that does the heavy reading for you.</div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">MODULE 3</div>
+                    <div class="module-title">Claude Code Basics: First Terminal Wins</div>
+                    <div class="module-desc">Install, CLAUDE.md, and three real tasks that don't require writing a line of code.</div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">MODULE 4</div>
+                    <div class="module-title">Build &amp; Ship an App</div>
+                    <div class="module-desc">Spec → prototype → debug → deploy on Netlify. A real app, live on the internet.</div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">MODULE 5</div>
+                    <div class="module-title">Automations &amp; Agents</div>
+                    <div class="module-desc">MCP, custom skills, and agent loops. Save 2+ hours a week on autopilot.</div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">MODULE 6</div>
+                    <div class="module-title">Capstone: Portfolio Project</div>
+                    <div class="module-desc">Track-specific templates, a finished project, and a demo + write-up you can show off.</div>
+                </div>
+            </div>
+
+            <h2 class="plan-section-title">What's Included</h2>
+            <ul class="included-list">
+                <li>All 6 modules, delivered as they ship — you get each one immediately</li>
+                <li>Live onboarding session with the CoLab team</li>
+                <li>Templates, prompts, and CLAUDE.md starters from the live workshops</li>
+                <li>Access to the CoLab WhatsApp community</li>
+                <li>Lifetime access to this version of the course, including any updates we make to these 6 modules</li>
+            </ul>
+
+            <div class="plan-cta-wrap">
+                <a href="/master-claude/checkout/" class="cta-button on-white">CLAIM FOUNDING ACCESS →</a>
+                <p class="micro-line">€199 founding price · 14-day refund, no questions asked</p>
+            </div>
+
+            <h2 class="plan-section-title">Questions, Answered Honestly</h2>
+            <div>
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">When do I get access? <span class="arrow">›</span></button>
+                    <div class="faq-a">This is a pre-sell. Within 48 hours of joining you'll get your onboarding invite. Modules ship as they're produced — founding members get each one the moment it's ready, starting with Module 1. You're buying early access to something being built, and we're upfront about that.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">I can't code. Is this for me? <span class="arrow">›</span></button>
+                    <div class="faq-a">Yes. Most people who took the live workshop had never opened a terminal. Modules 1–3 assume zero coding background, and in modules 4–6 Claude Code writes the code — your job is to describe what you want and steer. If you got the Automator or Builder track, your whole plan is built for non-coders.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">How is this different from the live workshop? <span class="arrow">›</span></button>
+                    <div class="faq-a">Same curriculum, taught by the same people — but at your own pace, from anywhere, with lifetime access to this version. You also get the templates and prompts we've refined over 20+ live sessions, plus a live onboarding call so it doesn't feel like shouting into the void.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">What do I need to get started? <span class="arrow">›</span></button>
+                    <div class="faq-a">A laptop (Mac, Windows, or Linux) and a Claude account. The Claude Code modules require a paid Claude plan — that's paid to Anthropic, not us, and it's not included in the €199. Module 1 walks you through setup, and the onboarding session is there if you get stuck.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">What's the refund policy? <span class="arrow">›</span></button>
+                    <div class="faq-a">14 days, no questions asked. Email us and we'll refund you in full. Pre-sells only work if you trust us, so we make it easy to change your mind.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Why is it cheaper now? <span class="arrow">›</span></button>
+                    <div class="faq-a">Because you're buying before it's fully produced. You take on a bit of waiting; we reward that with the founding price and the onboarding session. Once the recording wraps and the full course is live, the planned price is €349–397. No countdown, no fake urgency — the price ends when production ends.</div>
+                </div>
+            </div>
+
+            <div class="no-pressure">
+                Not ready? Totally fine. Take the quiz insights, join the <a href="https://chat.whatsapp.com/CXtyztHhiy90LU6NulY7XQ" target="_blank" rel="noopener noreferrer">free WhatsApp community</a>, and come back if it clicks. The course will still be here.
+            </div>
+
+            <div class="plan-cta-wrap">
+                <a href="/master-claude/checkout/" class="cta-button on-white">CLAIM FOUNDING ACCESS →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <a href="/">← Back to CoLab Lisbon</a>
+        </div>
+    </footer>
+
+    <script>
+        // ==================== DATA ====================
+        const questions = [
+            {
+                id: 'role',
+                question: "What best describes you?",
+                options: [
+                    { value: 'founder', title: 'Founder / entrepreneur', desc: 'Building a company or a side project' },
+                    { value: 'ops', title: 'Operations / marketing / admin', desc: 'You run processes and keep things moving' },
+                    { value: 'freelance', title: 'Freelancer / consultant', desc: 'You sell your time and expertise' },
+                    { value: 'exec', title: 'Executive / manager', desc: 'You lead a team and drown in busywork' },
+                    { value: 'curious', title: 'Curious human', desc: 'No title needed. You just want to learn this.' }
+                ]
+            },
+            {
+                id: 'coding',
+                question: "How's your relationship with code?",
+                options: [
+                    { value: 'none', title: "We've never met", desc: 'Zero code. Not even HTML.' },
+                    { value: 'copypaste', title: 'Copy-paste warrior', desc: 'I can paste a snippet and pray' },
+                    { value: 'scripts', title: 'I hack scripts together', desc: 'Some Python, spreadsheet formulas, APIs' },
+                    { value: 'dev', title: "I'm a developer", desc: 'I write code for a living (or close to it)' }
+                ]
+            },
+            {
+                id: 'claude',
+                question: "How much have you used Claude?",
+                options: [
+                    { value: 'never', title: 'Never, or barely', desc: 'Heard about it. Maybe poked at it once.' },
+                    { value: 'chat', title: 'I chat with it sometimes', desc: 'Questions, drafts, the occasional brainstorm' },
+                    { value: 'daily', title: 'Daily driver', desc: "It's part of my routine" },
+                    { value: 'code', title: "I've used Claude Code", desc: 'Terminal and all' }
+                ]
+            },
+            {
+                id: 'goal',
+                question: "What do you most want to get out of this?",
+                options: [
+                    { value: 'automate', title: 'Automate my busywork', desc: 'Email, research, reports, admin' },
+                    { value: 'build', title: 'Build an app or product', desc: 'Ship something real without a dev team' },
+                    { value: 'agents', title: 'Set up agents & automations', desc: 'Systems that run without me' },
+                    { value: 'all', title: 'Honestly? All of it', desc: 'Give me the full toolkit' }
+                ]
+            },
+            {
+                id: 'hours',
+                question: "How much time can you give this per week?",
+                options: [
+                    { value: 'low', title: '2–3 hours', desc: 'Steady and sustainable' },
+                    { value: 'mid', title: '4–6 hours', desc: 'A proper evening or two' },
+                    { value: 'high', title: '7+ hours', desc: 'I want to move fast' }
+                ]
+            },
+            {
+                id: 'blocker',
+                question: "What's stopped you so far?",
+                options: [
+                    { value: 'start', title: "I don't know where to start", desc: 'Too many entry points, no map' },
+                    { value: 'meh', title: 'I tried AI and it felt meh', desc: 'Generic answers, nothing stuck' },
+                    { value: 'time', title: 'No time', desc: 'Learning always loses to doing' },
+                    { value: 'overwhelm', title: 'Too many tools, too much noise', desc: 'Every week a new "game changer"' }
+                ]
+            }
+        ];
+
+        const TRACKS = {
+            A: {
+                name: 'The Automator',
+                desc: "Your fastest wins come from automating knowledge work — email, research, reports, admin. You don't need to become a developer. You need Claude doing your busywork by week two.",
+                emphasis: [
+                    'Your focus: deep dive — build your personal operating manual.',
+                    'Your focus: core module — automate email, research, and reports.',
+                    'Your focus: gentle intro — three no-code terminal wins.',
+                    'Your focus: light pass — build one small tool for your own workflow.',
+                    'Your focus: time-saving automations first, fancy agents later.',
+                    'Your capstone: an automated weekly workflow, documented and running.'
+                ]
+            },
+            B: {
+                name: 'The Builder',
+                desc: "You're here to ship something real. Your plan front-loads just enough fundamentals, then goes deep on Claude Code and building — and deploying — an actual app.",
+                emphasis: [
+                    'Your focus: quick pass — prompting patterns for builders.',
+                    'Your focus: skim — grab the research pipeline for product discovery.',
+                    'Your focus: core module — get genuinely comfortable in the terminal.',
+                    'Your focus: the main event — spec, build, debug, deploy.',
+                    'Your focus: add one automation that supports your app.',
+                    'Your capstone: your shipped app, live on the internet.'
+                ]
+            },
+            AB: {
+                name: 'The Agent Boss',
+                desc: "You already move fast with AI. Your plan skims the fundamentals and goes deep on Claude Code, MCP, custom skills, and agent loops that run without you.",
+                emphasis: [
+                    'Your focus: skim — steal the operating manual idea, skip the basics.',
+                    'Your focus: quick pass — style capture and the research pipeline.',
+                    'Your focus: level up — CLAUDE.md and project structure done right.',
+                    'Your focus: build fast — deployment patterns over hand-holding.',
+                    'Your focus: core module — MCP, custom skills, agent loops.',
+                    'Your capstone: an agent system that saves you 2+ hours a week.'
+                ]
+            }
+        };
+
+        const MODULE_TITLES = [
+            'Module 1: Claude Fundamentals',
+            'Module 2: Knowledge Work on Autopilot',
+            'Module 3: Claude Code Basics',
+            'Module 4: Build & Ship an App',
+            'Module 5: Automations & Agents',
+            'Module 6: Capstone Project'
+        ];
+
+        const BLOCKER_INTROS = {
+            start: "You said you don't know where to start — so your plan begins with one small, real win in week one. No theory marathon.",
+            meh: "You said AI felt underwhelming before — so your plan skips generic prompting and goes straight to workflows that actually stick.",
+            time: "You said time is the enemy — so your plan runs on short, focused sessions that pay for themselves in hours saved.",
+            overwhelm: "You said the noise is overwhelming — so your plan cuts it down to one track, one project, one step at a time."
+        };
+
+        const PACING = {
+            low: { weeks: 8, label: '2–3 hrs/week' },
+            mid: { weeks: 6, label: '4–6 hrs/week' },
+            high: { weeks: 4, label: '7+ hrs/week' }
+        };
+
+        // ==================== STATE ====================
+        const STORAGE_KEY = 'mcQuizState';
+        let answers = {};
+        let currentQuestion = 0;
+
+        function saveState() {
+            try {
+                sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ answers, currentQuestion }));
+            } catch (e) { /* private mode etc. */ }
+        }
+
+        function loadState() {
+            try {
+                const raw = sessionStorage.getItem(STORAGE_KEY);
+                if (!raw) return null;
+                return JSON.parse(raw);
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function clearState() {
+            try { sessionStorage.removeItem(STORAGE_KEY); } catch (e) {}
+        }
+
+        // ==================== SCREENS ====================
+        const SCREENS = ['landingScreen', 'quizScreen', 'buildingScreen', 'gateScreen', 'planScreen'];
+
+        function showScreen(id) {
+            SCREENS.forEach(s => document.getElementById(s).classList.toggle('hidden', s !== id));
+            document.body.classList.toggle('funnel-active', id !== 'landingScreen');
+            window.scrollTo(0, 0);
+        }
+
+        // ==================== QUIZ ====================
+        function startQuiz() {
+            answers = {};
+            currentQuestion = 0;
+            clearState();
+            document.getElementById('resumeBanner').classList.add('hidden');
+            showScreen('quizScreen');
+            document.getElementById('totalQ').textContent = questions.length;
+            showQuestion(0);
+        }
+
+        function resumeQuiz() {
+            const state = loadState();
+            if (!state) return startQuiz();
+            answers = state.answers || {};
+            currentQuestion = Math.max(0, Math.min(state.currentQuestion || 0, questions.length - 1));
+            showScreen('quizScreen');
+            document.getElementById('totalQ').textContent = questions.length;
+            showQuestion(currentQuestion);
+        }
+
+        function discardQuiz() {
+            clearState();
+            document.getElementById('resumeBanner').classList.add('hidden');
+        }
+
+        function showQuestion(index) {
+            currentQuestion = index;
+            const q = questions[index];
+
+            document.getElementById('progressFill').style.width = ((index + 1) / questions.length * 100) + '%';
+            document.getElementById('progressBar').setAttribute('aria-valuenow', index + 1);
+            document.getElementById('currentQ').textContent = index + 1;
+
+            document.getElementById('questionCard').innerHTML = `
+                <div class="question-number">QUESTION ${index + 1}</div>
+                <div class="question-text">${q.question}</div>
+                <div class="options">
+                    ${q.options.map(opt => `
+                        <button type="button" class="option ${answers[q.id] === opt.value ? 'selected' : ''}" aria-pressed="${answers[q.id] === opt.value}" onclick="selectOpt('${q.id}', '${opt.value}')">
+                            <div class="option-title">${opt.title}</div>
+                            <div class="option-desc">${opt.desc}</div>
+                        </button>
+                    `).join('')}
+                </div>
+                <div class="quiz-nav">
+                    <button type="button" class="back-btn" onclick="prevQ()" ${index === 0 ? 'style="visibility:hidden"' : ''}>← BACK</button>
+                </div>
+            `;
+        }
+
+        let advanceTimer = null;
+
+        function selectOpt(id, val) {
+            answers[id] = val;
+            saveState();
+            showQuestion(currentQuestion); // re-render to show selection
+            clearTimeout(advanceTimer);
+            advanceTimer = setTimeout(nextQ, 300);
+        }
+
+        function nextQ() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                saveState();
+                showQuestion(currentQuestion);
+            } else {
+                showBuilding();
+            }
+        }
+
+        function prevQ() {
+            clearTimeout(advanceTimer);
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                saveState();
+                showQuestion(currentQuestion);
+            }
+        }
+
+        // ==================== BUILDING ====================
+        function showBuilding() {
+            showScreen('buildingScreen');
+            ['buildStep1', 'buildStep2', 'buildStep3'].forEach(id => {
+                const el = document.getElementById(id);
+                el.classList.remove('done');
+                el.querySelector('.tick').textContent = '·';
+            });
+            tickStep('buildStep1', 500);
+            tickStep('buildStep2', 1300);
+            tickStep('buildStep3', 2100);
+            setTimeout(showGate, 2500);
+        }
+
+        function tickStep(id, delay) {
+            setTimeout(() => {
+                const el = document.getElementById(id);
+                el.classList.add('done');
+                el.querySelector('.tick').textContent = '✓';
+            }, delay);
+        }
+
+        // ==================== TRACK SCORING ====================
+        function computeTrack() {
+            const s = { A: 0, B: 0, AB: 0 };
+
+            // goal: +3 to its track; 'all' = +1 each
+            if (answers.goal === 'automate') s.A += 3;
+            else if (answers.goal === 'build') s.B += 3;
+            else if (answers.goal === 'agents') s.AB += 3;
+            else if (answers.goal === 'all') { s.A += 1; s.B += 1; s.AB += 1; }
+
+            // coding
+            if (answers.coding === 'none') s.A += 1;
+            else if (answers.coding === 'copypaste') { s.A += 1; s.B += 1; }
+            else if (answers.coding === 'scripts' || answers.coding === 'dev') { s.B += 1; s.AB += 1; }
+
+            // claude
+            if (answers.claude === 'never' || answers.claude === 'chat') s.A += 1;
+            else if (answers.claude === 'daily') s.B += 1;
+            else if (answers.claude === 'code') s.AB += 2;
+
+            // role
+            if (answers.role === 'ops' || answers.role === 'exec') s.A += 1;
+            else if (answers.role === 'founder' || answers.role === 'freelance' || answers.role === 'curious') s.B += 1;
+
+            // Tie-break: A > B > AB
+            let best = 'A';
+            if (s.B > s[best]) best = 'B';
+            if (s.AB > s[best]) best = 'AB';
+            return best;
+        }
+
+        // ==================== GATE ====================
+        function showGate() {
+            showScreen('gateScreen');
+        }
+
+        function populateHiddenFields() {
+            document.getElementById('hfRole').value = answers.role || '';
+            document.getElementById('hfCoding').value = answers.coding || '';
+            document.getElementById('hfClaude').value = answers.claude || '';
+            document.getElementById('hfGoal').value = answers.goal || '';
+            document.getElementById('hfHours').value = answers.hours || '';
+            document.getElementById('hfBlocker').value = answers.blocker || '';
+            document.getElementById('hfTrack').value = computeTrack();
+        }
+
+        function handleGateSubmit(e) {
+            e.preventDefault();
+            populateHiddenFields();
+            const form = document.getElementById('gateForm');
+            const body = new URLSearchParams(new FormData(form)).toString();
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: body
+            }).catch(() => {}).finally(showPlan);
+        }
+
+        document.getElementById('gateForm').addEventListener('submit', handleGateSubmit);
+
+        // ==================== PLAN ====================
+        function buildWeeks(pace, track) {
+            const emph = TRACKS[track].emphasis;
+            const mod = i => ({ title: MODULE_TITLES[i], emph: emph[i] });
+
+            if (pace === 'high') {
+                // 4 weeks
+                return [
+                    { label: 'WEEK 1', items: [mod(0), mod(1)] },
+                    { label: 'WEEK 2', items: [mod(2)] },
+                    { label: 'WEEK 3', items: [mod(3), mod(4)] },
+                    { label: 'WEEK 4', items: [mod(5)] }
+                ];
+            }
+            if (pace === 'mid') {
+                // 6 weeks, one module per week
+                return MODULE_TITLES.map((t, i) => ({ label: 'WEEK ' + (i + 1), items: [mod(i)] }));
+            }
+            // low = 8 weeks
+            return [
+                { label: 'WEEK 1', items: [mod(0)] },
+                { label: 'WEEK 2', items: [mod(1)] },
+                { label: 'WEEK 3', items: [mod(2)] },
+                { label: 'WEEK 4', items: [{ title: 'Practice week', emph: 'Lock in your terminal wins before building. No new material.' }] },
+                { label: 'WEEK 5', items: [mod(3)] },
+                { label: 'WEEK 6', items: [mod(4)] },
+                { label: 'WEEK 7', items: [{ title: MODULE_TITLES[5] + ' — start', emph: emph[5] }] },
+                { label: 'WEEK 8', items: [{ title: 'Capstone polish + demo', emph: 'Finish, record your demo, write it up.' }] }
+            ];
+        }
+
+        function renderPlan() {
+            const track = computeTrack();
+            const t = TRACKS[track];
+            const pace = answers.hours || 'mid';
+            const pacing = PACING[pace];
+
+            document.getElementById('planIntro').textContent = BLOCKER_INTROS[answers.blocker] || "Here's the plan that fits how you answered.";
+            document.getElementById('trackName').textContent = t.name;
+            document.getElementById('trackDesc').textContent = t.desc;
+            document.getElementById('planWeeksTitle').textContent = 'Your ' + pacing.weeks + '-Week Plan (' + pacing.label + ')';
+
+            document.getElementById('weeksContainer').innerHTML = buildWeeks(pace, track).map(w => `
+                <div class="week-row">
+                    <div class="week-label">${w.label}</div>
+                    <div class="week-items">
+                        ${w.items.map(it => `<div><strong>${it.title}</strong><span class="emph">${it.emph}</span></div>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showPlan() {
+            renderPlan();
+            clearState();
+            showScreen('planScreen');
+        }
+
+        // ==================== FAQ ====================
+        function toggleFaq(btn) {
+            btn.parentElement.classList.toggle('open');
+            btn.setAttribute('aria-expanded', btn.parentElement.classList.contains('open'));
+        }
+
+        // ==================== INIT ====================
+        (function init() {
+            const state = loadState();
+            if (state && state.answers && Object.keys(state.answers).length > 0) {
+                document.getElementById('resumeBanner').classList.remove('hidden');
+            }
+        })();
+    </script>
+</body>
+</html>

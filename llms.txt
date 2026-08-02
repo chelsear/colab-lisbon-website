@@ -14,6 +14,7 @@
 - [Own Your Stack](https://colablisbon.com/own-your-stack/): Build and own your AI stack
 - [Use Cases](https://colablisbon.com/usecases/): Real-world AI automation use cases
 - [90 Day Build](https://colablisbon.com/90daybuild/): 90-day product building program
+- [Master Claude Course](https://colablisbon.com/master-claude/): Online course (founding-member pre-sell) — automate busywork, build apps, and run agents with Claude
 
 ## Events
 

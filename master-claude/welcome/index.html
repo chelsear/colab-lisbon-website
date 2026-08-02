@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>You're In - Master Claude | CoLab Lisbon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --coral-light: #FFB4A2;
+            --coral-dark: #e7583b;
+            --yellow: #e9f174;
+            --gray-dark: #545454;
+            --gray-mid: #666;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, var(--coral-dark) 0%, var(--coral-light) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 640px;
+            background: var(--white);
+            padding: 50px 40px;
+            border: 5px solid var(--gray-dark);
+            box-shadow: 15px 15px 0px var(--yellow);
+            text-align: center;
+        }
+
+        .checkmark {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.2rem, 6vw, 3.5rem);
+            color: var(--coral-dark);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .sub {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: var(--gray-dark);
+            margin-bottom: 35px;
+        }
+
+        .steps {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            border: 3px solid var(--gray-dark);
+            border-left: 8px solid var(--coral-dark);
+            padding: 16px 18px;
+            margin-bottom: 12px;
+        }
+
+        .step-num {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.4rem;
+            color: var(--coral-dark);
+            line-height: 1.2;
+        }
+
+        .step-body strong {
+            display: block;
+            margin-bottom: 3px;
+            color: var(--gray-dark);
+        }
+
+        .step-body {
+            color: var(--gray-mid);
+            line-height: 1.5;
+            font-size: 0.98rem;
+        }
+
+        .step-body a {
+            color: var(--coral-dark);
+            font-weight: 700;
+        }
+
+        .honesty {
+            border: 3px dashed var(--gray-dark);
+            padding: 18px 20px;
+            font-size: 0.95rem;
+            color: var(--gray-mid);
+            line-height: 1.6;
+            margin-bottom: 35px;
+            text-align: left;
+        }
+
+        .home-link {
+            display: inline-block;
+            background: var(--gray-dark);
+            color: var(--yellow);
+            padding: 15px 40px;
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            border: 3px solid var(--gray-dark);
+            box-shadow: 5px 5px 0px var(--coral-dark);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .home-link:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0px var(--coral-dark);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 35px 22px;
+                box-shadow: 8px 8px 0px var(--yellow);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="checkmark">✓</div>
+        <h1>You're In</h1>
+        <p class="sub">Welcome, founding member. Master Claude is officially yours. Here's what happens next:</p>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <div class="step-body">
+                    <strong>Check your email</strong>
+                    Your Stripe receipt just landed. That's your proof of founding-member status.
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <div class="step-body">
+                    <strong>Watch for your onboarding invite</strong>
+                    Within 48 hours we'll email you an invite to the live onboarding session with the CoLab team. Before then, make sure you have a Claude account — the Claude Code modules need a paid plan, and we'll help you get set up.
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <div class="step-body">
+                    <strong>Join the community</strong>
+                    Say hi in the <a href="https://chat.whatsapp.com/CXtyztHhiy90LU6NulY7XQ" target="_blank" rel="noopener noreferrer">CoLab WhatsApp group</a> — it's where builds get shared and questions get answered.
+                </div>
+            </div>
+        </div>
+
+        <div class="honesty">
+            <strong>A reminder of what you bought:</strong> this is a founding pre-sell. Modules ship as they're produced, and you get each one the moment it's ready — plus lifetime access to this version of the course. If you change your mind, you have 14 days for a full refund, no questions asked — just reply to your receipt email.
+        </div>
+
+        <a href="/" class="home-link">Back to CoLab Lisbon</a>
+    </div>
+</body>
+</html>

@@ -1,6 +1,7 @@
 # robots.txt for colablisbon.com
 User-agent: *
 Allow: /
+Disallow: /master-claude/checkout/
 
 # Sitemap
 Sitemap: https://colablisbon.com/sitemap.xml
