@@ -78,6 +78,38 @@
 
         .hidden { display: none !important; }
 
+        /* Floating background shapes (borrowed from the main site) */
+        .bg-blob {
+            position: fixed;
+            border-radius: 50%;
+            background: var(--green);
+            opacity: 0.16;
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .bg-blob-1 {
+            width: 340px;
+            height: 340px;
+            top: 10%;
+            left: -140px;
+            animation: drift 18s ease-in-out infinite;
+        }
+
+        .bg-blob-2 {
+            width: 280px;
+            height: 280px;
+            bottom: 6%;
+            right: -120px;
+            animation: drift 24s ease-in-out infinite reverse;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, -50px) scale(1.1); }
+        }
+
         .sr-only {
             position: absolute;
             width: 1px;
@@ -153,6 +185,13 @@
             font-size: 15px;
             line-height: 1;
             pointer-events: none;
+            animation: scuttle 1.8s ease-in-out infinite;
+        }
+
+        @keyframes scuttle {
+            0%, 100% { transform: translateY(-52%) rotate(0deg); }
+            25% { transform: translateY(-60%) rotate(-8deg); }
+            75% { transform: translateY(-44%) rotate(8deg); }
         }
 
         .progress-text {
@@ -166,6 +205,15 @@
         /* ============ QUIZ ============ */
         .screen {
             padding: 8px 0 80px;
+        }
+
+        .q-enter {
+            animation: qIn 0.35s ease both;
+        }
+
+        @keyframes qIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .question-text {
@@ -232,7 +280,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.15s ease;
+            transition: background 0.15s ease, transform 0.2s ease;
+        }
+
+        .option:hover .option-chip {
+            transform: rotate(-6deg) scale(1.08);
         }
 
         .option.selected .option-chip {
@@ -304,11 +356,40 @@
             padding-top: 30px;
         }
 
-        .inter-box img {
+        .inter-photo {
+            position: relative;
+            display: inline-block;
+            background: var(--white);
+            padding: 10px 10px 14px;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            box-shadow: 8px 8px 0 var(--green);
+            transform: rotate(-2deg);
+            margin: 14px 0 32px;
+            transition: transform 0.25s ease;
+        }
+
+        .inter-photo:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .inter-photo::before {
+            content: '';
+            position: absolute;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-4deg);
+            width: 92px;
+            height: 26px;
+            background: var(--green);
+            opacity: 0.85;
+        }
+
+        .inter-photo img {
+            display: block;
             width: 100%;
-            max-width: 440px;
-            border-radius: 16px;
-            margin-bottom: 28px;
+            max-width: 420px;
+            border-radius: 2px;
         }
 
         .inter-box h2 {
@@ -399,6 +480,14 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
+            animation: wiggle 2.6s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 84%, 100% { transform: rotate(0deg); }
+            88% { transform: rotate(-8deg); }
+            92% { transform: rotate(8deg); }
+            96% { transform: rotate(-4deg); }
         }
 
         .gate-box h2 {
@@ -447,15 +536,26 @@
             font-size: 3rem;
             line-height: 1;
             margin-bottom: 10px;
+            animation: popIn 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.2); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .track-label {
+            display: inline-block;
             font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 2px;
-            color: var(--gray);
+            color: var(--ink-deep);
+            background: var(--green);
+            padding: 5px 16px;
+            border-radius: 999px;
+            transform: rotate(-2deg);
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .track-name {
@@ -484,6 +584,13 @@
             border-radius: 12px;
             padding: 14px 18px;
             margin-bottom: 10px;
+            transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .week-row:hover {
+            border-color: var(--ink);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
         }
 
         .week-label {
@@ -515,7 +622,9 @@
             border: 2px solid var(--ink);
             border-radius: 16px;
             padding: 32px 28px;
-            margin: 50px 0;
+            margin: 50px 8px 50px 0;
+            box-shadow: 8px 8px 0 var(--green);
+            background: var(--white);
         }
 
         .offer-box h3 {
@@ -554,6 +663,13 @@
             border-radius: 12px;
             padding: 18px 20px;
             margin-bottom: 12px;
+            transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .module-card:hover {
+            border-color: var(--ink);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
         }
 
         .module-num {
@@ -674,6 +790,37 @@
 
         footer a:hover { color: var(--ink); }
 
+        /* Scroll reveal (added via JS, progressive enhancement) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Emoji confetti */
+        .confetti {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 60;
+            overflow: hidden;
+        }
+
+        .confetti span {
+            position: absolute;
+            top: -40px;
+            animation: confettiFall linear both;
+        }
+
+        @keyframes confettiFall {
+            to { transform: translateY(115vh) rotate(340deg); }
+        }
+
         @media (max-width: 480px) {
             .question-text { margin: 28px 0 22px; }
             .offer-box { padding: 26px 20px; }
@@ -690,6 +837,9 @@
 <body>
 
     <h1 class="sr-only">Master Claude — the online course from CoLab Lisbon. Take the 2-minute quiz to get your personalized learning plan.</h1>
+
+    <div class="bg-blob bg-blob-1" aria-hidden="true"></div>
+    <div class="bg-blob bg-blob-2" aria-hidden="true"></div>
 
     <header>
         <div class="wrap">
@@ -717,7 +867,9 @@
     <div id="interScreen" class="screen hidden">
         <div class="wrap">
             <div class="inter-box">
-                <img src="/community-1.jpg" alt="Group vibe coding session at a long table in Lisbon" loading="lazy">
+                <div class="inter-photo">
+                    <img src="/community-1.jpg" alt="Group vibe coding session at a long table in Lisbon" loading="lazy">
+                </div>
                 <h2>🎉 You're in good company</h2>
                 <p>This curriculum has been taught live 20+ times in Lisbon to 200+ people — most of whom had never opened a terminal. Three more questions and your plan is ready.</p>
                 <button type="button" class="btn" onclick="continueInter()">Continue →</button>
@@ -1066,6 +1218,8 @@
         }
 
         // ==================== QUIZ ====================
+        let lastRenderedQ = -1;
+
         function showQuestion(index) {
             currentQuestion = index;
             const q = questions[index];
@@ -1075,7 +1229,8 @@
             document.getElementById('currentQ').textContent = index + 1;
             document.getElementById('backArrow').classList.toggle('hidden', index === 0);
 
-            document.getElementById('questionCard').innerHTML = `
+            const card = document.getElementById('questionCard');
+            card.innerHTML = `
                 <h2 class="question-text">${q.question}</h2>
                 <div class="options">
                     ${q.options.map(opt => `
@@ -1089,6 +1244,15 @@
                     `).join('')}
                 </div>
             `;
+
+            // Entrance animation only when the question actually changes,
+            // not on re-render after selecting an option.
+            if (index !== lastRenderedQ) {
+                card.classList.remove('q-enter');
+                void card.offsetWidth; // restart animation
+                card.classList.add('q-enter');
+                lastRenderedQ = index;
+            }
         }
 
         let advanceTimer = null;
@@ -1277,10 +1441,47 @@
             `).join('');
         }
 
+        function confettiBurst() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const emojis = ['🎉', '⚡', '🦀', '🛠️', '🤖', '✨'];
+            const wrap = document.createElement('div');
+            wrap.className = 'confetti';
+            wrap.setAttribute('aria-hidden', 'true');
+            for (let i = 0; i < 20; i++) {
+                const s = document.createElement('span');
+                s.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                s.style.left = (Math.random() * 100) + '%';
+                s.style.animationDelay = (Math.random() * 0.6) + 's';
+                s.style.animationDuration = (1.6 + Math.random() * 1.4) + 's';
+                s.style.fontSize = (14 + Math.random() * 14) + 'px';
+                wrap.appendChild(s);
+            }
+            document.body.appendChild(wrap);
+            setTimeout(() => wrap.remove(), 4000);
+        }
+
+        function setupReveals() {
+            if (!('IntersectionObserver' in window)) return;
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('#planScreen .week-row, #planScreen .module-card, #planScreen .included-list li, #planScreen .faq-item').forEach(el => {
+                el.classList.add('reveal');
+                observer.observe(el);
+            });
+        }
+
         function showPlan() {
             renderPlan();
             clearState();
             showScreen('planScreen');
+            setupReveals();
+            confettiBurst();
         }
 
         // ==================== FAQ ====================

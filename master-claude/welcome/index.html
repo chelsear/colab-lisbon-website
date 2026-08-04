@@ -61,6 +61,12 @@
             align-items: center;
             justify-content: center;
             margin: 40px auto 20px;
+            animation: popIn 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+        }
+
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.2); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         h1 {
@@ -86,6 +92,13 @@
             border-radius: 14px;
             padding: 18px 20px;
             margin-bottom: 12px;
+            transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .step:hover {
+            border-color: var(--ink);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
         }
 
         .step-num {
@@ -144,10 +157,39 @@
             font-weight: 700;
             font-size: 1rem;
             border-radius: 999px;
-            transition: background 0.15s ease;
+            transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
         }
 
-        .home-link:hover { background: var(--ink-deep); }
+        .home-link:hover {
+            background: var(--ink-deep);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .confetti {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 60;
+            overflow: hidden;
+        }
+
+        .confetti span {
+            position: absolute;
+            top: -40px;
+            animation: confettiFall linear both;
+        }
+
+        @keyframes confettiFall {
+            to { transform: translateY(115vh) rotate(340deg); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -188,5 +230,26 @@
 
         <a href="/" class="home-link">Back to CoLab Lisbon</a>
     </div>
+
+    <script>
+        (function confettiBurst() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const emojis = ['🎉', '⚡', '🦀', '🛠️', '🤖', '✨'];
+            const wrap = document.createElement('div');
+            wrap.className = 'confetti';
+            wrap.setAttribute('aria-hidden', 'true');
+            for (let i = 0; i < 24; i++) {
+                const s = document.createElement('span');
+                s.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                s.style.left = (Math.random() * 100) + '%';
+                s.style.animationDelay = (Math.random() * 0.6) + 's';
+                s.style.animationDuration = (1.6 + Math.random() * 1.4) + 's';
+                s.style.fontSize = (14 + Math.random() * 14) + 'px';
+                wrap.appendChild(s);
+            }
+            document.body.appendChild(wrap);
+            setTimeout(() => wrap.remove(), 4000);
+        })();
+    </script>
 </body>
 </html>
