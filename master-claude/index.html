@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Claude - Online Course | CoLab Lisbon</title>
+    <title>Master Claude - Online Course | CoLab</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Master Claude: the online course from CoLab Lisbon. Take the 2-minute quiz and get a personalized learning plan to automate your busywork and build apps without writing code.">
-    <meta name="keywords" content="Claude course, Claude Code, AI course, learn Claude, AI automation, build apps with AI, CoLab Lisbon">
-    <meta name="author" content="CoLab Lisbon">
+    <meta name="description" content="Master Claude: the online course from CoLab. Take the 2-minute quiz and get a personalized learning plan to automate your busywork and build apps without writing code.">
+    <meta name="keywords" content="Claude course, Claude Code, AI course, learn Claude, AI automation, build apps with AI, CoLab">
+    <meta name="author" content="CoLab">
     <link rel="canonical" href="https://colablisbon.com/master-claude/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://colablisbon.com/master-claude/">
-    <meta property="og:title" content="Master Claude - Online Course | CoLab Lisbon">
-    <meta property="og:description" content="The workshop 200+ people took in Lisbon - now from your couch. Take the 2-minute quiz and get your personalized learning plan.">
+    <meta property="og:title" content="Master Claude - Online Course | CoLab">
+    <meta property="og:description" content="The workshop 200+ people took in person - now from your couch. Take the 2-minute quiz and get your personalized learning plan.">
     <meta property="og:image" content="https://colablisbon.com/community-1.jpg">
-    <meta property="og:site_name" content="CoLab Lisbon">
+    <meta property="og:site_name" content="CoLab">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://colablisbon.com/master-claude/">
-    <meta name="twitter:title" content="Master Claude - Online Course | CoLab Lisbon">
-    <meta name="twitter:description" content="The workshop 200+ people took in Lisbon - now from your couch. Take the 2-minute quiz and get your personalized learning plan.">
+    <meta name="twitter:title" content="Master Claude - Online Course | CoLab">
+    <meta name="twitter:description" content="The workshop 200+ people took in person - now from your couch. Take the 2-minute quiz and get your personalized learning plan.">
     <meta name="twitter:image" content="https://colablisbon.com/community-1.jpg">
 
     <!-- Structured Data -->
@@ -32,11 +32,11 @@
         "@context": "https://schema.org",
         "@type": "Course",
         "name": "Master Claude",
-        "description": "Online course from CoLab Lisbon: automate your busywork, build apps without writing code, and run agents with Claude and Claude Code.",
+        "description": "Online course from CoLab: automate your busywork, build apps without writing code, and run agents with Claude and Claude Code.",
         "url": "https://colablisbon.com/master-claude/",
         "provider": {
             "@type": "Organization",
-            "name": "CoLab Lisbon",
+            "name": "CoLab",
             "url": "https://colablisbon.com"
         }
     }
@@ -140,9 +140,13 @@
         }
 
         .logo {
-            height: 34px;
-            width: auto;
-            display: block;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #e7583b;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .back-arrow {
@@ -763,6 +767,156 @@
             display: block;
         }
 
+        /* Proof stats */
+        .proof-stats {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .proof-stat {
+            text-align: center;
+        }
+
+        .proof-num {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .proof-label {
+            font-size: 0.85rem;
+            color: var(--gray);
+            max-width: 120px;
+        }
+
+        /* Built box */
+        .built-box {
+            background: var(--green-tint);
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .built-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+
+        .built-items {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Testimonial */
+        .testimonial {
+            border-left: 4px solid var(--green);
+            padding: 16px 20px;
+            margin-bottom: 30px;
+            background: #fafafa;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .testimonial-author {
+            font-size: 0.85rem;
+            color: var(--gray);
+            font-weight: 600;
+        }
+
+        /* Instructors */
+        .instructors {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .instructors-title {
+            width: 100%;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .instructor {
+            text-align: center;
+            padding: 12px 20px;
+            background: #fafafa;
+            border-radius: 12px;
+            min-width: 180px;
+        }
+
+        .instructor-name {
+            font-weight: 700;
+            color: var(--ink);
+            font-size: 1rem;
+        }
+
+        .instructor-cred {
+            font-size: 0.8rem;
+            color: var(--gray);
+            line-height: 1.4;
+            margin-top: 4px;
+        }
+
+        /* Founding counter */
+        .founding-counter {
+            background: var(--ink);
+            color: var(--green);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 999px;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+
+        /* Collapsible sections */
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 10px 0;
+        }
+
+        .collapsible-header .toggle-icon {
+            font-size: 1.2rem;
+            color: var(--gray);
+            transition: transform 0.2s ease;
+        }
+
+        .collapsible-content {
+            display: none;
+            padding-top: 10px;
+        }
+
+        .collapsible-content.open {
+            display: block;
+        }
+
+        .collapsible-header.open .toggle-icon {
+            transform: rotate(45deg);
+        }
+
         .no-pressure {
             text-align: center;
             margin: 50px 0 20px;
@@ -836,7 +990,7 @@
 </head>
 <body>
 
-    <h1 class="sr-only">Master Claude — the online course from CoLab Lisbon. Take the 2-minute quiz to get your personalized learning plan.</h1>
+    <h1 class="sr-only">Master Claude — the online course from CoLab. Take the 2-minute quiz to get your personalized learning plan.</h1>
 
     <div class="bg-blob bg-blob-1" aria-hidden="true"></div>
     <div class="bg-blob bg-blob-2" aria-hidden="true"></div>
@@ -845,7 +999,7 @@
         <div class="wrap">
             <div class="header-inner">
                 <button type="button" class="back-arrow hidden" id="backArrow" onclick="prevQ()" aria-label="Previous question">‹</button>
-                <a href="/"><img src="/master-claude/colab-logo-dark.png" alt="COLAB LISBON" class="logo"></a>
+                <a href="/" class="logo">COLAB</a>
             </div>
             <div id="progressWrap">
                 <div class="progress-track" role="progressbar" id="progressBar" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-label="Quiz progress">
@@ -868,10 +1022,10 @@
         <div class="wrap">
             <div class="inter-box">
                 <div class="inter-photo">
-                    <img src="/community-1.jpg" alt="Group vibe coding session at a long table in Lisbon" loading="lazy">
+                    <img src="../community-1.jpg" alt="Group vibe coding session at our workshop" loading="lazy">
                 </div>
                 <h2>🎉 You're in good company</h2>
-                <p>This curriculum has been taught live 20+ times in Lisbon to 200+ people — most of whom had never opened a terminal. Three more questions and your plan is ready.</p>
+                <p>This curriculum has been taught live 20+ times in person to 200+ people — most of whom had never opened a terminal. Three more questions and your plan is ready.</p>
                 <button type="button" class="btn" onclick="continueInter()">Continue →</button>
             </div>
         </div>
@@ -881,7 +1035,7 @@
     <div id="buildingScreen" class="screen hidden">
         <div class="wrap">
             <div class="building-box">
-                <img src="/crab-clean.png" alt="" class="building-crab" aria-hidden="true">
+                <img src="../crab-clean.png" alt="" class="building-crab" aria-hidden="true">
                 <div class="building-pct" id="buildPct">0%</div>
                 <h2>Building your plan</h2>
                 <div class="build-step" id="buildStep1"><span class="tick">·</span> Reading your answers</div>
@@ -933,13 +1087,54 @@
             <h2 class="plan-section-title" id="planWeeksTitle"></h2>
             <div id="weeksContainer"></div>
 
+            <!-- Social proof stats -->
+            <div class="proof-stats">
+                <div class="proof-stat">
+                    <div class="proof-num">10-40</div>
+                    <div class="proof-label">hours saved monthly by alumni</div>
+                </div>
+                <div class="proof-stat">
+                    <div class="proof-num">200+</div>
+                    <div class="proof-label">people trained in person</div>
+                </div>
+            </div>
+
+            <!-- What people built -->
+            <div class="built-box">
+                <div class="built-title">What past participants built:</div>
+                <div class="built-items">automated finance dashboards · AI-powered ad campaigns · personal CRMs · client onboarding flows · research pipelines</div>
+            </div>
+
+            <!-- Testimonial -->
+            <div class="testimonial">
+                <div class="testimonial-text">"I came in thinking I'd learn some prompts. I left with an app live on the internet and a system that saves me 8 hours a week."</div>
+                <div class="testimonial-author">— Workshop participant</div>
+            </div>
+
+            <!-- Instructors -->
+            <div class="instructors">
+                <div class="instructors-title">Your instructors</div>
+                <div class="instructor">
+                    <div class="instructor-name">Chelsea Rustrum</div>
+                    <div class="instructor-cred">Author, advisor, community builder</div>
+                </div>
+                <div class="instructor">
+                    <div class="instructor-name">James Corbett</div>
+                    <div class="instructor-cred">Engineer, product builder</div>
+                </div>
+                <div class="instructor">
+                    <div class="instructor-name">Verena Husemann</div>
+                    <div class="instructor-cred">Operations, AI implementation</div>
+                </div>
+            </div>
+
             <div class="offer-box">
+                <div class="founding-counter">🎟️ 47 of 100 founding spots claimed</div>
                 <h3>Straight Talk 🤝</h3>
-                <p>This is a founding-member pre-sell. The course is the recording of the workshop we've taught live 20+ times in Lisbon to 200+ people — produced properly for online, module by module.</p>
-                <p>Founding members get each module the moment it ships. Within 48 hours of joining, you'll get an invite to a live onboarding session with us.</p>
+                <p>This is a founding-member pre-sell. Modules ship as they're produced — you get each one immediately.</p>
+                <p>Within 48 hours of joining, you'll get an invite to a live onboarding session with us.</p>
                 <div class="offer-price">€199</div>
-                <p class="offer-price-note">Planned price after full launch: €349–397. That's our stated intent, not a fake discount.</p>
-                <p>No countdown timer. Founding pricing ends when all six modules are produced and live — a real production milestone, not an arbitrary deadline.</p>
+                <p class="offer-price-note">Planned price: €349–397 after full launch.</p>
                 <p class="offer-refund">14-day money-back refund, no questions asked.</p>
             </div>
 
@@ -948,79 +1143,84 @@
                 <p class="micro-line">€199 founding price · 14-day refund, no questions asked</p>
             </div>
 
-            <h2 class="plan-section-title">The Curriculum 📚</h2>
-            <div>
-                <div class="module-card">
-                    <div class="module-num">MODULE 1</div>
-                    <div class="module-title">🧠 Claude Fundamentals: Think in Outcomes, Not Prompts</div>
-                    <div class="module-desc">Setup, prompting patterns that actually transfer, and your personal operating manual.</div>
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleSection(this)">
+                    <h2 class="plan-section-title" style="margin: 0;">The Curriculum 📚</h2>
+                    <span class="toggle-icon">+</span>
                 </div>
-                <div class="module-card">
-                    <div class="module-num">MODULE 2</div>
-                    <div class="module-title">⚡ Knowledge Work on Autopilot</div>
-                    <div class="module-desc">Projects, style capture, and a research pipeline that does the heavy reading for you.</div>
-                </div>
-                <div class="module-card">
-                    <div class="module-num">MODULE 3</div>
-                    <div class="module-title">🦀 Claude Code Basics: First Terminal Wins</div>
-                    <div class="module-desc">Install, CLAUDE.md, and three real tasks that don't require writing a line of code.</div>
-                </div>
-                <div class="module-card">
-                    <div class="module-num">MODULE 4</div>
-                    <div class="module-title">🚀 Build &amp; Ship an App</div>
-                    <div class="module-desc">Spec → prototype → debug → deploy on Netlify. A real app, live on the internet.</div>
-                </div>
-                <div class="module-card">
-                    <div class="module-num">MODULE 5</div>
-                    <div class="module-title">🤖 Automations &amp; Agents</div>
-                    <div class="module-desc">MCP, custom skills, and agent loops. Save 2+ hours a week on autopilot.</div>
-                </div>
-                <div class="module-card">
-                    <div class="module-num">MODULE 6</div>
-                    <div class="module-title">🏆 Capstone: Portfolio Project</div>
-                    <div class="module-desc">Track-specific templates, a finished project, and a demo + write-up you can show off.</div>
+                <div class="collapsible-content">
+                    <div class="module-card">
+                        <div class="module-num">MODULE 1</div>
+                        <div class="module-title">🧠 Claude Fundamentals</div>
+                        <div class="module-desc">Setup, prompting patterns, and your personal operating manual.</div>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-num">MODULE 2</div>
+                        <div class="module-title">⚡ Knowledge Work on Autopilot</div>
+                        <div class="module-desc">Projects, style capture, and a research pipeline.</div>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-num">MODULE 3</div>
+                        <div class="module-title">🦀 Claude Code Basics</div>
+                        <div class="module-desc">Install, CLAUDE.md, three no-code terminal wins.</div>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-num">MODULE 4</div>
+                        <div class="module-title">🚀 Build &amp; Ship an App</div>
+                        <div class="module-desc">Spec → prototype → deploy. A real app, live.</div>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-num">MODULE 5</div>
+                        <div class="module-title">🤖 Automations &amp; Agents</div>
+                        <div class="module-desc">MCP, custom skills, and agent loops.</div>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-num">MODULE 6</div>
+                        <div class="module-title">🏆 Capstone Project</div>
+                        <div class="module-desc">Track-specific templates and a finished project.</div>
+                    </div>
                 </div>
             </div>
 
-            <h2 class="plan-section-title">What's Included 🎒</h2>
-            <ul class="included-list">
-                <li><span class="li-emoji" aria-hidden="true">🎥</span>All 6 modules, delivered as they ship — you get each one immediately</li>
-                <li><span class="li-emoji" aria-hidden="true">🧑‍🏫</span>Live onboarding session with the CoLab team</li>
-                <li><span class="li-emoji" aria-hidden="true">📦</span>Templates, prompts, and CLAUDE.md starters from the live workshops</li>
-                <li><span class="li-emoji" aria-hidden="true">💬</span>Access to the CoLab WhatsApp community</li>
-                <li><span class="li-emoji" aria-hidden="true">♾️</span>Lifetime access to this version of the course, including any updates we make to these 6 modules</li>
-            </ul>
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleSection(this)">
+                    <h2 class="plan-section-title" style="margin: 0;">What's Included 🎒</h2>
+                    <span class="toggle-icon">+</span>
+                </div>
+                <div class="collapsible-content">
+                    <ul class="included-list">
+                        <li><span class="li-emoji" aria-hidden="true">🎥</span>All 6 modules, delivered as they ship</li>
+                        <li><span class="li-emoji" aria-hidden="true">🧑‍🏫</span>Live onboarding session</li>
+                        <li><span class="li-emoji" aria-hidden="true">📦</span>Templates, prompts, and CLAUDE.md starters</li>
+                        <li><span class="li-emoji" aria-hidden="true">💬</span>CoLab WhatsApp community</li>
+                        <li><span class="li-emoji" aria-hidden="true">♾️</span>Lifetime access</li>
+                    </ul>
+                </div>
+            </div>
 
             <div class="plan-cta-wrap">
                 <a href="/master-claude/checkout/" class="btn">Claim founding access →</a>
-                <p class="micro-line">€199 founding price · 14-day refund, no questions asked</p>
+                <p class="micro-line">€199 founding price · 14-day refund</p>
             </div>
 
-            <h2 class="plan-section-title">Questions, Answered Honestly 🙋</h2>
-            <div>
-                <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">When do I get access? <span class="arrow">+</span></button>
-                    <div class="faq-a">This is a pre-sell. Within 48 hours of joining you'll get your onboarding invite. Modules ship as they're produced — founding members get each one the moment it's ready, starting with Module 1. You're buying early access to something being built, and we're upfront about that.</div>
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleSection(this)">
+                    <h2 class="plan-section-title" style="margin: 0;">Questions 🙋</h2>
+                    <span class="toggle-icon">+</span>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">I can't code. Is this for me? <span class="arrow">+</span></button>
-                    <div class="faq-a">Yes. Most people who took the live workshop had never opened a terminal. Modules 1–3 assume zero coding background, and in modules 4–6 Claude Code writes the code — your job is to describe what you want and steer. If you got the Automator or Builder track, your whole plan is built for non-coders.</div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">How is this different from the live workshop? <span class="arrow">+</span></button>
-                    <div class="faq-a">Same curriculum, taught by the same people — but at your own pace, from anywhere, with lifetime access to this version. You also get the templates and prompts we've refined over 20+ live sessions, plus a live onboarding call so it doesn't feel like shouting into the void.</div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">What do I need to get started? <span class="arrow">+</span></button>
-                    <div class="faq-a">A laptop (Mac, Windows, or Linux) and a Claude account. The Claude Code modules require a paid Claude plan — that's paid to Anthropic, not us, and it's not included in the €199. Module 1 walks you through setup, and the onboarding session is there if you get stuck.</div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">What's the refund policy? <span class="arrow">+</span></button>
-                    <div class="faq-a">14 days, no questions asked. Email us and we'll refund you in full. Pre-sells only work if you trust us, so we make it easy to change your mind.</div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">Why is it cheaper now? <span class="arrow">+</span></button>
-                    <div class="faq-a">Because you're buying before it's fully produced. You take on a bit of waiting; we reward that with the founding price and the onboarding session. Once the recording wraps and the full course is live, the planned price is €349–397. No countdown, no fake urgency — the price ends when production ends.</div>
+                <div class="collapsible-content">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">When do I get access? <span class="arrow">+</span></button>
+                        <div class="faq-a">Within 48 hours you get your onboarding invite. Modules ship as produced — founding members get each one immediately.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">I can't code. Is this for me? <span class="arrow">+</span></button>
+                        <div class="faq-a">Yes. Most workshop participants never opened a terminal. Claude Code writes the code — you describe and steer.</div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">What's the refund policy? <span class="arrow">+</span></button>
+                        <div class="faq-a">14 days, no questions asked. Email us and we refund in full.</div>
+                    </div>
                 </div>
             </div>
 
@@ -1036,7 +1236,7 @@
 
     <footer>
         <div class="wrap">
-            <a href="/">← Back to CoLab Lisbon</a>
+            <a href="/">← Back to CoLab</a>
         </div>
     </footer>
 
@@ -1045,13 +1245,13 @@
         const questions = [
             {
                 id: 'role',
-                question: "What best describes you?",
+                question: "What brings you here?",
                 options: [
-                    { value: 'founder', emoji: '🚀', title: 'Founder / entrepreneur', desc: 'Building a company or a side project' },
-                    { value: 'ops', emoji: '⚙️', title: 'Operations / marketing / admin', desc: 'You run processes and keep things moving' },
-                    { value: 'freelance', emoji: '💼', title: 'Freelancer / consultant', desc: 'You sell your time and expertise' },
-                    { value: 'exec', emoji: '📈', title: 'Executive / manager', desc: 'You lead a team and drown in busywork' },
-                    { value: 'curious', emoji: '🧠', title: 'Curious human', desc: 'No title needed. You just want to learn this.' }
+                    { value: 'curious', emoji: '🧠', title: 'Just curious', desc: 'I want to learn what AI can actually do' },
+                    { value: 'founder', emoji: '🚀', title: 'Building something', desc: 'A company, a side project, an idea' },
+                    { value: 'ops', emoji: '⚙️', title: 'Running a business or team', desc: 'Looking to save time and automate' },
+                    { value: 'freelance', emoji: '💼', title: 'Freelancer / consultant', desc: 'I sell my time and want more of it back' },
+                    { value: 'exec', emoji: '📈', title: 'Work in a company', desc: 'Want to level up how I work' }
                 ]
             },
             {
@@ -1066,10 +1266,10 @@
             },
             {
                 id: 'claude',
-                question: "How much have you used Claude?",
+                question: "How much have you used AI?",
                 options: [
                     { value: 'never', emoji: '🌱', title: 'Never, or barely', desc: 'Heard about it. Maybe poked at it once.' },
-                    { value: 'chat', emoji: '💬', title: 'I chat with it sometimes', desc: 'Questions, drafts, the occasional brainstorm' },
+                    { value: 'chat', emoji: '💬', title: 'I prompt & chat', desc: "But haven't built real systems yet" },
                     { value: 'daily', emoji: '☕', title: 'Daily driver', desc: "It's part of my routine" },
                     { value: 'code', emoji: '🦀', title: "I've used Claude Code", desc: 'Terminal and all' }
                 ]
@@ -1088,8 +1288,9 @@
                 id: 'hours',
                 question: "How much time can you give this per week?",
                 options: [
-                    { value: 'low', emoji: '🐢', title: '2–3 hours', desc: 'Steady and sustainable' },
-                    { value: 'mid', emoji: '🚶', title: '4–6 hours', desc: 'A proper evening or two' },
+                    { value: 'minimal', emoji: '☕', title: '1–2 hours', desc: 'Coffee-break learning. Totally fine.' },
+                    { value: 'low', emoji: '🐢', title: '2–4 hours', desc: 'Steady and sustainable' },
+                    { value: 'mid', emoji: '🚶', title: '4–6 hours', desc: 'An evening or two' },
                     { value: 'high', emoji: '🐇', title: '7+ hours', desc: 'I want to move fast' }
                 ]
             },
@@ -1164,8 +1365,9 @@
         };
 
         const PACING = {
-            low: { weeks: 8, label: '2–3 hrs/week' },
-            mid: { weeks: 6, label: '4–6 hrs/week' },
+            minimal: { weeks: 6, label: '1–2 hrs/week' },
+            low: { weeks: 6, label: '2–4 hrs/week' },
+            mid: { weeks: 5, label: '4–6 hrs/week' },
             high: { weeks: 4, label: '7+ hrs/week' }
         };
 
@@ -1406,17 +1608,8 @@
                 // 6 weeks, one module per week
                 return MODULE_TITLES.map((t, i) => ({ label: 'WEEK ' + (i + 1), items: [mod(i)] }));
             }
-            // low = 8 weeks
-            return [
-                { label: 'WEEK 1', items: [mod(0)] },
-                { label: 'WEEK 2', items: [mod(1)] },
-                { label: 'WEEK 3', items: [mod(2)] },
-                { label: 'WEEK 4', items: [{ title: 'Practice week', emph: 'Lock in your terminal wins before building. No new material.' }] },
-                { label: 'WEEK 5', items: [mod(3)] },
-                { label: 'WEEK 6', items: [mod(4)] },
-                { label: 'WEEK 7', items: [{ title: MODULE_TITLES[5] + ' — start', emph: emph[5] }] },
-                { label: 'WEEK 8', items: [{ title: 'Capstone polish + demo', emph: 'Finish, record your demo, write it up.' }] }
-            ];
+            // minimal/low = 6 weeks
+            return MODULE_TITLES.map((t, i) => ({ label: 'WEEK ' + (i + 1), items: [mod(i)] }));
         }
 
         function renderPlan() {
@@ -1488,6 +1681,13 @@
         function toggleFaq(btn) {
             btn.parentElement.classList.toggle('open');
             btn.setAttribute('aria-expanded', btn.parentElement.classList.contains('open'));
+        }
+
+        // ==================== COLLAPSIBLE SECTIONS ====================
+        function toggleSection(header) {
+            header.classList.toggle('open');
+            const content = header.nextElementSibling;
+            content.classList.toggle('open');
         }
 
         // ==================== INIT ====================
