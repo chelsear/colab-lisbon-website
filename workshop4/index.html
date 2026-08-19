@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop Materials - Next Level AI #4</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --coral-light: #FFB4A2;
+            --coral-dark: #e7583b;
+            --yellow: #e9f174;
+            --yellow-bright: #f0f594;
+            --gray-dark: #545454;
+            --gray-mid: #666;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--coral-light);
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        /* Password Gate */
+        #password-gate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--coral-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .password-box {
+            background: var(--white);
+            padding: 50px;
+            border: 5px solid var(--gray-dark);
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+        }
+
+        .password-box h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.8rem;
+            color: var(--coral-dark);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .password-box p {
+            color: var(--gray-mid);
+            margin-bottom: 25px;
+        }
+
+        .password-box input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border: 3px solid var(--gray-dark);
+            font-family: 'DM Sans', sans-serif;
+            margin-bottom: 15px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        .password-box input:focus {
+            outline: none;
+            border-color: var(--coral-dark);
+        }
+
+        .password-box button {
+            width: 100%;
+            padding: 15px 30px;
+            background: var(--gray-dark);
+            color: var(--yellow);
+            border: 3px solid var(--gray-dark);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            box-shadow: 5px 5px 0px var(--yellow);
+            transition: all 0.2s ease;
+        }
+
+        .password-box button:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0px var(--yellow);
+        }
+
+        .password-box button:active {
+            transform: translate(5px, 5px);
+            box-shadow: 0px 0px 0px var(--yellow);
+        }
+
+        .error-msg {
+            color: var(--coral-dark);
+            font-weight: 700;
+            margin-top: 15px;
+            display: none;
+        }
+
+        #protected-content {
+            display: none;
+        }
+
+        /* Rest of report styles */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 30px;
+        }
+
+        header {
+            background: var(--coral-dark);
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 8px solid var(--gray-dark);
+        }
+
+        .report-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--yellow);
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0px var(--gray-dark);
+            margin-bottom: 10px;
+        }
+
+        .report-subtitle {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            letter-spacing: 2px;
+        }
+
+        .report-date {
+            font-size: 1rem;
+            color: var(--coral-light);
+            margin-top: 10px;
+        }
+
+        .section {
+            background: var(--white);
+            border: 4px solid var(--gray-dark);
+            margin: 30px 0;
+            padding: 35px;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.8rem;
+            color: var(--coral-dark);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 4px solid var(--yellow);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: var(--yellow);
+            padding: 25px;
+            text-align: center;
+            border: 3px solid var(--gray-dark);
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+        }
+
+        .stat-number {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--coral-dark);
+            line-height: 1.1;
+        }
+
+        .stat-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            color: var(--gray-dark);
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th {
+            background: var(--gray-dark);
+            color: var(--yellow);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            padding: 15px 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 2px solid var(--coral-light);
+            vertical-align: top;
+        }
+
+        tr:hover {
+            background: rgba(233, 241, 116, 0.2);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border: 2px solid var(--gray-dark);
+        }
+
+        .badge-beginner { background: var(--yellow); }
+        .badge-intermediate { background: var(--coral-light); }
+        .badge-advanced { background: var(--coral-dark); color: var(--white); }
+        .badge-never { background: var(--white); }
+
+        .bar-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 8px 0;
+        }
+
+        .bar-label {
+            min-width: 140px;
+            font-weight: 500;
+        }
+
+        .bar-wrapper {
+            flex: 1;
+            background: var(--coral-light);
+            height: 28px;
+            border: 2px solid var(--gray-dark);
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: var(--coral-dark);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            color: var(--white);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .insight-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .insight-list li {
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: rgba(233, 241, 116, 0.3);
+            border-left: 5px solid var(--coral-dark);
+        }
+
+        .insight-list li strong {
+            color: var(--coral-dark);
+        }
+
+        .highlight-box {
+            background: var(--yellow);
+            border: 4px solid var(--gray-dark);
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .highlight-box h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            color: var(--gray-dark);
+            margin-bottom: 10px;
+        }
+
+        .teaching-rec {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .teaching-card {
+            background: var(--coral-light);
+            border: 3px solid var(--gray-dark);
+            padding: 25px;
+        }
+
+        .teaching-card h4 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.2rem;
+            color: var(--gray-dark);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .teaching-card ul {
+            margin-left: 20px;
+        }
+
+        .teaching-card li {
+            margin: 8px 0;
+        }
+
+        @media print {
+            #password-gate { display: none !important; }
+            #protected-content { display: block !important; }
+            body { background: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .section { box-shadow: none; border: 2px solid #333; page-break-inside: avoid; margin: 20px 0; }
+            .stat-card { box-shadow: none; background: var(--yellow) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .stats-grid { display: flex; flex-wrap: wrap; gap: 15px; }
+            .stat-card { flex: 1; min-width: 120px; }
+            header { background: var(--coral-dark) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .highlight-box { background: var(--yellow) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .teaching-card { background: var(--coral-light) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            th { background: var(--gray-dark) !important; color: var(--yellow) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+
+        @page { margin: 0.75in; size: letter; }
+    </style>
+</head>
+<body>
+    <!-- Password Gate -->
+    <div id="password-gate">
+        <div class="password-box">
+            <h1>Workshop Materials</h1>
+            <p>Enter the password to access the attendee report.</p>
+            <input type="password" id="password-input" placeholder="Password" autocomplete="off">
+            <button onclick="checkPassword()">UNLOCK</button>
+            <p class="error-msg" id="error-msg">Incorrect password. Try again.</p>
+        </div>
+    </div>
+
+    <!-- Protected Content -->
+    <div id="protected-content">
+        <header>
+            <div class="container">
+                <h1 class="report-title">Workshop Attendee Report</h1>
+                <p class="report-subtitle">Next Level AI - 2-Day Advanced Claude & Agentic Thinking #4</p>
+                <p class="report-date">August 22-23, 2026 | Generated: August 19, 2026</p>
+            </div>
+        </header>
+
+        <div class="container">
+            <!-- Executive Summary -->
+            <div class="section">
+                <h2 class="section-title">Executive Summary</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">10</div>
+                        <div class="stat-label">Unique Attendees</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Beginners</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Intermediate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">Advanced</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">80%</div>
+                        <div class="stat-label">Daily Users</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill Level Breakdown -->
+            <div class="section">
+                <h2 class="section-title">Skill Level Distribution</h2>
+                <div class="bar-container">
+                    <span class="bar-label">Never Used</span>
+                    <div class="bar-wrapper">
+                        <div class="bar-fill" style="width: 10%; background: var(--gray-mid);">1</div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <span class="bar-label">Beginner</span>
+                    <div class="bar-wrapper">
+                        <div class="bar-fill" style="width: 40%;">4</div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <span class="bar-label">Intermediate</span>
+                    <div class="bar-wrapper">
+                        <div class="bar-fill" style="width: 40%;">4</div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <span class="bar-label">Advanced</span>
+                    <div class="bar-wrapper">
+                        <div class="bar-fill" style="width: 10%;">1</div>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin-top: 30px;">
+                    <h4>Teaching Implication</h4>
+                    <p>The group is evenly split between beginners and intermediate users, with one advanced participant. <strong>Start with foundational concepts but move quickly into hands-on building.</strong> The advanced user (David) can serve as a peer mentor during exercises.</p>
+                </div>
+            </div>
+
+            <!-- What They Want to Learn -->
+            <div class="section">
+                <h2 class="section-title">What They Want to Learn</h2>
+                <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin: 20px 0 15px; color: var(--gray-dark);">Top Requested Topics</h3>
+                <div class="bar-container">
+                    <span class="bar-label">Automating Tasks</span>
+                    <div class="bar-wrapper">
+                        <div class="bar-fill" style="width: 90%;">9/10</div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <span class="bar-label">Business Growth</span>
+                    <div class="bar-wrapper">
+                        <div class="bar-fill" style="width: 70%;">7/10</div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <span class="bar-label">Marketing & Content</span>
+                    <div class="bar-wrapper">
+                        <div class="bar-fill" style="width: 70%;">7/10</div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <span class="bar-label">Productivity & Work</span>
+                    <div class="bar-wrapper">
+                        <div class="bar-fill" style="width: 80%;">8/10</div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <span class="bar-label">Team Workflows</span>
+                    <div class="bar-wrapper">
+                        <div class="bar-fill" style="width: 40%;">4/10</div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <span class="bar-label">Coding / Building</span>
+                    <div class="bar-wrapper">
+                        <div class="bar-fill" style="width: 50%;">5/10</div>
+                    </div>
+                </div>
+                <div class="bar-container">
+                    <span class="bar-label">Creative Work</span>
+                    <div class="bar-wrapper">
+                        <div class="bar-fill" style="width: 40%;">4/10</div>
+                    </div>
+                </div>
+
+                <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; margin: 30px 0 15px; color: var(--gray-dark);">Prior Experience</h3>
+                <table>
+                    <tr><th>Activity</th><th>Count</th></tr>
+                    <tr><td>Research & Analysis</td><td>7</td></tr>
+                    <tr><td>Brainstorming</td><td>6</td></tr>
+                    <tr><td>Writing / Content</td><td>6</td></tr>
+                    <tr><td>Automations / Workflows</td><td>4</td></tr>
+                    <tr><td>Coding / Vibe Coding</td><td>4</td></tr>
+                    <tr><td>Building Apps or Tools</td><td>3</td></tr>
+                    <tr><td>Agents / MCPs / Integrations</td><td>3</td></tr>
+                    <tr><td>None Yet</td><td>1</td></tr>
+                </table>
+            </div>
+
+            <!-- Biggest Challenges -->
+            <div class="section">
+                <h2 class="section-title">Their Biggest Challenges</h2>
+                <ul class="insight-list">
+                    <li><strong>Jessica:</strong> Getting the tone to stay consistent / removing AI-sounding slop (coming from ChatGPT)</li>
+                    <li><strong>Joana:</strong> Starting from scratch, wants to be efficient from the beginning</li>
+                    <li><strong>Asaf:</strong> Building workflows - needs expert validation of his work, struggles with loops and hand-offs</li>
+                    <li><strong>Karla:</strong> Knowing how to use Claude efficiently and effectively</li>
+                    <li><strong>Paula:</strong> Building recurring automations that work seamlessly</li>
+                    <li><strong>Miriam:</strong> Integrating with other tools to actually automate tasks</li>
+                    <li><strong>Amy:</strong> Beyond next-level prompting - wants to build entire business systems</li>
+                    <li><strong>Teresa:</strong> Wants to expand knowledge on workflows/automations</li>
+                    <li><strong>David:</strong> Underuses Claude because not fully aware of all use cases</li>
+                    <li><strong>Laurie:</strong> Making time to learn how to maximize potential</li>
+                </ul>
+                <div class="highlight-box">
+                    <h4>Common Themes</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Integration gaps</strong> - People don't know how to connect Claude to other tools</li>
+                        <li><strong>Consistency issues</strong> - Output quality varies, "AI slop" concerns</li>
+                        <li><strong>Workflow complexity</strong> - Loops, hand-offs, and multi-step processes are confusing</li>
+                        <li><strong>Use case blindness</strong> - Don't know what's possible</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Attendee Profiles & Businesses -->
+            <div class="section">
+                <h2 class="section-title">Attendee Profiles & Businesses</h2>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Business / Domain</th>
+                        <th>Level</th>
+                        <th>What They Want to Build</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Jessica Sharp</strong></td>
+                        <td>Somatic Coaching / Holistic Health</td>
+                        <td><span class="badge badge-never">Never Used</span></td>
+                        <td>Content library platform with access levels; 6 & 12 month coaching modules; research aggregation system; business ops automation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Joana Trigueiros</strong></td>
+                        <td>Maray Shoes (Footwear)</td>
+                        <td><span class="badge badge-beginner">Beginner</span></td>
+                        <td>Sales agent for research and outreach; sales automation system</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Asaf Green</strong></td>
+                        <td>Product Building / Tech</td>
+                        <td><span class="badge badge-intermediate">Intermediate</span></td>
+                        <td>Workflows with loops and hand-offs; expert-validated systems</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Karla McDermott</strong></td>
+                        <td>New Business (Startup)</td>
+                        <td><span class="badge badge-beginner">Beginner</span></td>
+                        <td>AI agents to optimize workflow and support business growth</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Paula Gutierrez</strong></td>
+                        <td>Cashflowy.ai (Fintech)</td>
+                        <td><span class="badge badge-intermediate">Intermediate</span></td>
+                        <td>Recurring automations that work seamlessly; proven workflows for efficiency</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Miriam Klein</strong></td>
+                        <td>Business Owner</td>
+                        <td><span class="badge badge-intermediate">Intermediate</span></td>
+                        <td>Tool integrations for automated task creation; agents for business workflow</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Amy</strong></td>
+                        <td>Multiple Businesses (Going Global)</td>
+                        <td><span class="badge badge-beginner">Beginner</span></td>
+                        <td>Entire business system; content engine; automated systems; enquiry-to-client workflow</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Teresa Alvadia</strong></td>
+                        <td>Infinity Games (Gaming)</td>
+                        <td><span class="badge badge-intermediate">Intermediate</span></td>
+                        <td>Monetization automations for gaming company</td>
+                    </tr>
+                    <tr>
+                        <td><strong>David Allard</strong></td>
+                        <td>Personal Projects / Learning</td>
+                        <td><span class="badge badge-advanced">Advanced</span></td>
+                        <td>World news report automation; Obsidian note-taking integration; LinkedIn database to Obsidian; Claude Code apps</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Laurie Stewart</strong></td>
+                        <td>Mindless Academy (EdTech Platform)</td>
+                        <td><span class="badge badge-beginner">Beginner</span></td>
+                        <td>Workflow automation; prototype to production guidance; understanding tech vs non-tech boundaries</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Industry Breakdown -->
+            <div class="section">
+                <h2 class="section-title">Industry Breakdown</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" style="font-size: 2.2rem;">3</div>
+                        <div class="stat-label">Tech / Product</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" style="font-size: 2.2rem;">2</div>
+                        <div class="stat-label">EdTech / Coaching</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" style="font-size: 2.2rem;">1</div>
+                        <div class="stat-label">E-Commerce</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" style="font-size: 2.2rem;">1</div>
+                        <div class="stat-label">Gaming</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" style="font-size: 2.2rem;">1</div>
+                        <div class="stat-label">Fintech</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" style="font-size: 2.2rem;">2</div>
+                        <div class="stat-label">Solopreneur</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What Would Make This a Win -->
+            <div class="section">
+                <h2 class="section-title">What Would Make This a "Big Win"</h2>
+                <ul class="insight-list">
+                    <li><strong>Jessica:</strong> Tools to build a content library platform with access levels + coaching package modules + research automation</li>
+                    <li><strong>Joana:</strong> Building a working sales agent</li>
+                    <li><strong>Asaf:</strong> Having an expert validate and approve his work</li>
+                    <li><strong>Karla:</strong> Leave with knowledge about AI agents + workflow optimization</li>
+                    <li><strong>Paula:</strong> Have one business problem solved with an automated workflow</li>
+                    <li><strong>Miriam:</strong> Automate one relevant business workflow</li>
+                    <li><strong>Amy:</strong> Leave with a working system she understands and can maintain herself</li>
+                    <li><strong>Teresa:</strong> Monetization automation workflows</li>
+                    <li><strong>David:</strong> Learning real skills through real-world cases</li>
+                    <li><strong>Laurie:</strong> Leave with a workflow built + skills to create more + clarity on prototype-to-production</li>
+                </ul>
+                <div class="highlight-box">
+                    <h4>The Common Thread</h4>
+                    <p><strong>Everyone wants to leave with something working.</strong> Not theory - a real, functioning system they built themselves and can maintain/extend after the workshop.</p>
+                </div>
+            </div>
+
+            <!-- Teaching Recommendations -->
+            <div class="section">
+                <h2 class="section-title">Teaching Recommendations</h2>
+                <div class="teaching-rec">
+                    <div class="teaching-card">
+                        <h4>Day 1 Focus</h4>
+                        <ul>
+                            <li>Start with Claude fundamentals for the 5 beginners</li>
+                            <li>Quickly move to "agentic thinking" framework</li>
+                            <li>Introduce Projects, custom instructions, artifacts</li>
+                            <li>Hands-on: Build a simple content workflow</li>
+                            <li>Pair beginners with intermediate/advanced users</li>
+                        </ul>
+                    </div>
+                    <div class="teaching-card">
+                        <h4>Day 2 Focus</h4>
+                        <ul>
+                            <li>Multi-step workflows with loops/hand-offs (Asaf's request)</li>
+                            <li>Tool integrations (Zapier, Make, etc.)</li>
+                            <li>Building sales/outreach agents (Joana, Karla)</li>
+                            <li>Real business system builds (each person works on their own)</li>
+                            <li>Expert review sessions</li>
+                        </ul>
+                    </div>
+                    <div class="teaching-card">
+                        <h4>Must Cover</h4>
+                        <ul>
+                            <li><strong>Agents & MCPs</strong> - 4 people specifically asked</li>
+                            <li><strong>Integrations</strong> - #1 pain point</li>
+                            <li><strong>Consistent output</strong> - Style guides, system prompts</li>
+                            <li><strong>Sales automation</strong> - Multiple requests</li>
+                            <li><strong>Prototype to production</strong> - Laurie's ask</li>
+                        </ul>
+                    </div>
+                    <div class="teaching-card">
+                        <h4>Format Suggestions</h4>
+                        <ul>
+                            <li>30% instruction, 70% hands-on building</li>
+                            <li>Use David as a peer mentor</li>
+                            <li>Dedicated 1:1 check-ins for each person's project</li>
+                            <li>Demo time at end of each day</li>
+                            <li>Provide templates they can reuse</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specific Build Projects -->
+            <div class="section">
+                <h2 class="section-title">Recommended Build Projects by Attendee</h2>
+                <table>
+                    <tr>
+                        <th>Attendee</th>
+                        <th>Suggested Workshop Build</th>
+                        <th>Complexity</th>
+                    </tr>
+                    <tr><td>Jessica</td><td>Research aggregation workflow + coaching module outline generator</td><td>Medium</td></tr>
+                    <tr><td>Joana</td><td>Sales research agent that finds prospects and drafts outreach</td><td>Medium-High</td></tr>
+                    <tr><td>Asaf</td><td>Multi-agent workflow with clear hand-off points</td><td>High</td></tr>
+                    <tr><td>Karla</td><td>Simple business automation (lead intake or client onboarding)</td><td>Medium</td></tr>
+                    <tr><td>Paula</td><td>Recurring content or reporting automation</td><td>Medium</td></tr>
+                    <tr><td>Miriam</td><td>Claude + external tool integration (Notion, Airtable, etc.)</td><td>Medium</td></tr>
+                    <tr><td>Amy</td><td>Enquiry-to-client workflow with templates</td><td>Medium-High</td></tr>
+                    <tr><td>Teresa</td><td>Gaming metrics dashboard or monetization report generator</td><td>Medium</td></tr>
+                    <tr><td>David</td><td>Advanced: Obsidian + Claude integration or custom Claude Code app</td><td>High</td></tr>
+                    <tr><td>Laurie</td><td>Platform prototype planning + tech requirements doc generator</td><td>Medium</td></tr>
+                </table>
+            </div>
+
+            <!-- Key Insights -->
+            <div class="section" style="background: var(--coral-dark); border-color: var(--gray-dark);">
+                <h2 class="section-title" style="color: var(--yellow); border-color: var(--yellow);">Key Insights</h2>
+                <div style="color: var(--white);">
+                    <div style="background: rgba(255,255,255,0.15); padding: 20px; margin: 15px 0; border-left: 5px solid var(--yellow);">
+                        <strong style="color: var(--yellow);">1. Integration is the gap.</strong><br>
+                        Most attendees can use Claude for chat/writing but don't know how to connect it to their existing tools and workflows.
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 20px; margin: 15px 0; border-left: 5px solid var(--yellow);">
+                        <strong style="color: var(--yellow);">2. They want to leave with something real.</strong><br>
+                        Every single person mentioned wanting a working system, not just knowledge. Build-focused workshop confirmed.
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 20px; margin: 15px 0; border-left: 5px solid var(--yellow);">
+                        <strong style="color: var(--yellow);">3. Sales & business automation is hot.</strong><br>
+                        Multiple attendees want sales agents, lead handling, and business process automation. Consider a sales-focused track.
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 20px; margin: 15px 0; border-left: 5px solid var(--yellow);">
+                        <strong style="color: var(--yellow);">4. Expert validation matters.</strong><br>
+                        Asaf specifically wants expert approval of his work. Build in review/feedback sessions where instructors validate builds.
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); padding: 20px; margin: 15px 0; border-left: 5px solid var(--yellow);">
+                        <strong style="color: var(--yellow);">5. One ChatGPT convert needs Claude onboarding.</strong><br>
+                        Jessica is coming from ChatGPT. Briefly cover Claude's unique strengths vs. GPT (artifacts, projects, longer context, coding).
+                    </div>
+                </div>
+            </div>
+
+            <!-- Referral Sources -->
+            <div class="section">
+                <h2 class="section-title">How They Found Us</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" style="font-size: 2.2rem;">3</div>
+                        <div class="stat-label">Direct Invite / Word of Mouth</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" style="font-size: 2.2rem;">2</div>
+                        <div class="stat-label">Instagram / Meta Ads</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" style="font-size: 2.2rem;">1</div>
+                        <div class="stat-label">Email Invite</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" style="font-size: 2.2rem;">1</div>
+                        <div class="stat-label">WhatsApp Group</div>
+                    </div>
+                </div>
+                <p style="margin-top: 15px; color: var(--gray-mid);">Note: Several attendees didn't specify their source. Strong word-of-mouth presence (Heidi DeCoux, Marc, Chelsea direct invites).</p>
+            </div>
+
+            <!-- Footer -->
+            <div style="text-align: center; padding: 40px 0; color: var(--gray-mid);">
+                <p style="font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 2px;">CoLab Lisbon | Next Level AI Workshop</p>
+                <p style="margin-top: 10px;">Report generated August 19, 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if already authenticated this session
+        if (sessionStorage.getItem('ws4_auth') === 'true') {
+            document.getElementById('password-gate').style.display = 'none';
+            document.getElementById('protected-content').style.display = 'block';
+        }
+
+        // Handle Enter key
+        document.getElementById('password-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        function checkPassword() {
+            const input = document.getElementById('password-input').value;
+            const errorMsg = document.getElementById('error-msg');
+
+            if (input === 'ailevelup4') {
+                sessionStorage.setItem('ws4_auth', 'true');
+                document.getElementById('password-gate').style.display = 'none';
+                document.getElementById('protected-content').style.display = 'block';
+            } else {
+                errorMsg.style.display = 'block';
+                document.getElementById('password-input').value = '';
+                document.getElementById('password-input').focus();
+            }
+        }
+    </script>
+</body>
+</html>
