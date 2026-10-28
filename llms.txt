@@ -41,7 +41,6 @@
 ## Pages (English)
 
 - [Home](https://colablisbon.com/): Custom in-person Claude & AI training for teams
-- [Claude Code Workshop](https://colablisbon.com/claude-code/): Hands-on Claude Code training
 - [Team Training](https://colablisbon.com/team-training.html): Custom AI training for companies and teams
 - [Own Your Stack](https://colablisbon.com/own-your-stack/): Build and own your AI stack
 - [Use Cases](https://colablisbon.com/usecases/): Real-world AI automation use cases

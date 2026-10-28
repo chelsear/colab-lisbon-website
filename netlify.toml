@@ -1,3 +1,17 @@
 [build]
   publish = "."
   functions = "netlify/functions"
+
+# Claude Code workshop page is hidden for now; the page file stays in claude-code/ for later.
+# Remove these two rules to bring it back.
+[[redirects]]
+  from = "/claude-code"
+  to = "/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/claude-code/*"
+  to = "/"
+  status = 302
+  force = true
