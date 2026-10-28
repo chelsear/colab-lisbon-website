@@ -273,24 +273,29 @@
         </div>
     </div>
 
+    <script src="/email-check.js"></script>
     <script>
         const form = document.getElementById('teamTrainingForm');
         if (form) {
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
 
-                const formData = new FormData(this);
+                const form = this;
+                const emailInput = document.getElementById('email');
+                const button = form.querySelector('button[type="submit"]');
+                button.disabled = true;
 
-                fetch('/', {
-                    method: 'POST',
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: new URLSearchParams(formData).toString()
-                })
-                .then(() => {
-                    this.style.display = 'none';
+                // Screens the email, then hands it to Netlify Forms via /.netlify/functions/submit-form
+                EmailCheck.submit(form).then((result) => {
+                    button.disabled = false;
+                    if (!result.ok) {
+                        EmailCheck.showError(emailInput, result);
+                        return;
+                    }
+                    EmailCheck.showError(emailInput, null);
+                    form.style.display = 'none';
                     document.getElementById('formSuccess').style.display = 'block';
-                })
-                .catch((error) => console.error('Error:', error));
+                });
             });
         }
     </script>

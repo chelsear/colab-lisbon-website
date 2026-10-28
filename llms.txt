@@ -1,21 +1,56 @@
 # CoLab Lisbon
 
-> CoLab Lisbon runs hands-on AI workshops and Claude courses in Lisbon, Portugal. Learn to build products, agents, and automations with Claude and Claude Code — in person, with a community of AI builders.
+> CoLab Lisbon runs hands-on AI workshops and Claude training in Lisbon, Portugal. Learn to build products, agents, and automations with Claude and Claude Code — in person, with a community of AI builders.
 
-## Upcoming Workshop
+## Key Information
 
-- [Next Level AI](https://luma.com/o8lhzuz4): 2-day intensive workshop, August 22 & 23rd at Unicorn Factory, Lisbon. Go beyond basic AI prompting into advanced Claude techniques, operator-level frameworks, and multi-step agentic workflows. Day one: agentic thinking and workflow orchestration. Day two: automated systems for real business use cases.
+- **Organization**: CoLab Lisbon
+- **Location**: Lisbon, Portugal
+- **Focus**: Claude AI training, AI agents, workflow automation, Claude Code
+- **Languages**: English (primary), Portuguese (Português)
+- **Target Audience**: Entrepreneurs, founders, freelancers, marketing professionals, executives
 
-## Pages
+## Next Workshop: Next Level AI
 
-- [Home](https://colablisbon.com/): AI workshops and Claude courses in Lisbon
+- **Location**: Unicorn Factory, Lisbon
+- **Registration**: https://luma.com/o8lhzuz4
+- **Format**: 2-day intensive, in-person workshop
+- **Instructors**: Chelsea Rustrum, James Corbett, Verena Husemann
+
+### What You'll Learn
+- Day 1: Agentic thinking and workflow orchestration with Claude
+- Day 2: Design and deploy automated systems for real business use cases
+- Go beyond basic prompting into advanced Claude techniques
+- Build operator-level frameworks and multi-step workflows
+- Leave with working products, agents, and automations
+
+### Who It's For
+- You prompt & chat with AI but haven't built real systems yet
+- Entrepreneurs wanting to automate busywork
+- Founders building products with AI
+- Professionals seeking to streamline workflows
+
+## Pages (English)
+
+- [Home](https://colablisbon.com/): Claude AI training in Lisbon - main workshop page
 - [Claude Code Workshop](https://colablisbon.com/claude-code/): Hands-on Claude Code training
 - [Team Training](https://colablisbon.com/team-training.html): Custom AI training for companies and teams
 - [Own Your Stack](https://colablisbon.com/own-your-stack/): Build and own your AI stack
 - [Use Cases](https://colablisbon.com/usecases/): Real-world AI automation use cases
 - [90 Day Build](https://colablisbon.com/90daybuild/): 90-day product building program
-- [Master Claude Course](https://colablisbon.com/master-claude/): Online course (founding-member pre-sell) — automate busywork, build apps, and run agents with Claude
+- [Master Claude Course](https://colablisbon.com/master-claude/): Online course — automate busywork, build apps, and run agents with Claude
 
-## Events
+## Páginas (Português)
 
-- [Upcoming events calendar](https://luma.com/calendar/cal-HLSHIiwiF05MvRk): All CoLab Lisbon events on Luma
+- [Início](https://colablisbon.com/pt/): Formação Claude IA em Lisboa - página principal do workshop
+- Workshop Next Level AI: Unicorn Factory, Lisboa
+- 2 dias intensivos para aprender Claude, construir agentes de IA e automatizar fluxos de trabalho
+
+## Events Calendar
+
+- [All upcoming events](https://luma.com/calendar/cal-HLSHIiwiF05MvRk): CoLab Lisbon events on Luma
+
+## Contact
+
+- WhatsApp Community: https://chat.whatsapp.com/CXtyztHhiy90LU6NulY7XQ
+- Website: https://colablisbon.com

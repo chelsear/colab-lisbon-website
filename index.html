@@ -3,27 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Next Level AI Workshop - Aug 22-23, 2026 | CoLab Lisbon</title>
+    <title>Next Level AI Workshop | CoLab Lisbon</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Next Level AI Workshop: 2-day intensive in Lisbon, August 22-23, 2026. Learn Claude, build AI agents, automate workflows. Go beyond prompting — build real systems.">
-    <meta name="keywords" content="Claude AI training Lisbon, AI workshop Lisbon, Claude workshop, AI agents course, automation training, Claude Code, AI training August 2026, Lisbon Portugal, build AI systems">
+    <meta name="description" content="Next Level AI Workshop: 2-day intensive in Lisbon. Learn Claude, build AI agents, automate workflows. Go beyond prompting — build real systems.">
+    <meta name="keywords" content="Claude AI training Lisbon, AI workshop Lisbon, Claude workshop, AI agents course, automation training, Claude Code, Lisbon Portugal, build AI systems">
     <meta name="author" content="CoLab Lisbon">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
     <link rel="canonical" href="https://colablisbon.com/">
+    <link rel="alternate" hreflang="en" href="https://colablisbon.com/">
+    <link rel="alternate" hreflang="pt" href="https://colablisbon.com/pt/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://colablisbon.com/">
-    <meta property="og:title" content="Next Level AI Workshop - Aug 22-23, 2026 | Lisbon">
-    <meta property="og:description" content="2-day intensive: learn Claude, build AI agents, automate workflows. Go beyond prompting — build real systems. August 22-23 in Lisbon.">
+    <meta property="og:title" content="Next Level AI Workshop | Lisbon">
+    <meta property="og:description" content="2-day intensive: learn Claude, build AI agents, automate workflows. Go beyond prompting — build real systems. In Lisbon.">
     <meta property="og:image" content="https://colablisbon.com/venue.jpg">
     <meta property="og:site_name" content="CoLab Lisbon">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://colablisbon.com/">
-    <meta name="twitter:title" content="Next Level AI Workshop - Aug 22-23, 2026 | Lisbon">
-    <meta name="twitter:description" content="2-day intensive: learn Claude, build AI agents, automate workflows. Go beyond prompting — build real systems. August 22-23 in Lisbon.">
+    <meta name="twitter:title" content="Next Level AI Workshop | Lisbon">
+    <meta name="twitter:description" content="2-day intensive: learn Claude, build AI agents, automate workflows. Go beyond prompting — build real systems. In Lisbon.">
     <meta name="twitter:image" content="https://colablisbon.com/venue.jpg">
 
     <!-- Structured Data - Organization -->
@@ -43,40 +47,72 @@
     }
     </script>
 
-    <!-- Structured Data - Event -->
+
+    <!-- Structured Data - Course -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Event",
-        "name": "Next Level AI Workshop",
-        "description": "2-day intensive AI workshop. Learn Claude, build AI agents, automate workflows. Go beyond basic prompting into advanced techniques, operator-level frameworks, and multi-step workflows.",
-        "startDate": "2026-08-22T09:00:00+01:00",
-        "endDate": "2026-08-23T18:00:00+01:00",
-        "eventStatus": "https://schema.org/EventScheduled",
-        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-        "location": {
-            "@type": "Place",
-            "name": "Unicorn Factory",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Lisbon",
-                "addressCountry": "PT"
-            }
-        },
-        "organizer": {
+        "@type": "Course",
+        "name": "Next Level AI - Claude Training",
+        "description": "2-day intensive workshop to learn Claude, build AI agents, and automate workflows. Go beyond basic prompting into advanced techniques and real systems.",
+        "provider": {
             "@type": "Organization",
             "name": "CoLab Lisbon",
             "url": "https://colablisbon.com"
         },
-        "offers": {
-            "@type": "Offer",
-            "url": "https://luma.com/o8lhzuz4",
-            "availability": "https://schema.org/InStock"
+        "hasCourseInstance": {
+            "@type": "CourseInstance",
+            "courseMode": "onsite",
+            "location": {
+                "@type": "Place",
+                "name": "Unicorn Factory",
+                "address": "Lisbon, Portugal"
+            },
+            "instructor": [
+                {"@type": "Person", "name": "Chelsea Rustrum"},
+                {"@type": "Person", "name": "James Corbett"},
+                {"@type": "Person", "name": "Verena Husemann"}
+            ]
         },
-        "performer": [
-            {"@type": "Person", "name": "Chelsea Rustrum"},
-            {"@type": "Person", "name": "James Corbett"},
-            {"@type": "Person", "name": "Verena Husemann"}
+        "inLanguage": "en",
+        "teaches": ["Claude AI", "AI Agents", "Workflow Automation", "Claude Code", "Agentic Thinking"],
+        "audience": {
+            "@type": "Audience",
+            "audienceType": "Entrepreneurs, Founders, Freelancers, Marketing Professionals, Executives"
+        }
+    }
+    </script>
+
+    <!-- Structured Data - FAQ -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the Next Level AI workshop?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A 2-day intensive workshop in Lisbon where you learn Claude, build AI agents, and automate workflows. Go beyond basic prompting into advanced techniques and real systems."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "When and where does it happen?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "At Unicorn Factory in Lisbon, Portugal."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Who is this workshop for?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Entrepreneurs, founders, freelancers, marketing professionals, and executives who want to use AI to automate work and build systems."
+                }
+            }
         ]
     }
     </script>
@@ -1101,10 +1137,12 @@
         <a href="#home">Home</a>
         <a href="#workshops">Workshops</a>
         <a href="claude-code/index.html">Claude Code</a>
-        <a href="master-claude/index.html">Master Claude Course</a>
         <a href="#venue">Venue</a>
         <a href="#team">Team</a>
         <a href="#teams">Company Training</a>
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 3px solid var(--yellow);">
+            <a href="/pt/" style="font-size: 1.2rem; color: var(--gray-mid);">🇵🇹 Português</a>
+        </div>
     </nav>
 
     <!-- Menu Overlay -->
@@ -1121,22 +1159,26 @@
     <section class="hero" id="workshops">
         <img src="lady.png" alt="Retro Computer" class="computer-head">
         <div class="container">
-            <div class="hero-badge">AUGUST 22-23, 2026 • LISBON</div>
+            <div class="hero-badge">LISBON</div>
             <h1 class="hero-title">Next Level AI</h1>
             <p class="hero-subtitle">Claude AI Training in Lisbon</p>
 
+            <!-- WORKSHOP CARD: hidden until the next workshop is scheduled.
+                 To show it again: update the date, Luma link and details, then remove the <template> tags. -->
+            <template id="workshop-card">
             <div style="display: flex; justify-content: center; margin: 40px auto; max-width: 600px;">
                 <!-- Next Level AI Workshop -->
                 <div style="background: var(--white); padding: 35px 40px; border: 4px solid var(--gray-dark); box-shadow: 8px 8px 0px rgba(0,0,0,0.2); width: 100%;">
                     <div style="font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--coral-dark); margin-bottom: 15px; letter-spacing: 1px;">Go Beyond Prompting — Build Real Systems</div>
                     <div style="font-family: 'DM Sans', sans-serif; font-size: 1.1rem; color: var(--gray-dark); margin-bottom: 15px; line-height: 1.6;">
-                        <div style="margin-bottom: 8px;">📅 <strong>August 22 & 23, 2026</strong> (Weekend)</div>
+                        <div style="margin-bottom: 8px;">📅 <strong>[DATES, YEAR]</strong> (Weekend)</div>
                         <div style="margin-bottom: 8px;">📍 Unicorn Factory, Lisbon</div>
                         <div style="margin-bottom: 15px;">👥 Small group • 3 mentors</div>
                     </div>
                     <a href="https://luma.com/o8lhzuz4" style="display: block; background: var(--gray-dark); color: var(--yellow); padding: 15px 30px; text-align: center; text-decoration: none; font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; border: 3px solid var(--gray-dark); box-shadow: 4px 4px 0px var(--yellow); transition: transform 0.3s ease;" onmouseover="this.style.transform='translate(2px, 2px)'; this.style.boxShadow='2px 2px 0px var(--yellow)';" onmouseout="this.style.transform='translate(0, 0)'; this.style.boxShadow='4px 4px 0px var(--yellow)';">RESERVE YOUR SPOT →</a>
                 </div>
             </div>
+            </template>
 
             <p class="hero-tagline">You prompt & chat — but you don't have systems. Build yours in a weekend.</p>
 
@@ -1309,6 +1351,7 @@
         </div>
     </section>
 
+    <script src="/email-check.js"></script>
     <script>
         // Scroll Reveal Animation
         const reveals = document.querySelectorAll('.reveal');
@@ -1371,18 +1414,23 @@
             newsletterForm.addEventListener('submit', function(e) {
                 e.preventDefault();
 
-                const formData = new FormData(this);
+                const form = this;
+                const emailInput = form.querySelector('input[name="email"]');
+                const button = form.querySelector('button[type="submit"]');
+                const errorOptions = { anchor: form, align: 'center' };
+                button.disabled = true;
 
-                fetch('/', {
-                    method: 'POST',
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: new URLSearchParams(formData).toString()
-                })
-                .then(() => {
-                    this.style.display = 'none';
+                // Screens the email, then hands it to Netlify Forms via /.netlify/functions/submit-form
+                EmailCheck.submit(form).then((result) => {
+                    button.disabled = false;
+                    if (!result.ok) {
+                        EmailCheck.showError(emailInput, result, errorOptions);
+                        return;
+                    }
+                    EmailCheck.showError(emailInput, null, errorOptions);
+                    form.style.display = 'none';
                     document.getElementById('newsletterSuccess').style.display = 'block';
-                })
-                .catch((error) => console.error('Error:', error));
+                });
             });
         }
     </script>
