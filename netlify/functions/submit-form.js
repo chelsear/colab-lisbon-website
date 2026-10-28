@@ -50,7 +50,8 @@ const json = (statusCode, body) => ({
 
 // Emails each accepted submission through Resend. Needs RESEND_API_KEY; the sender's domain must be
 // verified in Resend. Failures are logged only, since the submission is already saved in Netlify Forms.
-const NOTIFY_TO = process.env.NOTIFY_TO || 'chelsea@rustrum.com';
+// Always and only chelsea@rustrum.com; submitters never get a copy.
+const NOTIFY_TO = 'chelsea@rustrum.com';
 const NOTIFY_FROM = process.env.NOTIFY_FROM || 'CoLab Lisbon Forms <forms@colablisbon.com>';
 const SKIP_FIELDS = new Set(['form-name', 'bot-field']);
 
