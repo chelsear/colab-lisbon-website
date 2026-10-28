@@ -48,6 +48,45 @@ const json = (statusCode, body) => ({
   body: JSON.stringify(body),
 });
 
+// Emails each accepted submission through Resend. Needs RESEND_API_KEY; the sender's domain must be
+// verified in Resend. Failures are logged only, since the submission is already saved in Netlify Forms.
+const NOTIFY_TO = process.env.NOTIFY_TO || 'chelsea@rustrum.com';
+const NOTIFY_FROM = process.env.NOTIFY_FROM || 'CoLab Lisbon Forms <forms@colablisbon.com>';
+const SKIP_FIELDS = new Set(['form-name', 'bot-field']);
+
+const escapeHtml = (text) =>
+  String(text).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+
+async function notifyByEmail(formName, params) {
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY not set; skipping email notification');
+    return;
+  }
+  const fields = [...params.entries()].filter(([key, value]) => !SKIP_FIELDS.has(key) && value.trim());
+  const who = params.get('company') || [params.get('firstName'), params.get('lastName')].filter(Boolean).join(' ') || params.get('email');
+  const rows = fields
+    .map(([key, value]) => `<tr><td style="padding:6px 12px 6px 0;color:#666;vertical-align:top"><b>${escapeHtml(key)}</b></td><td style="padding:6px 0;white-space:pre-wrap">${escapeHtml(value)}</td></tr>`)
+    .join('');
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: NOTIFY_FROM,
+        to: [NOTIFY_TO],
+        reply_to: params.get('email') || undefined,
+        subject: `[colablisbon.com] ${formName}${who ? ` – ${who}` : ''}`,
+        html: `<p>New <b>${escapeHtml(formName)}</b> submission on colablisbon.com:</p><table>${rows}</table>`,
+        text: fields.map(([key, value]) => `${key}: ${value}`).join('\n'),
+      }),
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!res.ok) console.error(`Resend rejected notification for "${formName}": ${res.status} ${await res.text()}`);
+  } catch (err) {
+    console.error(`Could not send notification for "${formName}":`, err.message);
+  }
+}
+
 const reject = (field, error, suggestion = null) =>
   json(error === 'rate_limited' ? 429 : 400, { error, field, message: EMAIL_PROBLEM_MESSAGES[error], suggestion });
 
@@ -106,6 +145,7 @@ exports.handler = async (event) => {
       console.error(`Netlify Forms rejected "${formName}" with status ${res.status}`);
       return json(502, { error: 'failed', message: EMAIL_PROBLEM_MESSAGES.failed, status: res.status });
     }
+    await notifyByEmail(formName, params);
     return json(200, { ok: true, status: res.status });
   } catch (err) {
     console.error(`Could not forward "${formName}":`, err.message);
