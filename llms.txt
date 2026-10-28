@@ -8,31 +8,39 @@
 - **Location**: Lisbon, Portugal
 - **Focus**: Claude AI training, AI agents, workflow automation, Claude Code
 - **Languages**: English (primary), Portuguese (Português)
-- **Target Audience**: Entrepreneurs, founders, freelancers, marketing professionals, executives
+- **Target Audience**: Companies, teams and organizations; also entrepreneurs, founders and professionals
 
-## Next Workshop: Next Level AI
+## Custom Team Training
 
-- **Location**: Unicorn Factory, Lisbon
-- **Registration**: https://luma.com/o8lhzuz4
-- **Format**: 2-day intensive, in-person workshop
+- **What**: Live, in-person Claude and AI training for companies, teams and organizations, built around each team's real use cases
+- **Where**: At the client's office, or at the CoLab Lisbon venue; team offsites in Lisbon or Ericeira
+- **Formats**: Half-day intro, full-day workshop, 2-day intensive, team offsite / retreat
+- **Inquiries**: https://colablisbon.com/team-training.html#inquiry
 - **Instructors**: Chelsea Rustrum, James Corbett, Verena Husemann
 
-### What You'll Learn
-- Day 1: Agentic thinking and workflow orchestration with Claude
-- Day 2: Design and deploy automated systems for real business use cases
-- Go beyond basic prompting into advanced Claude techniques
-- Build operator-level frameworks and multi-step workflows
-- Leave with working products, agents, and automations
+### How It Works
+1. Discovery call to understand the team, goals and current tools
+2. Map the use cases with the biggest payoff
+3. Hands-on, in-person training on the team's real work
+4. Templates, playbooks and follow-up support
+
+### Example Use Cases
+- Marketing & content: content calendars, repurposing, brand voice guides
+- Sales & client work: proposals, prospect research, follow-ups
+- Operations & admin: SOPs, meeting summaries, recurring reports
+- Leadership & strategy: research briefs, competitor analysis, AI rollout plans
+- Product & engineering: Claude Code, internal tools, tests and documentation
+- Founders & small teams: AI operating systems, automations, agents
 
 ### Who It's For
-- You prompt & chat with AI but haven't built real systems yet
-- Entrepreneurs wanting to automate busywork
-- Founders building products with AI
-- Professionals seeking to streamline workflows
+- Companies, startups, agencies, nonprofits, leadership teams, communities and coworking spaces
+
+### Teams We've Worked With
+- AI training and AI strategy for startups, gaming companies, food manufacturers, real estate developers, events teams and financial advisors
 
 ## Pages (English)
 
-- [Home](https://colablisbon.com/): Claude AI training in Lisbon - main workshop page
+- [Home](https://colablisbon.com/): Custom in-person Claude & AI training for teams
 - [Claude Code Workshop](https://colablisbon.com/claude-code/): Hands-on Claude Code training
 - [Team Training](https://colablisbon.com/team-training.html): Custom AI training for companies and teams
 - [Own Your Stack](https://colablisbon.com/own-your-stack/): Build and own your AI stack
@@ -42,9 +50,8 @@
 
 ## Páginas (Português)
 
-- [Início](https://colablisbon.com/pt/): Formação Claude IA em Lisboa - página principal do workshop
-- Workshop Next Level AI: Unicorn Factory, Lisboa
-- 2 dias intensivos para aprender Claude, construir agentes de IA e automatizar fluxos de trabalho
+- [Início](https://colablisbon.com/pt/): Formação Claude & IA personalizada e presencial para equipas
+- [Formação para Equipas](https://colablisbon.com/pt/team-training.html): Pedido de formação à medida para empresas e organizações
 
 ## Events Calendar
 
