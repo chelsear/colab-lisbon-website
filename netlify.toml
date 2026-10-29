@@ -15,3 +15,13 @@
   to = "/"
   status = 302
   force = true
+
+# Master Claude course is password-protected until launch (netlify/edge-functions/master-claude-gate.js).
+# Password: MASTER_CLAUDE_PASSWORD env var in Netlify. Remove these two blocks to make it public.
+[[edge_functions]]
+  path = "/master-claude"
+  function = "master-claude-gate"
+
+[[edge_functions]]
+  path = "/master-claude/*"
+  function = "master-claude-gate"
