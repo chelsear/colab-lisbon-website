@@ -82,7 +82,7 @@
         "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "sales",
-            "url": "https://colablisbon.com/team-training.html#inquiry",
+            "url": "https://colablisbon.com/#inquiry",
             "availableLanguage": [
                 "English",
                 "Portuguese"
@@ -1201,6 +1201,22 @@
             }
         }
         /* Team training sections */
+
+        /* Inquiry form (moved from team-training.html), scoped to #inquiry */
+        #inquiry .inq-box { max-width: 860px; margin: 0 auto; background: var(--yellow); padding: 50px; border: 5px solid var(--gray-dark); box-shadow: 10px 10px 0px rgba(0,0,0,0.3); }
+        #inquiry .inq-lead { text-align: center; font-size: 1.15rem; line-height: 1.6; color: var(--gray-dark); margin-bottom: 30px; }
+        #inquiry form { display: grid; gap: 25px; }
+        #inquiry .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        #inquiry label { display: block; font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--gray-dark); margin-bottom: 8px; letter-spacing: 1px; }
+        #inquiry input[type="text"], #inquiry input[type="email"], #inquiry textarea, #inquiry select { width: 100%; padding: 15px; border: 3px solid var(--gray-dark); font-family: 'DM Sans', sans-serif; font-size: 1rem; background: var(--white); color: var(--gray-dark); }
+        #inquiry textarea { resize: vertical; min-height: 150px; }
+        #inquiry fieldset { border: none; }
+        #inquiry .check-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px 20px; }
+        #inquiry .check-grid label { display: flex; align-items: center; gap: 10px; font-family: 'DM Sans', sans-serif; font-size: 1rem; letter-spacing: 0; margin: 0; cursor: pointer; }
+        #inquiry .check-grid input { width: 20px; height: 20px; accent-color: var(--gray-dark); flex-shrink: 0; }
+        #inquiry button[type="submit"] { background: var(--gray-dark); color: var(--yellow); padding: 18px 40px; border: 3px solid var(--gray-dark); font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 2px; cursor: pointer; box-shadow: 6px 6px 0px var(--coral-dark); transition: all 0.3s ease; text-transform: uppercase; }
+        #inquiry button[type="submit"]:hover { transform: translate(3px, 3px); box-shadow: 3px 3px 0px var(--coral-dark); }
+        @media (max-width: 768px) { #inquiry .form-row { grid-template-columns: 1fr; } #inquiry .inq-box { padding: 30px 20px; } }
         .hero { overflow-x: clip; }
         .proof-section { padding: 20px 0 0; }
         .proof-section .audience { margin: 0; box-shadow: 10px 10px 0px var(--yellow); }
@@ -1308,7 +1324,7 @@
                         <div style="margin-bottom: 8px;">👥 Teams, departments &amp; leadership groups</div>
                         <div style="margin-bottom: 8px;">🎯 Built around your real workflows</div>
                     </div>
-                    <a href="team-training.html#inquiry" style="display: block; background: var(--gray-dark); color: var(--yellow); padding: 15px 30px; text-align: center; text-decoration: none; font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; border: 3px solid var(--gray-dark); box-shadow: 4px 4px 0px var(--yellow); transition: transform 0.3s ease;" onmouseover="this.style.transform='translate(2px, 2px)'; this.style.boxShadow='2px 2px 0px var(--yellow)';" onmouseout="this.style.transform='translate(0, 0)'; this.style.boxShadow='4px 4px 0px var(--yellow)';">PLAN YOUR TEAM TRAINING →</a>
+                    <a href="#inquiry" style="display: block; background: var(--gray-dark); color: var(--yellow); padding: 15px 30px; text-align: center; text-decoration: none; font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; border: 3px solid var(--gray-dark); box-shadow: 4px 4px 0px var(--yellow); transition: transform 0.3s ease;" onmouseover="this.style.transform='translate(2px, 2px)'; this.style.boxShadow='2px 2px 0px var(--yellow)';" onmouseout="this.style.transform='translate(0, 0)'; this.style.boxShadow='4px 4px 0px var(--yellow)';">PLAN YOUR TEAM TRAINING →</a>
                 </div>
             </div>
 
@@ -1429,7 +1445,7 @@
                 </div>
             </div>
             <div class="tt-cta-row">
-                <a href="team-training.html#inquiry" class="cta-button">GET A CUSTOM PROPOSAL</a>
+                <a href="#inquiry" class="cta-button">GET A CUSTOM PROPOSAL</a>
             </div>
         </div>
     </section>
@@ -1523,6 +1539,129 @@
         </div>
     </section>
 
+    <!-- Inquiry -->
+    <section class="tt-section" id="inquiry">
+        <div class="container">
+            <h2 class="section-title">Plan Your Team Training</h2>
+            <div class="inq-box">
+                <p class="inq-lead">Tell us about your team and what you'd like to change. We'll reply within a few days to set up a discovery call.</p>
+
+
+            <form name="team-training" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="teamTrainingForm">
+                <input type="hidden" name="form-name" value="team-training">
+                <input type="hidden" name="lang" value="en">
+                <input type="hidden" name="useCases" id="useCases">
+                <p style="display: none;">
+                    <label>Don't fill this out: <input name="bot-field"></label>
+                </p>
+
+                <div class="form-row">
+                    <div>
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div>
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div>
+                        <label for="email">Work Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div>
+                        <label for="role">Your Role</label>
+                        <input type="text" id="role" name="role">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div>
+                        <label for="company">Company / Organization *</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+                    <div>
+                        <label for="industry">Industry</label>
+                        <input type="text" id="industry" name="industry">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div>
+                        <label for="teamSize">Team Size *</label>
+                        <select id="teamSize" name="teamSize" required>
+                            <option value="">Choose one</option>
+                        <option>1–5 people</option>
+                        <option>6–15 people</option>
+                        <option>16–30 people</option>
+                        <option>31–60 people</option>
+                        <option>60+ people</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="format">Preferred Format</label>
+                        <select id="format" name="format">
+                            <option value="">Choose one</option>
+                        <option>Half day</option>
+                        <option>Full day</option>
+                        <option>2-day intensive</option>
+                        <option>Team offsite / retreat</option>
+                        <option>Not sure yet</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div>
+                        <label for="location">Location</label>
+                        <select id="location" name="location">
+                            <option value="">Choose one</option>
+                        <option>At our own office</option>
+                        <option>At the CoLab Lisbon venue</option>
+                        <option>Elsewhere in Portugal</option>
+                        <option>Outside Portugal</option>
+                        <option>Not sure yet</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="timing">Preferred Timing</label>
+                        <input type="text" id="timing" name="timing" placeholder="e.g. next month, Q1, flexible">
+                    </div>
+                </div>
+
+                <fieldset>
+                    <label>What do you want to use AI for?</label>
+                    <div class="check-grid">
+                        <label><input type="checkbox" class="use-case" value="Marketing &amp; content"> Marketing &amp; content</label>
+                        <label><input type="checkbox" class="use-case" value="Sales &amp; client work"> Sales &amp; client work</label>
+                        <label><input type="checkbox" class="use-case" value="Operations &amp; admin"> Operations &amp; admin</label>
+                        <label><input type="checkbox" class="use-case" value="Leadership &amp; strategy"> Leadership &amp; strategy</label>
+                        <label><input type="checkbox" class="use-case" value="Product &amp; engineering (Claude Code)"> Product &amp; engineering (Claude Code)</label>
+                        <label><input type="checkbox" class="use-case" value="Customer support"> Customer support</label>
+                        <label><input type="checkbox" class="use-case" value="Research &amp; analysis"> Research &amp; analysis</label>
+                        <label><input type="checkbox" class="use-case" value="Agents &amp; automation"> Agents &amp; automation</label>
+                    </div>
+                </fieldset>
+
+                <div>
+                    <label for="needs">Tell us about your team's goals *</label>
+                    <textarea id="needs" name="needs" required placeholder="What are you hoping to change? Which tools does your team use today? Anything we should know?"></textarea>
+                </div>
+
+                <button type="submit">Send Inquiry</button>
+            </form>
+
+            <div id="formSuccess" style="display: none; margin-top: 30px; padding: 30px; background: var(--white); border: 4px solid var(--gray-dark); box-shadow: 8px 8px 0px var(--yellow); text-align: center;">
+                <div style="font-size: 3rem; color: var(--coral-dark); margin-bottom: 15px;">✓</div>
+                <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 2rem; color: var(--gray-dark); margin-bottom: 10px; text-transform: uppercase;">Thank You!</h3>
+                <p style="font-size: 1.1rem; color: var(--gray-mid);">We've received your inquiry and will be in touch soon to set up a discovery call.</p>
+            </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Email Subscription -->
     <section style="padding: 80px 0; background: var(--coral-light);">
         <div class="container">
@@ -1554,7 +1693,7 @@
     <section class="footer-cta">
         <div class="container">
             <h2 class="footer-title">Bring Claude Training to Your Team</h2>
-            <a href="team-training.html#inquiry" class="cta-button">PLAN YOUR TEAM TRAINING</a>
+            <a href="#inquiry" class="cta-button">PLAN YOUR TEAM TRAINING</a>
             <a href="https://luma.com/calendar/cal-HLSHIiwiF05MvRk" class="footer-secondary">Looking for public events? See the calendar →</a>
 
             <div style="margin-top: 40px; text-align: center;">
@@ -1649,6 +1788,37 @@
                 });
             });
         }
+    </script>
+    <script>
+    (function () {
+        const form = document.getElementById('teamTrainingForm');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const form = this;
+                const emailInput = document.getElementById('email');
+                const button = form.querySelector('button[type="submit"]');
+                button.disabled = true;
+
+                // Checkboxes have no name, so they're sent as one comma-separated field
+                document.getElementById('useCases').value = Array.from(form.querySelectorAll('.use-case:checked'))
+                    .map((box) => box.value).join(', ');
+
+                // Screens the email, then hands it to Netlify Forms via /.netlify/functions/submit-form
+                EmailCheck.submit(form).then((result) => {
+                    button.disabled = false;
+                    if (!result.ok) {
+                        EmailCheck.showError(emailInput, result);
+                        return;
+                    }
+                    EmailCheck.showError(emailInput, null);
+                    form.style.display = 'none';
+                    document.getElementById('formSuccess').style.display = 'block';
+                });
+            });
+        }
+    })();
     </script>
 </body>
 </html>
