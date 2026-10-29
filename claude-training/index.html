@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Training for Teams &amp; Companies | CoLab Lisbon</title>
+    <meta name="description" content="Hands-on Claude training for teams: prompting, Projects, Claude Code and AI agents, built around your workflows. In person in Lisbon or at your office.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://colablisbon.com/claude-training/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://colablisbon.com/claude-training/">
+    <meta property="og:title" content="Claude Training for Teams &amp; Companies | CoLab Lisbon">
+    <meta property="og:description" content="Hands-on Claude training for teams: prompting, Projects, Claude Code and AI agents, built around your workflows. In person in Lisbon or at your office.">
+    <meta property="og:image" content="https://colablisbon.com/venue-workshop.jpg">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claude Training for Teams &amp; Companies | CoLab Lisbon">
+    <meta name="twitter:description" content="Hands-on Claude training for teams: prompting, Projects, Claude Code and AI agents, built around your workflows. In person in Lisbon or at your office.">
+    <meta name="twitter:image" content="https://colablisbon.com/venue-workshop.jpg">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Claude Training for Teams",
+        "serviceType": "Claude AI training",
+        "description": "Hands-on Claude training for teams: prompting, Projects, Claude Code and AI agents, built around your workflows. In person in Lisbon or at your office.",
+        "provider": {
+            "@id": "https://colablisbon.com/#org"
+        },
+        "areaServed": [
+            {
+                "@type": "City",
+                "name": "Lisbon"
+            },
+            {
+                "@type": "Country",
+                "name": "Portugal"
+            }
+        ],
+        "audience": {
+            "@type": "BusinessAudience",
+            "audienceType": "Companies and teams adopting Claude"
+        },
+        "url": "https://colablisbon.com/claude-training/"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Does everyone need a Claude subscription?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For the hands-on parts, yes. We recommend a paid Claude plan and help you choose the right one for your team before the training."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you train non-technical teams?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Most of our sessions are for non-technical teams. Claude Code is an optional track for technical people."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where does the training happen?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "At your office, or at our venue in Lisbon. We also run team offsites in Lisbon or Ericeira."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How is it tailored?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We start with a discovery call to learn your goals and tools, then build the sessions around the workflows with the biggest payoff for your team."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do we get started?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Send us an inquiry and we will set up a discovery call."
+                }
+            }
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://colablisbon.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Claude Training for Teams",
+                "item": "https://colablisbon.com/claude-training/"
+            }
+        ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Gagalin';
+            src: url('/Gagalin-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            --coral-light: #FFB4A2;
+            --coral-dark: #e7583b;
+            --yellow: #e9f174;
+            --gray-dark: #545454;
+            --gray-mid: #666;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: linear-gradient(135deg, var(--coral-dark) 0%, var(--coral-light) 100%);
+            color: var(--gray-dark);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateX(-5px);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+        }
+
+        .intro {
+            background: var(--white);
+            padding: 40px;
+            border: 5px solid var(--gray-dark);
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.3);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--gray-dark);
+            margin-bottom: 20px;
+        }
+
+        .intro strong {
+            color: var(--coral-dark);
+            font-size: 1.3rem;
+        }
+
+        .form-container {
+            background: var(--yellow);
+            padding: 50px;
+            border: 5px solid var(--gray-dark);
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 2rem;
+            color: var(--gray-dark);
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        form {
+            display: grid;
+            gap: 25px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            color: var(--gray-dark);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 3px solid var(--gray-dark);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            background: var(--white);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        button {
+            background: var(--gray-dark);
+            color: var(--yellow);
+            padding: 18px 40px;
+            border: 3px solid var(--gray-dark);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            box-shadow: 6px 6px 0px var(--coral-dark);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0px var(--coral-dark);
+        }
+
+        button:active {
+            transform: translate(6px, 6px);
+            box-shadow: 0px 0px 0px var(--coral-dark);
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            .intro {
+                padding: 30px 20px;
+            }
+        }
+
+        .container { max-width: 960px; }
+
+        .hero-lead {
+            text-align: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.4rem, 3.5vw, 2rem);
+            letter-spacing: 1px;
+            color: var(--white);
+            text-shadow: 2px 2px 0px var(--gray-dark);
+            margin-bottom: 30px;
+        }
+
+        .jump-button {
+            display: inline-block;
+            background: var(--gray-dark);
+            color: var(--yellow);
+            padding: 16px 36px;
+            border: 3px solid var(--gray-dark);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            text-decoration: none;
+            box-shadow: 6px 6px 0px var(--yellow);
+            transition: all 0.3s ease;
+        }
+
+        .jump-button:hover {
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0px var(--yellow);
+        }
+
+        .block { margin-bottom: 50px; }
+
+        .block-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            color: var(--white);
+            text-align: center;
+            text-transform: uppercase;
+            text-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 28px;
+            border: 4px solid var(--gray-dark);
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.25);
+        }
+
+        .card.yellow { background: var(--yellow); }
+
+        .card-kicker {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            color: var(--coral-dark);
+        }
+
+        .card-title {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            color: var(--gray-dark);
+            margin-bottom: 10px;
+        }
+
+        .card p, .card li {
+            font-size: 1.02rem;
+            line-height: 1.6;
+            color: var(--gray-dark);
+        }
+
+        .card ul { list-style: none; }
+
+        .card li {
+            padding-left: 22px;
+            position: relative;
+            margin-bottom: 4px;
+        }
+
+        .card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--coral-dark);
+            font-weight: 700;
+        }
+
+        .form-container { scroll-margin-top: 20px; }
+
+        select {
+            width: 100%;
+            padding: 15px;
+            border: 3px solid var(--gray-dark);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            background: var(--white);
+            color: var(--gray-dark);
+        }
+
+        fieldset { border: none; }
+
+        .check-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px 20px;
+        }
+
+        .check-grid label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 0;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .check-grid input {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--gray-dark);
+            flex-shrink: 0;
+        }
+
+        .proof { text-align: center; margin-bottom: 50px; }
+        .proof-kicker { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; color: var(--white); text-shadow: 2px 2px 0px var(--gray-dark); margin-bottom: 15px; }
+        .proof-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+        .proof-chip { background: var(--yellow); border: 3px solid var(--gray-dark); padding: 8px 16px; font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing: 1px; color: var(--gray-dark); box-shadow: 4px 4px 0px rgba(0,0,0,0.25); }
+    </style>
+    <style>
+        .faq details { background: var(--white); border: 4px solid var(--gray-dark); padding: 20px 24px; margin-bottom: 15px; box-shadow: 6px 6px 0px rgba(0,0,0,0.2); }
+        .faq summary { font-family: 'Archivo Black', sans-serif; font-size: 1.1rem; color: var(--gray-dark); cursor: pointer; text-transform: uppercase; }
+        .faq details p { margin-top: 12px; font-size: 1.05rem; line-height: 1.7; color: var(--gray-dark); }
+        .cta-box { background: var(--yellow); border: 5px solid var(--gray-dark); box-shadow: 10px 10px 0px rgba(0,0,0,0.3); padding: 40px; text-align: center; margin-bottom: 50px; }
+        .cta-box h2 { margin-bottom: 15px; }
+        .cta-box p { font-size: 1.15rem; line-height: 1.7; margin-bottom: 25px; }
+        .related { text-align: center; margin: 10px 0 40px; font-size: 1rem; color: var(--white); }
+        .related a { color: var(--white); font-weight: 700; margin: 0 8px; }
+        @media (max-width: 768px) { .cta-box { padding: 30px 20px; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-button">← Back to Home</a>
+
+        <div class="logo">
+            <a href="/"><img src="/colab-logo.png" alt="CoLab Lisbon"></a>
+        </div>
+
+        <h1>Claude Training for Teams</h1>
+        <p class="hero-lead">Hands-on Claude, Claude Code and agents, built around your workflows</p>
+
+        <div class="intro">
+            <p><strong>Your team has Claude. Now make it do the work.</strong><br><br>We run live, in-person Claude training for companies and teams. Everyone works on their own real tasks, from first prompts to automations and agents, so they leave with workflows they'll use the next day.</p>
+            <a href="/team-training.html#inquiry" class="jump-button">PLAN YOUR TRAINING →</a>
+        </div>
+
+        <div class="proof">
+            <div class="proof-kicker">We've built AI training &amp; strategy for</div>
+            <div class="proof-chips">
+                <span class="proof-chip">Startups</span>
+                <span class="proof-chip">Gaming Companies</span>
+                <span class="proof-chip">Food Manufacturers</span>
+                <span class="proof-chip">Real Estate Developers</span>
+                <span class="proof-chip">Events Teams</span>
+            </div>
+        </div>
+
+        <section class="block">
+            <h2 class="block-title">What Your Team Learns</h2>
+            <div class="card-grid">
+                <div class="card yellow">
+                    <div class="card-title">Claude Fundamentals</div>
+                    <p>Prompting, giving Claude the right context, Projects, and how to check its work.</p>
+                </div>
+                <div class="card yellow">
+                    <div class="card-title">Connect Your Tools</div>
+                    <p>Bring your documents, email and everyday tools into Claude so it works with your real information.</p>
+                </div>
+                <div class="card yellow">
+                    <div class="card-title">Automations</div>
+                    <p>Take repeat work off your plate: reports, summaries, drafts and handoffs.</p>
+                </div>
+                <div class="card yellow">
+                    <div class="card-title">AI Agents</div>
+                    <p>Assistants that handle multi-step tasks for you, with you staying in control.</p>
+                </div>
+                <div class="card yellow">
+                    <div class="card-title">Claude Code</div>
+                    <p>For technical teams: internal tools, prototypes, tests and documentation on your real codebase.</p>
+                </div>
+                <div class="card yellow">
+                    <div class="card-title">Safe Use</div>
+                    <p>Data, privacy and GDPR: what to share with AI tools, what not to, and why.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2 class="block-title">Who It's For</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-title">Non-Technical Teams</div>
+                    <p>Marketing, sales, operations, HR and leadership. No coding needed.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Technical Teams</div>
+                    <p>Product and engineering teams getting the most out of Claude Code.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title">Mixed Groups</div>
+                    <p>From people who have never used AI to daily users, in the same room.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2 class="block-title">Formats</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-kicker">HALF DAY</div>
+                    <div class="card-title">Intro Session</div>
+                    <p>Get the whole team confidently using Claude for everyday work.</p>
+                </div>
+                <div class="card">
+                    <div class="card-kicker">FULL DAY</div>
+                    <div class="card-title">Team Workshop</div>
+                    <p>Go deep on your team's top use cases and leave with working workflows.</p>
+                </div>
+                <div class="card">
+                    <div class="card-kicker">2 DAYS</div>
+                    <div class="card-title">Intensive</div>
+                    <p>Build real systems: agents, automations and multi-step workflows.</p>
+                </div>
+                <div class="card">
+                    <div class="card-kicker">OFFSITE</div>
+                    <div class="card-title">Team Retreat</div>
+                    <p>Combine training with time away, in Lisbon or by the ocean in Ericeira.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="block faq">
+            <h2 class="block-title">Questions</h2>
+            <details>
+                <summary>Does everyone need a Claude subscription?</summary>
+                <p>For the hands-on parts, yes. We recommend a paid Claude plan and help you choose the right one for your team before the training.</p>
+            </details>
+            <details>
+                <summary>Do you train non-technical teams?</summary>
+                <p>Yes. Most of our sessions are for non-technical teams. Claude Code is an optional track for technical people.</p>
+            </details>
+            <details>
+                <summary>Where does the training happen?</summary>
+                <p>At your office, or at our venue in Lisbon. We also run team offsites in Lisbon or Ericeira.</p>
+            </details>
+            <details>
+                <summary>How is it tailored?</summary>
+                <p>We start with a discovery call to learn your goals and tools, then build the sessions around the workflows with the biggest payoff for your team.</p>
+            </details>
+            <details>
+                <summary>How do we get started?</summary>
+                <p>Send us an inquiry and we will set up a discovery call.</p>
+            </details>
+        </section>
+
+        <div class="cta-box">
+            <h2>Bring Claude Training to Your Team</h2>
+            <p>Tell us what your team does and what you'd like to change. We'll come back with a tailored plan.</p>
+            <a href="/team-training.html#inquiry" class="jump-button">PLAN YOUR TRAINING →</a>
+        </div>
+
+        <p class="related">See also: <a href="/team-training.html">Team Training</a> · <a href="/ai-strategy/">AI Strategy</a> · <a href="/pt/formacao-ia-empresas/">Formação IA (PT)</a></p>
+    </div>
+</body>
+</html>

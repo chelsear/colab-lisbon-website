@@ -42,6 +42,8 @@
 
 - [Home](https://colablisbon.com/): Custom in-person Claude & AI training for teams
 - [Team Training](https://colablisbon.com/team-training.html): Custom AI training for companies and teams
+- [Claude Training for Teams](https://colablisbon.com/claude-training/): Hands-on Claude, Claude Code and agents training for companies
+- [AI Strategy & Advisory](https://colablisbon.com/ai-strategy/): Fractional AI advisory, from strategy to hands-on adoption
 - [Own Your Stack](https://colablisbon.com/own-your-stack/): Build and own your AI stack
 - [Use Cases](https://colablisbon.com/usecases/): Real-world AI automation use cases
 - [90 Day Build](https://colablisbon.com/90daybuild/): 90-day product building program
@@ -50,6 +52,7 @@
 ## Páginas (Português)
 
 - [Início](https://colablisbon.com/pt/): Formação Claude & IA personalizada e presencial para equipas
+- [Formação IA para Empresas](https://colablisbon.com/pt/formacao-ia-empresas/): Formação presencial de IA e Claude para empresas em Lisboa e Portugal
 - [Formação para Equipas](https://colablisbon.com/pt/team-training.html): Pedido de formação à medida para empresas e organizações
 
 ## Events Calendar
