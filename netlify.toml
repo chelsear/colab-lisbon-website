@@ -17,11 +17,25 @@
   force = true
 
 # Master Claude course is password-protected until launch (netlify/edge-functions/master-claude-gate.js).
-# Password: MASTER_CLAUDE_PASSWORD env var in Netlify. Remove these two blocks to make it public.
+# Password: MASTER_CLAUDE_PASSWORD env var in Netlify (shared with the Next Level guide below).
+# Remove these two blocks to make it public.
 [[edge_functions]]
   path = "/master-claude"
   function = "master-claude-gate"
 
 [[edge_functions]]
   path = "/master-claude/*"
+  function = "master-claude-gate"
+
+# Next Level AI student guide, behind the same gate and password.
+[[edge_functions]]
+  path = "/next level ai guide"
+  function = "master-claude-gate"
+
+[[edge_functions]]
+  path = "/next level ai guide/*"
+  function = "master-claude-gate"
+
+[[edge_functions]]
+  path = "/next%20level%20ai%20guide/*"
   function = "master-claude-gate"

@@ -1,7 +1,7 @@
-// Password gate for /master-claude/* while the course isn't public yet.
+// Password gate for /master-claude/* and /next level ai guide/* (one shared password and cookie).
 // The password lives in the MASTER_CLAUDE_PASSWORD env var. A correct password sets an HttpOnly
 // cookie holding a hash of it, so changing the env var logs everyone out.
-// To make the course public again, delete the [[edge_functions]] block for it in netlify.toml.
+// To make a section public again, delete its [[edge_functions]] blocks in netlify.toml.
 
 const COOKIE = 'mc_access';
 
@@ -35,7 +35,7 @@ function gatePage(showError) {
 </head>
 <body>
   <form class="box" method="POST">
-    <h1>Coming Soon</h1>
+    <h1>Private</h1>
     <p>This page is private for now.</p>
     ${error}
     <input type="password" name="password" placeholder="Password" autofocus required aria-label="Password">
@@ -63,7 +63,7 @@ export default async (request, context) => {
   if (request.method === 'POST') {
     const form = await request.formData().catch(() => null);
     if (form && form.get('password') === password) {
-      context.cookies.set({ name: COOKIE, value: expected, path: '/master-claude', httpOnly: true, secure: true, sameSite: 'Lax', maxAge: 60 * 60 * 24 * 30 });
+      context.cookies.set({ name: COOKIE, value: expected, path: '/', httpOnly: true, secure: true, sameSite: 'Lax', maxAge: 60 * 60 * 24 * 30 });
       return new Response(null, { status: 303, headers: { location: new URL(request.url).pathname, 'cache-control': 'no-store' } });
     }
     return html(gatePage(true), 401);
