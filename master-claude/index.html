@@ -987,6 +987,8 @@
             }
         }
     </style>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="b9608ad2-ba33-4f58-ba4f-b7333f74b4dd"></script>
+    <script src="/site-nav.js" defer></script>
 </head>
 <body>
 
@@ -1234,12 +1236,9 @@
         </div>
     </div>
 
-    <footer>
-        <div class="wrap">
-            <a href="/">← Back to CoLab</a>
-        </div>
-    </footer>
 
+
+    <script src="/email-check.js"></script>
     <script>
         // ==================== DATA ====================
         const questions = [
@@ -1580,12 +1579,21 @@
             e.preventDefault();
             populateHiddenFields();
             const form = document.getElementById('gateForm');
-            const body = new URLSearchParams(new FormData(form)).toString();
-            fetch('/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: body
-            }).catch(() => {}).finally(showPlan);
+            const emailInput = document.getElementById('gateEmail');
+            const button = form.querySelector('button[type="submit"]');
+            button.disabled = true;
+
+            // Screens the email, then hands it to Netlify Forms via /.netlify/functions/submit-form.
+            // A refused email stays on the gate; any other failure still shows the plan, as before.
+            EmailCheck.submit(form).then((result) => {
+                button.disabled = false;
+                if (!result.ok && result.field) {
+                    EmailCheck.showError(emailInput, result);
+                    return;
+                }
+                EmailCheck.showError(emailInput, null);
+                showPlan();
+            });
         }
 
         document.getElementById('gateForm').addEventListener('submit', handleGateSubmit);

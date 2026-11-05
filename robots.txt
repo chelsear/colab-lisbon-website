@@ -1,7 +1,36 @@
 # robots.txt for colablisbon.com
+# Bot-specific groups override the * group, so every group repeats the same Disallow rules.
+
 User-agent: *
 Allow: /
 Disallow: /master-claude/checkout/
+Disallow: /promo-graphic
+Disallow: /gif-frames/
+Disallow: /gifs/
+Disallow: /capture-gifs.js
+Disallow: /usecase-ideas.md
+
+# Search engines and AI search / assistant crawlers (explicitly allowed)
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /master-claude/checkout/
+Disallow: /promo-graphic
+Disallow: /gif-frames/
+Disallow: /gifs/
+Disallow: /capture-gifs.js
+Disallow: /usecase-ideas.md
 
 # Sitemap
 Sitemap: https://colablisbon.com/sitemap.xml

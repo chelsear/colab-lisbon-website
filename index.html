@@ -120,6 +120,18 @@
         "hasCourseInstance": {
             "@type": "CourseInstance",
             "courseMode": "onsite",
+            "image": "https://colablisbon.com/venue-workshop.jpg",
+            "offers": {
+                "@type": "Offer",
+                "url": "https://colablisbon.com/",
+                "availability": "https://schema.org/InStock",
+                "category": "Paid"
+            },
+            "performer": [
+                { "@type": "Person", "name": "Chelsea Rustrum" },
+                { "@type": "Person", "name": "James Corbett" },
+                { "@type": "Person", "name": "Verena Husemann" }
+            ],
             "location": {
                 "@type": "Place",
                 "name": "CoLab Lisbon",
@@ -155,53 +167,17 @@
     }
     </script>
 
-    <!-- Structured Data - FAQ -->
+    <!-- Structured Data - WebSite -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "Do you offer custom AI training for companies?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Yes. We run live, in-person Claude and AI training for companies, teams and organizations, designed around your team's real use cases and workflows."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What kinds of teams have you worked with?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "We have built AI training and AI strategy for startups, gaming companies, food manufacturers, real estate developers and events teams."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Where does the training take place?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "At your office, or at our venue in Lisbon, Portugal. We can also organise a team offsite in Lisbon or Ericeira."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How is the training tailored to our team?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "We start with a discovery call to learn your goals, tools and bottlenecks, then build the sessions around the workflows with the biggest payoff for your team."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "What formats are available?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "A half-day intro, a full-day workshop, a 2-day intensive, or a team offsite that combines training with a retreat."
-                }
-            }
-        ]
+        "@type": "WebSite",
+        "@id": "https://colablisbon.com/#website",
+        "name": "CoLab Lisbon",
+        "alternateName": "CoLab Lisboa",
+        "url": "https://colablisbon.com/",
+        "inLanguage": ["en", "pt-PT"],
+        "publisher": {"@id": "https://colablisbon.com/#org"}
     }
     </script>
 

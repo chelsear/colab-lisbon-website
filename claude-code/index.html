@@ -1057,8 +1057,8 @@
                     <h2 style="font-family: 'Archivo Black', sans-serif; font-size: clamp(2rem, 5vw, 3rem); color: var(--coral-dark); margin-bottom: 20px; text-transform: uppercase;">Get First Dibs on Events</h2>
                     <p style="font-family: 'DM Sans', sans-serif; font-size: 1.2rem; color: var(--gray-dark); line-height: 1.6; margin-bottom: 30px;">Sign up to be the first to know about my next salons, workshops, and gatherings.</p>
 
-                    <form name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="newsletterForm" style="display: flex; gap: 15px; max-width: 500px; margin: 0 auto; flex-wrap: wrap; justify-content: center;">
-                        <input type="hidden" name="form-name" value="newsletter">
+                    <form name="newsletter-claude-code" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="newsletterForm" style="display: flex; gap: 15px; max-width: 500px; margin: 0 auto; flex-wrap: wrap; justify-content: center;">
+                        <input type="hidden" name="form-name" value="newsletter-claude-code">
                         <p style="display: none;">
                             <label>Don't fill this out: <input name="bot-field"></label>
                         </p>
@@ -1092,6 +1092,7 @@
         </div>
     </section>
 
+    <script src="/email-check.js"></script>
     <script>
         // Scroll Reveal Animation
         const reveals = document.querySelectorAll('.reveal');
@@ -1154,18 +1155,23 @@
             newsletterForm.addEventListener('submit', function(e) {
                 e.preventDefault();
 
-                const formData = new FormData(this);
+                const form = this;
+                const emailInput = form.querySelector('input[name="email"]');
+                const button = form.querySelector('button[type="submit"]');
+                const errorOptions = { anchor: form, align: 'center' };
+                button.disabled = true;
 
-                fetch('/', {
-                    method: 'POST',
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: new URLSearchParams(formData).toString()
-                })
-                .then(() => {
-                    this.style.display = 'none';
+                // Screens the email, then hands it to Netlify Forms via /.netlify/functions/submit-form
+                EmailCheck.submit(form).then((result) => {
+                    button.disabled = false;
+                    if (!result.ok) {
+                        EmailCheck.showError(emailInput, result, errorOptions);
+                        return;
+                    }
+                    EmailCheck.showError(emailInput, null, errorOptions);
+                    form.style.display = 'none';
                     document.getElementById('newsletterSuccess').style.display = 'block';
-                })
-                .catch((error) => console.error('Error:', error));
+                });
             });
         }
     </script>

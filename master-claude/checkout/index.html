@@ -416,15 +416,14 @@
             e.preventDefault();
 
             const btn = document.getElementById('payBtn');
-            const email = document.getElementById('email').value;
 
             btn.disabled = true;
             btn.textContent = 'Processing...';
 
-            // Simulate processing delay
+            // Simulate processing delay. Nothing typed here is sent anywhere, and the email stays out of
+            // the URL so it doesn't end up in browser history, analytics or referrer headers.
             setTimeout(function() {
-                // Redirect to success page with email
-                window.location.href = '/success.html?product=master-claude&email=' + encodeURIComponent(email);
+                window.location.href = '/success.html?product=master-claude';
             }, 1500);
         });
     </script>

@@ -1,6 +1,6 @@
 # CoLab Lisbon
 
-> CoLab Lisbon runs hands-on AI workshops and Claude training in Lisbon, Portugal. Learn to build products, agents, and automations with Claude and Claude Code — in person, with a community of AI builders.
+> CoLab Lisbon runs live, in-person Claude and AI training for companies and teams, built around each team's real use cases, at the client's office or at the CoLab Lisbon venue in Lisbon, Portugal. It also offers AI strategy and advisory for founders and leadership teams, team offsites in Lisbon or Ericeira, and training in English or Portuguese.
 
 ## Key Information
 
@@ -44,9 +44,12 @@
 - [Team Training](https://colablisbon.com/team-training.html): Custom AI training for companies and teams
 - [Claude Training for Teams](https://colablisbon.com/claude-training/): Hands-on Claude, Claude Code and agents training for companies
 - [AI Strategy & Advisory](https://colablisbon.com/ai-strategy/): Fractional AI advisory, from strategy to hands-on adoption
-- [Own Your Stack](https://colablisbon.com/own-your-stack/): Build and own your AI stack
-- [Use Cases](https://colablisbon.com/usecases/): Real-world AI automation use cases
-- [90 Day Build](https://colablisbon.com/90daybuild/): 90-day product building program
+
+## Tools & Past Programs (English)
+
+- [AI Systems Assessment](https://colablisbon.com/usecases/): Short assessment that recommends which AI systems (MCPs, integrations, custom skills, automated workflows) to build for your business
+- [CLAUDE.md Generator](https://colablisbon.com/claudemd/): Answer questions about your business, voice and working style to generate a CLAUDE.md file for Claude
+- [Own Your Stack](https://colablisbon.com/own-your-stack/): 2-day AI intensive held in Ericeira, April 11-12, 2026 (Claude CLI, OpenClaw on your own VPS, messaging bot)
 
 ## Páginas (Português)
 
